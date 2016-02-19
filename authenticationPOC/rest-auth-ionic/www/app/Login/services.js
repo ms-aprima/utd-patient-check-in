@@ -1,4 +1,4 @@
-angular.module('starter')
+angular.module('App')
 
 .service('AuthService', function($q, $http, API_ENDPOINT) {
   var LOCAL_TOKEN_KEY = 'yourTokenKey';

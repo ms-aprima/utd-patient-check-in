@@ -1,4 +1,4 @@
-angular.module('starter')
+angular.module('App')
 
 .constant('AUTH_EVENTS', {
   notAuthenticated: 'auth-not-authenticated'

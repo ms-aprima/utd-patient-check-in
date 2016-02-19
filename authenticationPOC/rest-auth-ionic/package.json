@@ -1,7 +1,6 @@
 {
-  "name": "devdactic-rest-auth",
+  "name": "teamGrlPower",
   "version": "1.1.1",
-  "description": "devdactic-rest-auth: An Devdactic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",

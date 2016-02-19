@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic'])
+angular.module('App', ['ionic'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
@@ -6,23 +6,13 @@ angular.module('starter', ['ionic'])
   .state('outside', {
     url: '/outside',
     abstract: true,
-    templateUrl: 'templates/outside.html'
+    templateUrl: 'App/Login/outside.html'
   })
   .state('outside.login', {
     url: '/login',
-    templateUrl: 'templates/login.html',
+    templateUrl: 'App/Login/login.html',
     controller: 'LoginCtrl'
   })
-  .state('outside.register', {
-    url: '/register',
-    templateUrl: 'templates/register.html',
-    controller: 'RegisterCtrl'
-  })
-  .state('inside', {
-    url: '/inside',
-    templateUrl: 'templates/inside.html',
-    controller: 'InsideCtrl'
-  });
 
   $urlRouterProvider.otherwise('/outside/login');
 })

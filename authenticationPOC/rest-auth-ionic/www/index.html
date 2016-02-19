@@ -19,13 +19,15 @@
 <script src="cordova.js"></script>
 
 <!-- your app's js -->
-<script src="js/app.js"></script>
-<script src="js/controllers.js"></script>
-<script src="js/services.js"></script>
-<script src="js/constants.js"></script>
+<script src="app/App/app.js"></script>
+<script src="app/App/AppCtrl.js"></script>
+<script src="app/Login/LoginCtrl.js"></script>
+<!-- put Form Controller hurr -->
+<script src="app/Login/services.js"></script>
+<script src="app/App/constants.js"></script>
 </head>
 
-<body ng-app="starter" ng-controller="AppCtrl">
+<body ng-app="App" ng-controller="AppCtrl">
   <ui-view></ui-view>
 </body>
 </html>

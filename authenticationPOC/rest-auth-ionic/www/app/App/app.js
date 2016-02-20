@@ -6,11 +6,11 @@ angular.module('App', ['ionic'])
   .state('outside', {
     url: '/outside',
     abstract: true,
-    templateUrl: 'App/Login/outside.html'
+    templateUrl: 'app/Login/outside.html'
   })
   .state('outside.login', {
     url: '/login',
-    templateUrl: 'App/Login/login.html',
+    templateUrl: 'app/Login/login.html',
     controller: 'LoginCtrl'
   })
 
@@ -21,7 +21,7 @@ angular.module('App', ['ionic'])
   $rootScope.$on('$stateChangeStart', function (event,next, nextParams, fromState) {
     if (!AuthService.isAuthenticated()) {
       console.log(next.name);
-      if (next.name !== 'outside.login' && next.name !== 'outside.register') {
+      if (next.name !== 'outside.login') {
         event.preventDefault();
         $state.go('outside.login');
       }

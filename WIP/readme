@@ -1,7 +1,0 @@
-launch server: cd into node-rest-auth -> "node server.js"
-launch ionic: cd into rest-auth-ionic -> "ionic serve"
-
-
-still can't figure out why ionic CORS proxy doesn't work
-for now, have to manually enable CORS via Chrome plugin TT_TT
-will have to ask Friday

@@ -12,7 +12,6 @@ angular.module('App')
      //this is where the state is re routed to non existent form
      console.log($state.get());
      $state.go('inside');
-     console.log($state.get());
     }, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',

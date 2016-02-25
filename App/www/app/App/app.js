@@ -16,7 +16,6 @@ angular.module('App', ['ionic'])
   .state('inside', {
     url: '/inside',
     templateUrl: 'app/Confirmation/confirmation.html',
-    controller: 'InsideCtrl'
   })
 
   $urlRouterProvider.otherwise('/outside/login');

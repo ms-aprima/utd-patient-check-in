@@ -22,7 +22,7 @@ angular.module('App')
     authToken = token;
 
     // Set the token as header for your requests!
-    $http.defaults.headers.common.Authorization = authToken;
+    $http.defaults.headers.common.Authorization = 'Basic cG9zdG1hbjpwYXN3b3Jk=='//authToken;
   }
 
   function destroyUserCredentials() {
@@ -32,23 +32,11 @@ angular.module('App')
     window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   }
 
-  var register = function(user) {
-    return $q(function(resolve, reject) {
-      $http.post(API_ENDPOINT.url + '/signup', user).then(function(result) {
-        if (result.data.succes) {
-          resolve(result.data.msg);
-        } else {
-          reject(result.data.msg);
-        }
-      });
-    });
-  };
-
   var login = function(user) {
     return $q(function(resolve, reject) {
-      $http.post(API_ENDPOINT.url + '/authenticate', user).then(function(result) {
-        if (result.data.success) {
-          storeUserCredentials(result.data.token);
+      $http.post(API_ENDPOINT.url,user).then(function(result) { // user).then(function(result) {
+        if (result.data) {//result.data.success) {
+          storeUserCredentials('postman token')//result.data.token);
           resolve(result.data.msg);
         } else {
           reject(result.data.msg);
@@ -65,7 +53,6 @@ angular.module('App')
 
   return {
     login: login,
-    register: register,
     logout: logout,
     isAuthenticated: function() {return isAuthenticated;},
   };

@@ -8,7 +8,11 @@ angular.module('App')
 
   $scope.login = function() {
     AuthService.login($scope.user).then(function(msg) {
-      $state.go('inside');
+     // $state.go('inside');
+     //this is where the state is re routed to non existent form
+     console.log($state.get());
+     $state.go('inside');
+     console.log($state.get());
     }, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',

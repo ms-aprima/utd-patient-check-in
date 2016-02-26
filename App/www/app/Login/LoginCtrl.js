@@ -11,7 +11,7 @@ angular.module('App')
      // $state.go('inside');
      //this is where the state is re routed to non existent form
      console.log($state.get());
-     $state.go('inside');
+     $state.go('inside.form');
     }, function(errMsg) {
       var alertPopup = $ionicPopup.alert({
         title: 'Login failed!',
@@ -27,12 +27,13 @@ angular.module('App')
     AuthService.logout();
   };
 
+/*
   $scope.getInfo = function() {
     $http.get(API_ENDPOINT.url + '/memberinfo').then(function(result) {
       $scope.memberinfo = result.data.msg;
     });
   };
-
+*/
   $scope.logout = function() {
     AuthService.logout();
     $state.go('outside.login');

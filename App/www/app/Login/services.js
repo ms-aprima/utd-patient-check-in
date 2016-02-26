@@ -22,6 +22,7 @@ angular.module('App')
     authToken = token;
 
     // Set the token as header for your requests!
+    //change this when you test with postman
     $http.defaults.headers.common.Authorization = 'Basic cG9zdG1hbjpwYXN3b3Jk=='//authToken;
   }
 
@@ -34,7 +35,7 @@ angular.module('App')
 
   var login = function(user) {
     return $q(function(resolve, reject) {
-      $http.post(API_ENDPOINT.url,user).then(function(result) { // user).then(function(result) {
+      $http.post(LOGIN_ENDPOINT.url,user).then(function(result) { // user).then(function(result) {
         if (result.data) {//result.data.success) {
           storeUserCredentials('postman token')//result.data.token);
           resolve(result.data.msg);

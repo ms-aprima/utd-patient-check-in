@@ -32,8 +32,8 @@ angular.module('App')
     $http.defaults.headers.common.Authorization = undefined;
     window.localStorage.removeItem(LOCAL_TOKEN_KEY);
   }
-
-  var login = function(user) {
+//need to inject rootScope/or constant to get access to it 
+  var login = function(user, LOGIN_ENDPOINT) {
     return $q(function(resolve, reject) {
       $http.post(API_BASEURI.url,user).then(function(result) { // user).then(function(result) {
         if (result.data) {//result.data.success) {

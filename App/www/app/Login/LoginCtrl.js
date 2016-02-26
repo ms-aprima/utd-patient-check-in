@@ -22,14 +22,14 @@ angular.module('App')
 })
 
 //won't need these  but will leave them for now
-.controller('InsideCtrl', function($scope, AuthService, API_ENDPOINT, $http, $state) {
+.controller('InsideCtrl', function($scope, AuthService, API_BASEURI, $http, $state) {
   $scope.destroySession = function() {
     AuthService.logout();
   };
 
 /*
   $scope.getInfo = function() {
-    $http.get(API_ENDPOINT.url + '/memberinfo').then(function(result) {
+    $http.get(API_BASEURI.url + '/memberinfo').then(function(result) {
       $scope.memberinfo = result.data.msg;
     });
   };

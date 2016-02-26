@@ -1,6 +1,6 @@
 angular.module('App')
 
-.service('AuthService', function($q, $http, API_ENDPOINT) {
+.service('AuthService', function($q, $http, API_BASEURI) {
   var LOCAL_TOKEN_KEY = 'yourTokenKey';
   var isAuthenticated = false;
   var authToken;

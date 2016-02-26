@@ -35,7 +35,7 @@ angular.module('App')
 
   var login = function(user) {
     return $q(function(resolve, reject) {
-      $http.post(LOGIN_ENDPOINT.url,user).then(function(result) { // user).then(function(result) {
+      $http.post(API_BASEURI.url,user).then(function(result) { // user).then(function(result) {
         if (result.data) {//result.data.success) {
           storeUserCredentials('postman token')//result.data.token);
           resolve(result.data.msg);

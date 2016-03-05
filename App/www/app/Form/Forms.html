@@ -1,24 +1,76 @@
-<ion-view>
-	<div class="bar bar-header bar-positive">
-  		<h1 class="title">Patient Forms</h1>
-  		<button class="button">
-  		Sign Out
-  		</button>
-	</div>
+<!DOCTYPE>
+<html>
+<head>
+  <title>FORMS</title>
+</head>
+<body ng-app = "Forms" ng-controller = "FormCtrl as form">
+  <ion-view>
+  <!-- Header  ==== want to change headers when on form/review/signout page-->
+  <div class="bar bar-header bar-positive">
+      <h1 class="title">Patient Forms</h1>
+      <button class="button" ng-click = "form.signOut = !form.signOut">
+      Sign Out
+      </button>
+  </div>
+
+  </div>
+
     <ion-content class="has-header">
-    	<div class="list">
-  			<div class="item item-button-right">
-    			Questionnaire 1
-    			<button class="button button-assertive">
-      				Incomplete
-    			</button>
-  			</div>
-  			<div class="item item-button-right">
-    			Questionnaire 2
-    			<button class="button button-balanced">
-      				Complete
-    			</button>
-  			</div>
-  		</div>
-    </ion-content>
-</ion-view>
+      
+      <!-- list of forms -->
+      <div class="list" ng-hide = "form.showForm || form.signOut || form.showReview">
+        <div class="item item-button-right">
+          Questionnaire 1
+          <button class="button button-assertive" ng-click="form.showForm = !form.showForm">
+              Incomplete
+          </button>
+        </div>
+        <div class="item item-button-right">
+          Questionnaire 2
+          <button class="button button-balanced" ng-click="form.showReview = !form.showReview">
+              Complete
+          </button>
+        </div>
+      </div>
+      
+      <!-- Showing form -->
+      <div ng-show="form.showForm">
+        Form page
+      </div>
+
+      <!-- Showing review -->
+      <div ng-show="form.showReview">
+        Review Page
+      </div>
+
+      <!-- Signing out -->
+      <div ng-show="form.signOut">
+        <div align="center">
+              <h1>Thank you!</h1>
+          </div>
+           <div align="center">
+              <h3>We will be with you shortly! </h3>
+          </div>
+      </div>
+      
+      </ion-content>
+  </ion-view>
+
+
+  <!-- toggling forms -->
+  <script>
+  angular.module('Forms', [])
+    .controller('FormCtrl', FormCtrl)
+  
+  function FormCtrl() {
+        var self = this;
+  
+        self.showForm = false;
+        self.signOut = false;
+        self.showReview = false;
+    }
+
+  </script>
+
+</body>
+</html>

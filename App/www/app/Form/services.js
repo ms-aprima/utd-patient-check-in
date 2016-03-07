@@ -4,13 +4,13 @@ angular.module('App')
 
   //test functions are used for getting json objects that are hard coded here and are not dependent on API calls
 
-  //call this for getting a json object with list of questionnaires
+  //call this in place of getQuestionnaireList() for getting a json object with list of questionnaires
   var getTestQuestionnaireList = function(patientId) {
       return QUESTIONNAIRE_LIST;
   };
 
 
-//call this object to get ONE section of a questionnaire back
+//call this function in place of getQuestionnaire() to get ONE section of a questionnaire back
   var getTestQuestionnaire = function(patientId, relSurveyPatientId) {
     return QUESTIONNAIRE_SECTION;
   };

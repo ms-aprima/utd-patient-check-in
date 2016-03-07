@@ -1,6 +1,19 @@
 angular.module('App')
 
-.service('FormService', function($q, $http, API_BASEURI) {
+.service('FormService', function($q, $http, API_BASEURI, QUESTIONNAIRE_LIST, QUESTIONNAIRE_SECTION) {
+
+  //test functions are used for getting json objects that are hard coded here and are not dependent on API calls
+
+  //call this for getting a json object with list of questionnaires
+  var getTestQuestionnaireList = function(patientId) {
+      return QUESTIONNAIRE_LIST;
+  };
+
+
+//call this object to get ONE section of a questionnaire back
+  var getTestQuestionnaire = function(patientId, relSurveyPatientId) {
+    return QUESTIONNAIRE_SECTION;
+  };
 
   var getQuestionnaireList = function(patientId) {
       return $q(function(resolve, reject) {
@@ -8,7 +21,7 @@ angular.module('App')
       	var endpoint = "patient/v1/patients/" + patientId + "/questionnaires-assigned/";
         $http.get(API_BASEURI.url + endpoint).then(function(result) {
           if (result.data.success) {
-            //need to return full json, so just resolve(result.data) ??
+            //need to return full json, so is it just resolve(result.data) ??
             resolve(result.data);
           } else {
             reject(result.data.msg);

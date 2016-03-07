@@ -1,15 +1,26 @@
 <ion-view title="Please sign in">
   <ion-content class="padding">
-    <div class="list">
-      <label class="item item-input">
-        <input type="text" placeholder="Name" ng-model="user.name">
-      </label>
-      <label class="item item-input">
-        <input type="password" placeholder="Password" ng-model="user.password">
-      </label>
+
+ <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding="">
+    <div>
+      <md-input-container>
+        <label>Name</label>
+        <input ng-model="user.name">
+      </md-input-container>
+
+      <md-input-container>
+        <label>Password</label>
+        <input ng-model="user.password">
+      </md-input-container>
     </div>
-    <button class="button button-full button-balanced" ng-click="login()">
-      Login
-    </button>
+
+    <md-button class="md-raised" ng-click="login()">Login</md-button>
+  </md-content>
+
+
+   
   </ion-content>
 </ion-view>
+
+
+

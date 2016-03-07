@@ -1,6 +1,10 @@
-angular.module('App', ['ionic'])
+angular.module('App', ['ionic','ngMaterial'])
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$mdThemingProvider) {
+
+  $mdThemingProvider.theme('default')
+    .dark();
+
 
   $stateProvider
   .state('outside', {

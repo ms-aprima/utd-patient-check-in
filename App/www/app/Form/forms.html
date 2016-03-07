@@ -19,12 +19,12 @@
       <md-content layout-padding="">
        <md-list ng-hide = "form.showForm || form.showReview">
         <md-list-item class="secondary-button-padding">
-          <p>Questionnaire 1</p>
+          <p>Social History</p>
           <md-button class="md-warn md-raised md-hue-2" ng-click="form.showForm = !form.showForm">Incomplete</md-button>
         </md-list-item>
         <md-list-item class="secondary-button-padding">
           <p>Questionnaire 2</p>
-          <md-button class="md-primary md-hue-1 " ng-click="form.showReview = !form.showReview">Completed Form</md-button>
+          <md-button class="md-primary md-hue-1 " ng-click= "form.showReview = !form.showReview"> Completed Form</md-button>
         </md-list-item>
       </md-list>
       </md-content>
@@ -32,6 +32,7 @@
       <!-- Showing form HARDCODED -->
       <div ng-show="form.showForm">
         <md-content layout-padding="">
+          <md-subheader class="md-primary">Main Social Section</md-subheader>
         <div>
           <p> 1. What is your marital status? </p>
           <md-radio-group ng-model="data.group1">
@@ -139,7 +140,8 @@
           </md-radio-group>
         </div>
 
-        <div>
+        <div ng-if = "data.group3==1 || data.group3==2 || data.group3==3 || data.group3==4 
+          || data.group3==5 || data.group3==6 || data.group3==7 || data.group3==8 || data.group3==9 || data.group3==10 ">
           <p> 3a. How many children live in the household? </p>
           <md-radio-group ng-model="data.group4">
           <div layout="row">
@@ -265,7 +267,7 @@
               <md-radio-button value="Employed"> Currently Employed </md-radio-button>
             </div>
             <div flex>
-              <md-radio-button value="Unemployed"> Currently Unemployed</md-radio-button>
+              <md-radio-button value="Unemployed"> Currently Unemployed </md-radio-button>
             </div>
             <div flex>
               <md-radio-button value="Retired"> Retired </md-radio-button>
@@ -318,7 +320,8 @@
           </md-radio-group>
         </div>
 
-        <div>
+        <div ng-if = "data.group8=='CurrentlySmoke' || data.group8=='QuitThisYear' || data.group8=='QuitLess3Years' || data.group8=='QuitLess5Years' 
+          || data.group8=='QuitLess10Years' || data.group8=='QuitOver10Years' || data.group8=='InPast'">
           <p> 7a. How many years have you used tobacco? </p>
           <md-radio-group ng-model="data.group9">
           <div layout="row">
@@ -370,7 +373,8 @@
         </div>
 
 
-        <div>
+        <div ng-if = "data.group8=='CurrentlySmoke' || data.group8=='QuitThisYear' || data.group8=='QuitLess3Years' || data.group8=='QuitLess5Years' 
+          || data.group8=='QuitLess10Years' || data.group8=='QuitOver10Years' || data.group8=='InPast'">          
           <p> 7b. How many cigarettes do you smoke in a day? </p>
           <md-radio-group ng-model="data.group10">
           <div layout="row">
@@ -443,7 +447,8 @@
           </md-radio-group>
         </div>
 
-        <div>
+        <div ng-if = "data.group11=='CurrentlyDrink' || data.group11=='QuitThisYear' || data.group11=='QuitLess3Years' || data.group11=='QuitLess5Years' 
+          || data.group11=='QuitLess10Years' || data.group11=='QuitOver10Years' || data.group11=='InPast'"> 
           <p> 8a. How many years have you drunk alcohol? </p>
           <md-radio-group ng-model="data.group12">
           <div layout="row">
@@ -494,7 +499,8 @@
           </md-radio-group>
         </div>
 
-        <div>
+        <div ng-if = "data.group11=='CurrentlyDrink' || data.group11=='QuitThisYear' || data.group11=='QuitLess3Years' || data.group11=='QuitLess5Years' 
+          || data.group11=='QuitLess10Years' || data.group11=='QuitOver10Years' || data.group11=='InPast'"> 
           <p> 8b. How frequently do you drink? </p>
           <md-radio-group ng-model="data.group13">
           <div layout="row">
@@ -555,7 +561,8 @@
           </md-radio-group>
         </div>
 
-        <div>
+        <div ng-if = "data.group14=='CurrentlyUseDrugs' || data.group14=='QuitThisYear' || data.group14=='QuitLess3Years' || data.group14=='QuitLess5Years' 
+          || data.group14=='QuitLess10Years' || data.group14=='InPast'"> 
           <p> 9a. How many years have you used illegal drugs? </p>
           <md-radio-group ng-model="data.group15">
           <div layout="row">
@@ -606,7 +613,8 @@
           </md-radio-group>
         </div>
 
-        <div>
+        <div ng-if = "data.group14=='CurrentlyUseDrugs' || data.group14=='QuitThisYear' || data.group14=='QuitLess3Years' || data.group14=='QuitLess5Years' 
+          || data.group14=='QuitLess10Years' || data.group14=='InPast'">
           <p> 9b. Have you ever used marijuana? </p>
           <md-radio-group ng-model="data.group16">
           <div layout="row">
@@ -620,7 +628,8 @@
           </md-radio-group>
         </div>
 
-        <div>
+        <div ng-if = "data.group14=='CurrentlyUseDrugs' || data.group14=='QuitThisYear' || data.group14=='QuitLess3Years' || data.group14=='QuitLess5Years' 
+          || data.group14=='QuitLess10Years' || data.group14=='InPast'">
           <p> 9c. Have you ever used cocaine? </p>
           <md-radio-group ng-model="data.group17">
           <div layout="row">
@@ -632,6 +641,10 @@
             </div>
           </div>
           </md-radio-group>
+        </div>
+
+        <div layout="row" layout-align="end end">
+            <md-button class="md-raised md-primary">Submit</md-button>
         </div>
 
         </md-content>
@@ -648,16 +661,14 @@
 
   <!-- toggling forms -->
   <script>
-  angular.module('Forms', ['ngMaterial'])
-    .controller('FormCtrl', FormCtrl)
-  
-  function FormCtrl() {
-        var self = this;
-  
-        self.showForm = false;
-        self.showReview = false;
+  var myForm= angular.module('Forms', ['ngMaterial']);
 
-    }
+    myForm.controller('FormCtrl', ['$scope', function($scope)
+    {
+      $scope.showForm = false;
+      $scope.showReview = false;
+
+    }]); 
 
   </script>
 

@@ -16,213 +16,626 @@
     <ion-content class="has-header">
       
       <!-- list of forms -->
-      <div class="list" ng-hide = "form.showForm || form.showReview">
-        <div class="item item-button-right">
-          Medical History
-          <button class="button button-assertive" ng-click="form.showForm = !form.showForm">
-              Incomplete
-          </button>
-        </div>
-        <div class="item item-button-right">
-          Family History
-          <button class="button button-balanced" ng-click="form.showReview = !form.showReview">
-              Complete
-          </button>
-        </div>
-      </div>
+      <md-content layout-padding="">
+       <md-list ng-hide = "form.showForm || form.showReview">
+        <md-list-item class="secondary-button-padding">
+          <p>Questionnaire 1</p>
+          <md-button class="md-warn md-raised md-hue-2" ng-click="form.showForm = !form.showForm">Incomplete</md-button>
+        </md-list-item>
+        <md-list-item class="secondary-button-padding">
+          <p>Questionnaire 2</p>
+          <md-button class="md-primary md-hue-1 " ng-click="form.showReview = !form.showReview">Completed Form</md-button>
+        </md-list-item>
+      </md-list>
+      </md-content>
       
-      <!-- Showing form -->
+      <!-- Showing form HARDCODED -->
       <div ng-show="form.showForm">
-      <div class= "item item-divider">
-        Personal Information
+        <md-content layout-padding="">
+        <div>
+          <p> 1. What is your marital status? </p>
+          <md-radio-group ng-model="data.group1">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Single"> Single </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Married"> Married </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Divorced"> Divorced </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Separated"> Separated </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Widowed"> Widowed </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Remarried"> Remarried </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 2. What are your living arrangments? </p>
+          <md-radio-group ng-model="data.group2">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="House"> House </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="SharedHouse"> Shared House </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Apartment/Condo"> Apartment/Condo </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Trailer"> Trailer </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Care Facility"> Care Facility </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Homeless"> Homeless </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Townhome"> Townhome </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Other"> Other </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 3. How many children do you have? </p>
+          <md-radio-group ng-model="data.group3">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="None"> None </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="4"> 4 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+          <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="6"> 6 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="7"> 7 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="9"> 9 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 3a. How many children live in the household? </p>
+          <md-radio-group ng-model="data.group4">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="None"> None </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="4"> 4 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+          <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="6"> 6 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="7"> 7 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="9"> 9 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 4. How many adults live in the household? </p>
+          <md-radio-group ng-model="data.group5">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="None"> None </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="4"> 4 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+          <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="6"> 6 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="7"> 7 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="9"> 9 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 5. Highest level of education you have obtained? </p>
+          <md-radio-group ng-model="data.group6">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="GradeSchool"> Grade School </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="SomeHighSchool"> Some High School </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="HighSchoolGraduate"> High School Graduate </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="SomeCollege"> Some College </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="CollegeGraduate"> College Graduate </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="PostGraduate"> Post-Graduate </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 6. Employment? </p>
+          <md-radio-group ng-model="data.group7">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Employed"> Currently Employed </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Unemployed"> Currently Unemployed</md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Retired"> Retired </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Student"> Student </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div layout="row">
+          <md-input-container class="md-block">
+           <label> Additional Comments</label>
+            <textarea ng-model="user.employComments" md-maxlength="150" rows="5" md-select-on-  focus></textarea>
+          </md-input-container>
+        </div>
+
+        <div>
+          <p> 7. Any prior or current smoking habits? </p>
+          <md-radio-group ng-model="data.group8">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="NeverSmoked"> I have never smoked or chewed tobacco </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="CurrentlySmoke"> I currently smoke or chew tobacco </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitThisYear"> I quit this year </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess3Years"> I quit less than 3 years </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="QuitLess5Years"> I quit less than 5 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess10Years"> I quit less than 10 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitOver10Years"> I quit over than 10 years ago </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="InPast"> In the past only </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 7a. How many years have you used tobacco? </p>
+          <md-radio-group ng-model="data.group9">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="15"> 15 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="20"> 20 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="25"> 25 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="30"> 30 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="35"> 35 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="40"> 40 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="45"> 45 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+
+        <div>
+          <p> 7b. How many cigarettes do you smoke in a day? </p>
+          <md-radio-group ng-model="data.group10">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="4"> 4 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10"> 10 (Half a pack) </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="20"> 20 (One pack) </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="30"> 30 (Pack and a half) </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="40"> 40 (Two packs) </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 8. Please tell us about your drinking habits? </p>
+          <md-radio-group ng-model="data.group11">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="NeverDrunk"> I have never drunk alcohol </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="CurrentlyDrink"> I currently drink alcohol </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitThisYear"> I quit this year </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess3Years"> I quit less than 3 years </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="QuitLess5Years"> I quit less than 5 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess10Years"> I quit less than 10 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitOver10Years"> I quit over than 10 years ago </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="InPast"> In the past only </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 8a. How many years have you drunk alcohol? </p>
+          <md-radio-group ng-model="data.group12">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="15"> 15 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="20"> 20 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="25"> 25 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="30"> 30 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="35"> 35 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="40"> 40 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="45"> 45 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 8b. How frequently do you drink? </p>
+          <md-radio-group ng-model="data.group13">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1Drinks"> 1-4 drinks/week </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="7Drinks"> 7 drinks/week </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10Drinks"> 10 drinks/week </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="14Drinks"> 14 drinks/week </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2Drinks"> More than 2 drinks/day </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Rarely"> I rarely drink </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 9. Have you ever used illegal drugs? </p>
+          <md-radio-group ng-model="data.group14">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="NeverDrugs"> I have never used illegal drugs </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="CurrentlyUseDrugs"> I currently use illegal drugs </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitThisYear"> I quit this year </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="QuitLess3Years"> I quit less than 3 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess5Years"> I quit less than 5 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess10Years"> I quit less than 10 years </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="InPast"> In the past only </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 9a. How many years have you used illegal drugs? </p>
+          <md-radio-group ng-model="data.group15">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="15"> 15 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="20"> 20 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="25"> 25 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="30"> 30 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="35"> 35 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="40"> 40 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="45"> 45 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 9b. Have you ever used marijuana? </p>
+          <md-radio-group ng-model="data.group16">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Yes"> Yes </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="No"> No </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 9c. Have you ever used cocaine? </p>
+          <md-radio-group ng-model="data.group17">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Yes"> Yes </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="No"> No </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        </md-content>
       </div>
-        <div class="row">
-          <div class="col top col-60 col-offset-5" >
-            <label class="item item-input">
-              <span class="input-label">Which doctor do you wish to see today?</span>
-              <input type="text">
-            </label>
-           </div>
-         <div class="col top col-30 col-offset-5">
-          <label class="item item-input">
-            <span class="input-label">Today's date:</span>
-            <input type="date">
-            </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class=" col bottom col-30 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">First Name:</span>
-            <input type="text">
-            </label>
-           </div>
-         <div class=" col bottom col-30 col-offset-5 ">
-         <label class="item item-input">
-            <span class="input-label">Last Name:</span>
-            <input type="text">
-          </label>
-          </div>
-          <div class=" col bottom col-40 col-offset-5 ">
-          <label class="item item-input">
-            <span class="input-label">Email Address:</span>
-            <input type="email">
-          </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class=" col bottom col-65 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">Address:</span>
-            <input type="text">
-            </label>
-           </div>
-          <div class=" col bottom col-40 col-offset-5 ">
-          <label class="item item-input">
-            <span class="input-label">Home Phone:</span>
-            <input type="tel">
-          </label>
-          </div>
-        </div>
-      
-
-      <div class="row">
-          <div class=" col bottom col-15 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">Apt #: </span>
-            <input type="text">
-            </label>
-           </div>
-           <div class=" col bottom col-35 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">City: </span>
-            <input type="text">
-            </label>
-           </div>
-           <div class=" col bottom col-15 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">State: </span>
-            <input type="text">
-            </label>
-           </div>
-          <div class=" col bottom col-40 col-offset-5 ">
-          <label class="item item-input">
-            <span class="input-label">Cell Phone:</span>
-            <input type="tel">
-          </label>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class=" col bottom col-30 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">Zip Code: </span>
-            <input type="text">
-            </label>
-           </div>
-           
-           <div class=" col bottom col-25 col-offset-5" >
-            <label class="item item-input item-select">
-              <div class="input-label">
-                Gender
-              </div>
-            <select>
-            <option selected>---</option>
-            <option > Female</option>
-            <option> Male </option>
-            </select>
-            </label>
-           </div>
-          <div class=" col bottom col-40 col-offset-5 ">
-          <label class="item item-input">
-            <span class="input-label">Work Phone:</span>
-            <input type="tel">
-          </label>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class=" col bottom col-35 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">DOB:</span>
-            <input type="date">
-            </label>
-           </div>
-         <div class=" col bottom col-35 col-offset-5 ">
-         <label class="item item-input">
-            <span class="input-label">SSN:</span>
-            <input type="text" placeholder="XXX-XX-XXXX">
-          </label>
-          </div>
-          <div class=" col bottom col-40 col-offset-5 ">
-          <label class="item item-input">
-            <span class="input-label">Fax Number:</span>
-            <input type="tel">
-          </label>
-          </div>
-        </div>
-
-      <div class= "item item-divider">
-        Medical History
-      </div>
-
-      <div class="row">
-          <div class=" col bottom col-55 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">Primary Care Physician:</span>
-            <input type="text">
-            </label>
-           </div>
-          <div class=" col bottom col-50 col-offset-5 ">
-          <label class="item item-input">
-            <span class="input-label">Phone:</span>
-            <input type="tel">
-          </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class=" col bottom col-55 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">Previous Eye Doctor:</span>
-            <input type="text">
-            </label>
-           </div>
-          <div class=" col bottom col-50 col-offset-5 ">
-          <label class="item item-input">
-            <span class="input-label">Phone:</span>
-            <input type="tel">
-          </label>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class=" col bottom col-55 col-offset-5" >
-            <label class="item item-input">
-            <span class="input-label">Last Eye Exam:</span>
-            <input type="date">
-            </label>
-           </div>
-          <div class=" col bottom col-50 col-offset-5 ">
-          <label class="item item-input">
-            <span class="input-label">Referred By:</span>
-            <input type="text">
-          </label>
-          </div>
-        </div>
-
-        <div class="row row-bottom">
-           <div class="col bottom" align="center">
-              <button class="button button-positive">
-              Submit
-          </button>
-          </div>
-      </div>
-    </div>
 
       <!-- Showing review -->
       <div ng-show="form.showReview">
@@ -235,7 +648,7 @@
 
   <!-- toggling forms -->
   <script>
-  angular.module('Forms', [])
+  angular.module('Forms', ['ngMaterial'])
     .controller('FormCtrl', FormCtrl)
   
   function FormCtrl() {
@@ -243,6 +656,7 @@
   
         self.showForm = false;
         self.showReview = false;
+
     }
 
   </script>

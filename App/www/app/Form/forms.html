@@ -13,20 +13,18 @@
       </button>
   </div>
 
-  </div>
-
     <ion-content class="has-header">
       
       <!-- list of forms -->
-      <div class="list" ng-hide = "form.showForm || form.signOut || form.showReview">
+      <div class="list" ng-hide = "form.showForm || form.showReview">
         <div class="item item-button-right">
-          Questionnaire 1
+          Medical History
           <button class="button button-assertive" ng-click="form.showForm = !form.showForm">
               Incomplete
           </button>
         </div>
         <div class="item item-button-right">
-          Questionnaire 2
+          Family History
           <button class="button button-balanced" ng-click="form.showReview = !form.showReview">
               Complete
           </button>
@@ -35,24 +33,202 @@
       
       <!-- Showing form -->
       <div ng-show="form.showForm">
-        Form page
+      <div class= "item item-divider">
+        Personal Information
       </div>
+        <div class="row">
+          <div class="col top col-60 col-offset-5" >
+            <label class="item item-input">
+              <span class="input-label">Which doctor do you wish to see today?</span>
+              <input type="text">
+            </label>
+           </div>
+         <div class="col top col-30 col-offset-5">
+          <label class="item item-input">
+            <span class="input-label">Today's date:</span>
+            <input type="date">
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col bottom col-30 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">First Name:</span>
+            <input type="text">
+            </label>
+           </div>
+         <div class=" col bottom col-30 col-offset-5 ">
+         <label class="item item-input">
+            <span class="input-label">Last Name:</span>
+            <input type="text">
+          </label>
+          </div>
+          <div class=" col bottom col-40 col-offset-5 ">
+          <label class="item item-input">
+            <span class="input-label">Email Address:</span>
+            <input type="email">
+          </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col bottom col-65 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">Address:</span>
+            <input type="text">
+            </label>
+           </div>
+          <div class=" col bottom col-40 col-offset-5 ">
+          <label class="item item-input">
+            <span class="input-label">Home Phone:</span>
+            <input type="tel">
+          </label>
+          </div>
+        </div>
+      
+
+      <div class="row">
+          <div class=" col bottom col-15 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">Apt #: </span>
+            <input type="text">
+            </label>
+           </div>
+           <div class=" col bottom col-35 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">City: </span>
+            <input type="text">
+            </label>
+           </div>
+           <div class=" col bottom col-15 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">State: </span>
+            <input type="text">
+            </label>
+           </div>
+          <div class=" col bottom col-40 col-offset-5 ">
+          <label class="item item-input">
+            <span class="input-label">Cell Phone:</span>
+            <input type="tel">
+          </label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class=" col bottom col-30 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">Zip Code: </span>
+            <input type="text">
+            </label>
+           </div>
+           
+           <div class=" col bottom col-25 col-offset-5" >
+            <label class="item item-input item-select">
+              <div class="input-label">
+                Gender
+              </div>
+            <select>
+            <option selected>---</option>
+            <option > Female</option>
+            <option> Male </option>
+            </select>
+            </label>
+           </div>
+          <div class=" col bottom col-40 col-offset-5 ">
+          <label class="item item-input">
+            <span class="input-label">Work Phone:</span>
+            <input type="tel">
+          </label>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class=" col bottom col-35 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">DOB:</span>
+            <input type="date">
+            </label>
+           </div>
+         <div class=" col bottom col-35 col-offset-5 ">
+         <label class="item item-input">
+            <span class="input-label">SSN:</span>
+            <input type="text" placeholder="XXX-XX-XXXX">
+          </label>
+          </div>
+          <div class=" col bottom col-40 col-offset-5 ">
+          <label class="item item-input">
+            <span class="input-label">Fax Number:</span>
+            <input type="tel">
+          </label>
+          </div>
+        </div>
+
+      <div class= "item item-divider">
+        Medical History
+      </div>
+
+      <div class="row">
+          <div class=" col bottom col-55 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">Primary Care Physician:</span>
+            <input type="text">
+            </label>
+           </div>
+          <div class=" col bottom col-50 col-offset-5 ">
+          <label class="item item-input">
+            <span class="input-label">Phone:</span>
+            <input type="tel">
+          </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col bottom col-55 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">Previous Eye Doctor:</span>
+            <input type="text">
+            </label>
+           </div>
+          <div class=" col bottom col-50 col-offset-5 ">
+          <label class="item item-input">
+            <span class="input-label">Phone:</span>
+            <input type="tel">
+          </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class=" col bottom col-55 col-offset-5" >
+            <label class="item item-input">
+            <span class="input-label">Last Eye Exam:</span>
+            <input type="date">
+            </label>
+           </div>
+          <div class=" col bottom col-50 col-offset-5 ">
+          <label class="item item-input">
+            <span class="input-label">Referred By:</span>
+            <input type="text">
+          </label>
+          </div>
+        </div>
+
+        <div class="row row-bottom">
+           <div class="col bottom" align="center">
+              <button class="button button-positive">
+              Submit
+          </button>
+          </div>
+      </div>
+    </div>
 
       <!-- Showing review -->
       <div ng-show="form.showReview">
         Review Page
       </div>
-
-      <!-- Signing out -->
-      <div ng-show="form.signOut">
-        <div align="center">
-              <h1>Thank you!</h1>
-          </div>
-           <div align="center">
-              <h3>We will be with you shortly! </h3>
-          </div>
-      </div>
-      
+ 
       </ion-content>
   </ion-view>
 
@@ -66,7 +242,6 @@
         var self = this;
   
         self.showForm = false;
-        self.signOut = false;
         self.showReview = false;
     }
 

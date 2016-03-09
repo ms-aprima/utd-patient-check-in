@@ -26,6 +26,10 @@ angular.module('App', ['ionic','ngMaterial'])
     url: '/form',
     templateUrl: 'app/Form/forms.html',
   })
+  .state('inside.confirmation', {
+    url: '/confirm',
+    templateUrl: 'app/Confirmation/confirmation.html',
+  })
 
   $urlRouterProvider.otherwise('/outside/login');
 })

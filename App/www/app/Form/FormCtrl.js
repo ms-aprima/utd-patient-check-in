@@ -1,6 +1,6 @@
 angular.module('Forms', ['ngMaterial'])
 
-.controller('FormCtrl', function($scope, FormService, patientId) {
+.controller('FormCtrl', function($scope, $state, FormService, patientId) {
     $scope.showForm = false;
     $scope.showReview = false;
 
@@ -19,7 +19,7 @@ angular.module('Forms', ['ngMaterial'])
         questionnaireMap.set(questionnaire.QuestionnaireName, 
                             questionnaire.RelSurveyPatientId);
         $scope.questionnaireNames.push(questionnaire.QuestionnaireName);
-    };
+    }
 
     $scope.getQuestionnaire = function(questionnaireName) {
         // Same as above, we're using the test service here for now.
@@ -53,4 +53,16 @@ angular.module('Forms', ['ngMaterial'])
             return nextSection;
         }
     };
-};
+
+    $scope.submitQuestionnaire = function(questionnaire) {
+        FormService.submitQuestionnaire(questionnaire).then(function(msg){
+            // Another point of discussion, I need some advice on where to go
+            // after the confirmation.
+            $state.go('inside.confirmation')
+        }, function(errorMsg) {
+            // I'm also unsure what to do when the questionnaire does not submit
+            // because of an error. 
+        });
+    };
+
+});

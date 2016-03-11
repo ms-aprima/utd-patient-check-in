@@ -12,7 +12,7 @@ angular.module('App')
 // not going to put constants for all of the endpoints here because ids will need to be added within the strings - amy
 .constant('API_BASEURI', {
 	//{{BaseUri}}/Login
- 	url: 'https://echo.getpostman.com/post'
+ 	url: 'https://aprod-sbt2.servicebus.windows.net/7083c80b-29e2-4ee8-a485-3a3fdf373f58/api/patient/v1/login'
  	//url: 'https://APRIMAURL.com'
   //  For a simulator use: url: 'http://127.0.0.1:8080/api'
 })

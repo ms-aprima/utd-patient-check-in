@@ -23,7 +23,7 @@ angular.module('App')
 
     // Set the token as header for your requests!
     //change this when you test with postman
-    $http.defaults.headers.common.Authorization = 'Basic cG9zdG1hbjpwYXN3b3Jk=='//authToken;
+    $http.defaults.headers.common.Authorization = authToken;
   }
 
   function destroyUserCredentials() {
@@ -35,10 +35,11 @@ angular.module('App')
 //need to inject rootScope/or constant to get access to it 
   var login = function(user, LOGIN_ENDPOINT) {
     return $q(function(resolve, reject) {
-      $http.post(API_BASEURI.url,user).then(function(result) { // user).then(function(result) {
-        if (result.data) {//result.data.success) {
-          storeUserCredentials('postman token')//result.data.token);
-          resolve(result.data.msg);
+      $http.post(API_BASEURI.url,user,{
+    headers: {'ApiKey' : 'C83BBF42-DA17-4F58-9AA0-68F417419313' }}).then(function(result) {
+        if (result.data) {
+          storeUserCredentials(result.data.JsonWebToken);
+          resolve(result.data.IsPatient);
         } else {
           reject(result.data.msg);
         }

@@ -24,8 +24,7 @@ angular.module('App', ['ionic','ngMaterial'])
   })
   .state('inside.form', {
     url: '/form',
-    templateUrl: 'app/Form/h.html',
-    //templateUrl: 'app/Form/forms.html',
+    templateUrl: 'app/Form/forms.html',
   })
   .state('inside.confirmation', {
     url: '/confirm',

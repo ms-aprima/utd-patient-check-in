@@ -5,8 +5,8 @@ angular.module('App')
     AuthService.logout();
     $state.go('outside.login');
     var alertPopup = $ionicPopup.alert({
-      title: 'Session Lost!',
-      template: 'Sorry, You have to login again.'
+      title: 'Login Failed!',
+      template: 'Sorry, incorrect credentials.Try again'
     });
   });
 });

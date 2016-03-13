@@ -1,0 +1,832 @@
+<!DOCTYPE>
+<html>
+<head>
+  <title>FORMS</title>
+</head>
+
+<body >
+
+  <ion-view>
+
+  <div class="bar bar-header bar-positive" ng-controller="InsideCtrl">
+      <h1 class="title">Patient Forms</h1>
+      <button class="button" ng-click = "logout()">
+      Sign Out
+      </button>
+  </div>
+
+    <ion-content class="has-header">
+      
+      <div ng-controller = "FormCtrl as form">
+      <md-content layout-padding="" ng-hide= "form.showForm">
+      <ul>
+          <ul ng-repeat="question in QuestionnaireList">
+              <li ng-repeat="quest in question.Questionnaire">
+                <md-list>
+                  <md-list-item class="secondary-button-padding">
+                    <p>{{quest.SurveyName}}</p>
+                    <md-button class="md-warn md-raised md-hue-2" ng-if = "!question.Completed" ng-click = "form.showForm = !form.showForm">Incomplete</md-button>
+                    <md-button class="md-primary md-hue-1 " ng-if="question.Completed"> Completed Form</md-button>
+                  </md-list-item>
+                </md-list>
+              </li>
+            </ul>
+      </ul>
+      </md-content>
+     
+        <div ng-show = "form.showForm">
+         <md-content layout-padding="">
+
+
+          <ul ng-repeat="question in QuestionnaireList">
+                <li ng-repeat="quest in question.Questionnaire">
+                  <ul><li ng-repeat = "sects in quest.Sections"> 
+                    <md-subheader class="md-primary">{{sects.SurveySectionName}}</md-subheader>
+                    <ul><li><ul ng-repeat = "q in sects.Questions">
+                        <p></p> <!-- extra space between questions -->
+                        <div ng-if="!q.HasAnswersThatTriggerThisQuestion">
+                            <p> {{q.SurveyQuestionLabel}}</p>
+                            <div ng-if =  "q.SurveyControlTypeName == 'RADIOBUTTON'">
+
+                            <p>Selected Value: <span>{{ SurveyResponseAnswerText }}</span> </p>
+
+                             <md-radio-group layout="row"  ng-model="SurveyResponseAnswerText" 
+                             class="md-primary" ng-change = "selectedAnswerChange()">
+                                <md-radio-button ng-repeat="answers in q.Answers"
+                                   ng-value="answers.SurveyAnswerLabel">
+                                   {{answers.SurveyAnswerLabel}}<br/>
+                                </md-radio-button>
+
+                             </md-radio-group>
+                                <!-- <p>Selected Value: <span>{{ SelectedAnswer }}</span> </p>
+
+                                  <li><ul><li><ul ng-repeat = "a in q.Answers">
+                                   <li><ul><li><ul> <li ng-repeat= "trigger in a.QuestionsToTrigger"> 
+                                  <div ng-show = "trigger[0]!=00000000-0000-0000-0000-000000000000 &&SelectedAnswer">
+                                  {{trigger}}
+                                  {{a.SurveyAnswerLabel}}
+                                  </div>
+                                   </li></ul></li></ul></li>
+                                  </ul></li></ul></li> -->
+
+                            <!-- <div ng-repeat = "answers in q.Answers">
+                             <div ng-repeat = "trigger in answers.QuestionsToTrigger">
+                                <div ng-if = "trigger!='00000000-0000-0000-0000-000000000000'&& answers.SelectedAnswer==true">
+                                    <ul ng-repeat = "ql in QuestionnaireList">
+                                      <li ng-repeat = "qu in ql.Questionnaire">
+                                        <ul><li ng-repeat = "s in qu.Sections">
+                                          <ul><li><ul ng-repeat = "trigQ in s.Questions">
+                                            <div ng-show = "trigger == trigQ.SurveyQuestionId">
+                                              {{trigQ.SurveyQuestionLabel}}
+                                            </div>
+                                          </ul></li></ul>                                             
+                                        </li></ul> 
+                                      </li>
+                                  </ul>
+                                </div>                                    
+                               </div>
+                               </div>
+ -->
+                           <!--<div ng-if = "question.SurveyQuestionId == trigger">
+                                          hmmm
+                                        </div> -->
+                             
+                            </div>
+
+
+                            <div ng-if =  "q.SurveyControlTypeName == 'TEXT'">
+                              <!-- Code for Textbox goes here-->
+                              <li><ul><li><ul ng-repeat = "answers in q.Answers">
+                              <p>Selected Value: <span>{{ SurveyResponseAnswerText }}</span> </p>
+                                    <md-input-container class="md-block">
+                                        <label> {{answers.SurveyAnswerLabel}}</label>
+                                        <textarea ng-model="answers.SurveyResponseAnswerText"></textarea>
+                              </md-input-container>      
+                              </ul></li></ul></li>
+                            </div>
+
+
+                            <div ng-if =  "q.SurveyControlTypeName == 'TIMEFRAME'">
+                              <!-- Code for timeframe goes here-->
+                              <li><ul><li><ul ng-repeat = "answers in q.Answers">
+                                                
+                              </ul></li></ul></li>
+                            </div>
+
+
+                            <div ng-if =  "q.SurveyControlTypeName == 'CHECKBOX'">
+                              <!-- Code for checkbox goes here-->
+                              <li><ul><li><ul ng-repeat = "answers in q.Answers">
+                                                
+                              </ul></li></ul></li>
+                            </div>
+                      </div>
+
+
+                    </ul></li></ul>
+                  </li></ul>
+                </li>
+                <div layout="row" layout-align ="end end">
+                <md-button class="md-raised md-primary" >Review Answers</md-button>
+                </div>
+              </ul>
+
+              
+            
+         </md-content>
+        </div>
+      </div>
+    </ion-content>
+    </ion-view>
+    
+
+</body>
+</html>
+    
+<!--<body>
+  <div class="bar bar-header bar-positive" ng-controller="InsideCtrl">
+      <h1 class="title">Patient Forms</h1>
+      <button class="button" ng-click = "logout()">
+      Sign Out
+      </button>
+  </div>
+
+  <ion-content class="has-header">
+  <div ng-controller="FormCtrl">
+    <md-button class="md-primary md-hue-1" ng-if="test()">Complete</md-button>
+  </div>
+  
+  <div ng-repeat="questionnaire in questionnaireList">
+       <md-content layout-padding="">
+         <md-list ng-hide="showForm || showReview">
+           <md-list-item class="secondary-button-padding">
+             <p>{{questionnaire.QuestionnaireName}}</p>
+             <md-button class="md-warn md-raised md-hue-2" ng-if="!questionnaire.IsComplete">Incomplete</md-button>
+             <md-button class="md-primary md-hue-1" ng-if="questionnaire.IsComplete">Complete</md-button>
+           </md-list-item>
+         </md-list>
+       </md-content>
+     </div> 
+  </ion-content>
+</body> 
+  
+
+
+
+<body>
+  <ion-view>
+
+  <div class="bar bar-header bar-positive" ng-controller="InsideCtrl">
+      <h1 class="title">Patient Forms</h1>
+      <button class="button" ng-click = "logout()">
+      Sign Out
+      </button>
+  </div>
+
+    <ion-content class="has-header">
+      
+      <div ng-controller = "FormCtrl as form">
+      <md-content layout-padding="">
+       <md-list ng-hide = "form.showForm || form.showReview">
+        <md-list-item class="secondary-button-padding">
+          <p>Social History</p>
+          <md-button class="md-warn md-raised md-hue-2" ng-click="test()">Incomplete</md-button>
+        </md-list-item>
+        <md-list-item class="secondary-button-padding">
+          <p>Questionnaire 2</p>
+          <md-button class="md-primary md-hue-1 " ng-click= "form.showReview = !form.showReview"> Completed Form</md-button>
+        </md-list-item>
+      </md-list>
+      </md-content>
+      </div>
+  
+      <div ng-show="form.showForm">
+        <md-content layout-padding="">
+          <md-subheader class="md-primary">Main Social Section</md-subheader>
+        <div>
+          <p> 1. What is your marital status? </p>
+          <md-radio-group ng-model="data.group1">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Single"> Single </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Married"> Married </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Divorced"> Divorced </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Separated"> Separated </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Widowed"> Widowed </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Remarried"> Remarried </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 2. What are your living arrangments? </p>
+          <md-radio-group ng-model="data.group2">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="House"> House </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="SharedHouse"> Shared House </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Apartment/Condo"> Apartment/Condo </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Trailer"> Trailer </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Care Facility"> Care Facility </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Homeless"> Homeless </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Townhome"> Townhome </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Other"> Other </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 3. How many children do you have? </p>
+          <md-radio-group ng-model="data.group3">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="None"> None </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="4"> 4 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+          <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="6"> 6 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="7"> 7 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="9"> 9 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div ng-if = "data.group3==1 || data.group3==2 || data.group3==3 || data.group3==4 
+          || data.group3==5 || data.group3==6 || data.group3==7 || data.group3==8 || data.group3==9 || data.group3==10 ">
+          <p> 3a. How many children live in the household? </p>
+          <md-radio-group ng-model="data.group4">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="None"> None </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="4"> 4 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+          <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="6"> 6 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="7"> 7 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="9"> 9 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 4. How many adults live in the household? </p>
+          <md-radio-group ng-model="data.group5">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="None"> None </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="4"> 4 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+          <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="6"> 6 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="7"> 7 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="9"> 9 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 5. Highest level of education you have obtained? </p>
+          <md-radio-group ng-model="data.group6">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="GradeSchool"> Grade School </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="SomeHighSchool"> Some High School </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="HighSchoolGraduate"> High School Graduate </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="SomeCollege"> Some College </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="CollegeGraduate"> College Graduate </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="PostGraduate"> Post-Graduate </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 6. Employment? </p>
+          <md-radio-group ng-model="data.group7">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Employed"> Currently Employed </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Unemployed"> Currently Unemployed </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Retired"> Retired </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Student"> Student </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div layout="row">
+          <md-input-container class="md-block">
+           <label> Additional Comments</label>
+            <textarea ng-model="user.employComments" md-maxlength="150" rows="5" md-select-on-  focus></textarea>
+          </md-input-container>
+        </div>
+
+        <div>
+          <p> 7. Any prior or current smoking habits? </p>
+          <md-radio-group ng-model="data.group8">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="NeverSmoked"> I have never smoked or chewed tobacco </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="CurrentlySmoke"> I currently smoke or chew tobacco </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitThisYear"> I quit this year </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess3Years"> I quit less than 3 years </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="QuitLess5Years"> I quit less than 5 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess10Years"> I quit less than 10 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitOver10Years"> I quit over than 10 years ago </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="InPast"> In the past only </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div ng-if = "data.group8=='CurrentlySmoke' || data.group8=='QuitThisYear' || data.group8=='QuitLess3Years' || data.group8=='QuitLess5Years' 
+          || data.group8=='QuitLess10Years' || data.group8=='QuitOver10Years' || data.group8=='InPast'">
+          <p> 7a. How many years have you used tobacco? </p>
+          <md-radio-group ng-model="data.group9">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="15"> 15 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="20"> 20 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="25"> 25 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="30"> 30 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="35"> 35 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="40"> 40 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="45"> 45 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+
+        <div ng-if = "data.group8=='CurrentlySmoke' || data.group8=='QuitThisYear' || data.group8=='QuitLess3Years' || data.group8=='QuitLess5Years' 
+          || data.group8=='QuitLess10Years' || data.group8=='QuitOver10Years' || data.group8=='InPast'">          
+          <p> 7b. How many cigarettes do you smoke in a day? </p>
+          <md-radio-group ng-model="data.group10">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="4"> 4 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10"> 10 (Half a pack) </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="20"> 20 (One pack) </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="30"> 30 (Pack and a half) </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="40"> 40 (Two packs) </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 8. Please tell us about your drinking habits? </p>
+          <md-radio-group ng-model="data.group11">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="NeverDrunk"> I have never drunk alcohol </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="CurrentlyDrink"> I currently drink alcohol </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitThisYear"> I quit this year </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess3Years"> I quit less than 3 years </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="QuitLess5Years"> I quit less than 5 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess10Years"> I quit less than 10 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitOver10Years"> I quit over than 10 years ago </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="InPast"> In the past only </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div ng-if = "data.group11=='CurrentlyDrink' || data.group11=='QuitThisYear' || data.group11=='QuitLess3Years' || data.group11=='QuitLess5Years' 
+          || data.group11=='QuitLess10Years' || data.group11=='QuitOver10Years' || data.group11=='InPast'"> 
+          <p> 8a. How many years have you drunk alcohol? </p>
+          <md-radio-group ng-model="data.group12">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="15"> 15 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="20"> 20 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="25"> 25 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="30"> 30 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="35"> 35 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="40"> 40 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="45"> 45 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div ng-if = "data.group11=='CurrentlyDrink' || data.group11=='QuitThisYear' || data.group11=='QuitLess3Years' || data.group11=='QuitLess5Years' 
+          || data.group11=='QuitLess10Years' || data.group11=='QuitOver10Years' || data.group11=='InPast'"> 
+          <p> 8b. How frequently do you drink? </p>
+          <md-radio-group ng-model="data.group13">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1Drinks"> 1-4 drinks/week </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="7Drinks"> 7 drinks/week </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10Drinks"> 10 drinks/week </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="14Drinks"> 14 drinks/week </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2Drinks"> More than 2 drinks/day </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="Rarely"> I rarely drink </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div>
+          <p> 9. Have you ever used illegal drugs? </p>
+          <md-radio-group ng-model="data.group14">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="NeverDrugs"> I have never used illegal drugs </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="CurrentlyUseDrugs"> I currently use illegal drugs </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitThisYear"> I quit this year </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="QuitLess3Years"> I quit less than 3 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess5Years"> I quit less than 5 years </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="QuitLess10Years"> I quit less than 10 years </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="InPast"> In the past only </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div ng-if = "data.group14=='CurrentlyUseDrugs' || data.group14=='QuitThisYear' || data.group14=='QuitLess3Years' || data.group14=='QuitLess5Years' 
+          || data.group14=='QuitLess10Years' || data.group14=='InPast'"> 
+          <p> 9a. How many years have you used illegal drugs? </p>
+          <md-radio-group ng-model="data.group15">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="1"> 1 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="2"> 2 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="3"> 3 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="5"> 5 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="8"> 8 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="10"> 10 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="15"> 15 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="20"> 20 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="25"> 25 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="30"> 30 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="35"> 35 </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="40"> 40 </md-radio-button>
+            </div>
+          </div>
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="45"> 45 </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div ng-if = "data.group14=='CurrentlyUseDrugs' || data.group14=='QuitThisYear' || data.group14=='QuitLess3Years' || data.group14=='QuitLess5Years' 
+          || data.group14=='QuitLess10Years' || data.group14=='InPast'">
+          <p> 9b. Have you ever used marijuana? </p>
+          <md-radio-group ng-model="data.group16">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Yes"> Yes </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="No"> No </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div ng-if = "data.group14=='CurrentlyUseDrugs' || data.group14=='QuitThisYear' || data.group14=='QuitLess3Years' || data.group14=='QuitLess5Years' 
+          || data.group14=='QuitLess10Years' || data.group14=='InPast'">
+          <p> 9c. Have you ever used cocaine? </p>
+          <md-radio-group ng-model="data.group17">
+          <div layout="row">
+            <div flex>
+              <md-radio-button value="Yes"> Yes </md-radio-button>
+            </div>
+            <div flex>
+              <md-radio-button value="No"> No </md-radio-button>
+            </div>
+          </div>
+          </md-radio-group>
+        </div>
+
+        <div layout="row" layout-align="end end">
+            <md-button class="md-raised md-primary">Submit</md-button>
+        </div>
+
+        </md-content>
+      </div>
+
+     
+      <div ng-show="form.showReview">
+        Review Page
+      </div>
+ 
+      </ion-content>
+  </ion-view>  
+
+ 
+</html>-->

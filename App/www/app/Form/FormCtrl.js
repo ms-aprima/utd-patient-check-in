@@ -1,4 +1,4 @@
-angular.module('Forms', ['ngMaterial'])
+/*angular.module('Forms', ['ngMaterial'])
 
 .controller('FormCtrl', function($scope, $state, FormService, patientId) {
     $scope.showForm = false;
@@ -65,4 +65,35 @@ angular.module('Forms', ['ngMaterial'])
         });
     };
 
-});
+});*/
+ angular.module('App')
+  .controller('FormCtrl',['$scope','AuthService', function($scope,AuthService){
+    //var id = patientID.ID;
+    patientID = AuthService.patientID();
+    console.log('PatientID: ' + patientID);
+   $scope.contacts = []; //you declare your array of contacts in the controllers scope
+   //$scope.contacts = getContactsFromDB(); //typically you'd be getting your initial list from a DB
+
+   //As good practice, you should initialize the objects in your scope:
+   $scope.contactname = '';
+   $scope.contactnumber = '';
+
+   $scope.Add = function() {
+     $scope.contacts.push({name: $scope.contactname, number: $scope.contactnumber});
+     //Also you could add the data to a database
+     /*
+       ContactService
+       .AddNewContact($scope.contactname, $scope.contactnumber)
+       .then(function(){
+              $scope.contacts.push(
+                  {name: $scope.contactname, number: $scope.contactnumber});
+       });
+     */
+
+     //Finally you should reset the form variables
+     $scope.contactname = '';
+     $scope.contactnumber = '';
+   }  
+
+
+}]);

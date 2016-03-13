@@ -1,0 +1,196 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #387ef5 !default;
+$calm:                            #11c1f3 !default;
+$balanced:                        #33cd5f !default;
+$energized:                       #ffc900 !default;
+$assertive:                       #ef473a !default;
+$royal:                           #886aea !default;
+$dark:                            #444 !default;
+
+
+// The path for our ionicons font files, relative to the built CSS in www/css
+$ionicons-font-path: "../lib/ionic/fonts" !default;
+
+// Include all of Ionic
+@import "www/lib/ionic/scss/ionic";*/
+/*Popup's classes
+.popup-head
+.popup-title 
+.popup-body
+.popup-buttons 
+*/
+
+
+md-toast.md-error-toast-theme .md-toast-content {
+  background-color: #28BECC;
+  color: white; }
+
+md-toast {
+  left: calc(50vw - 150px); }
+
+html, body {
+  background: url(../img/blurredsunset1.jpg) center center fixed;
+  overflow-x: hidden; }
+
+
+.popup {
+  margin-left: 690px !important;
+  width: 300px !important;
+
+  background-color: #28BECC !important;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.popup-title {
+  text-align: center !important;
+  font-family: 'roboto', sans-serif !important;
+  font-weight: 40px !important;
+  font-size: 24px !important;
+  padding-top: 15px !important;
+  color:white;
+  border-radius: 3px !important;
+
+}
+
+.popup-body{
+
+  height: 20px !important;
+  font-size:10px !important;
+  font-family: 'roboto', sans-serif !important;
+  text-align: center !important;
+  margin: auto !important;
+
+}
+
+.popup-buttons .button{
+   font-family: 'roboto', sans-serif;
+  transition: transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), box-shadow 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  background: white;
+  cursor: pointer;
+  width: 200px;
+  color: black;
+  margin-left: 50px !important;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+  border: 
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); }
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+
+
+html, body, form, span, h1 {
+  box-sizing: border-box; }
+
+h1 {
+  width: 100%;
+  background: #28BECC;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.05);
+ }
+
+form {
+  font-family: 'roboto', sans-serif;
+  width: 460px;
+  margin: 100px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  padding: 0 0 40px;
+  color: #555;
+  background: url(../img/form.jpg) center center fixed; }
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font: inherit;
+  transition: transform 0.3s ease-in-out, font-size 0.3s ease-in-out, visibility 0.3s ease-in-out; }
+
+input,
+textarea {
+  font: inherit;
+  font-size: 0.8em;
+  margin: 28px 25px 10px;
+  width: 400px;
+  display: block;
+  border: none;
+  padding: 20px 0 10px;
+  border-bottom: solid 1px #28BECC;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 96%, #28BECC 4%);
+  background-position: -400px 0;
+  background-size: 400px 100%;
+  background-repeat: no-repeat;
+  transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  resize: none;
+  overflow: hidden; }
+  input:focus::-webkit-input-placeholder,
+  textarea:focus::-webkit-input-placeholder {
+    color: #28BECC; }
+  input:focus, input:valid,
+  textarea:focus,
+  textarea:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0; }
+    input:focus::-webkit-input-placeholder, input:valid::-webkit-input-placeholder,
+    textarea:focus::-webkit-input-placeholder,
+    textarea:valid::-webkit-input-placeholder {
+      font-size: 0.8em;
+      transform: translateY(-20px);
+      visibility: visible !important;
+      opacity: 1; }
+
+.flex {
+  display: flex;
+  align-items: stretch; }
+  .flex textarea {
+    line-height: 120%; }
+
+button {
+  font-family: 'roboto', sans-serif;
+  transition: transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), box-shadow 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  border: none;
+  background: #28BECC;
+  cursor: pointer;
+  padding: 6px;
+  width: 400px;
+  color: white;
+  margin: 30px 0 0 25px;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2); }
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
+
+a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50px;
+  background: #28BECC;
+  display: inline-block;
+  margin: 50px calc(50% - 21px);
+  white-space: nowrap;
+  padding: 13px;
+  box-sizing: border-box;
+  color: white;
+  transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+  font-family: Roboto, sans-serif;
+  text-decoration: none;
+  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
+  a i {
+    margin-right: 20px;
+    transition: margin-right 0.2s cubic-bezier(0.64, 0.09, 0.08, 1); }
+  a:hover {
+    width: 134px;
+    transform: translateX(-50px); }
+    a:hover i {
+      margin-right: 10px; }

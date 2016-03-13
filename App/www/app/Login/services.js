@@ -4,6 +4,7 @@ angular.module('App')
   var LOCAL_TOKEN_KEY = 'yourTokenKey';
   var isAuthenticated = false;
   var authToken;
+  var patientID = '';
 
   function loadUserCredentials() {
     var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
@@ -15,6 +16,11 @@ angular.module('App')
   function storeUserCredentials(token) {
     window.localStorage.setItem(LOCAL_TOKEN_KEY, token);
     useCredentials(token);
+  }
+
+  function setPatientID(id)
+  {
+    patientID = id;
   }
 
   function useCredentials(token) {
@@ -38,7 +44,8 @@ angular.module('App')
       $http.post(API_BASEURI.url,user,{
     headers: {'ApiKey' : 'C83BBF42-DA17-4F58-9AA0-68F417419313' }}).then(function(result) {
         if (result.data) {
-          storeUserCredentials(result.data.JsonWebToken);
+            storeUserCredentials(result.data.JsonWebToken);
+            setPatientID(result.data.Id);
           resolve(result.data.IsPatient);
         } else {
           reject(result.data.msg);
@@ -57,6 +64,7 @@ angular.module('App')
     login: login,
     logout: logout,
     isAuthenticated: function() {return isAuthenticated;},
+    patientID: function() { return patientID; }
   };
 })
 
@@ -64,7 +72,7 @@ angular.module('App')
   return {
     responseError: function (response) {
       $rootScope.$broadcast({
-        401: AUTH_EVENTS.notAuthenticated,
+        400: AUTH_EVENTS.notAuthenticated,
       }[response.status], response);
       return $q.reject(response);
     }

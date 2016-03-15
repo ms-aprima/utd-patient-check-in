@@ -37,14 +37,14 @@
 
         <ul ng-repeat="question in QuestionnaireList">
           <li ng-repeat="quest in question.Questionnaire">
-            <div ng-show="showForm && quest.SurveyId == questionnaireid">
-              <md-content layout-padding="">
-                <ul>
-                 <li ng-repeat="sects in quest.Sections">
-
-              
-
-                    <md-subheader class="md-primary">{{sects.SurveySectionName}}</md-subheader>
+          <ul>
+            <li ng-repeat="sects in quest.Sections">
+            <div ng-show="showForm && quest.SurveyId == questionnaireid && section_index == $index">
+            <div layout="row" flex>
+             <md-content layout-fill >
+                
+                
+                    <md-subheader class="md-accent">{{sects.SurveySectionName}}</md-subheader>
                     <ul>
                       <li>
                         <ul ng-repeat="q in sects.Questions">
@@ -52,7 +52,20 @@
                           <!-- extra space between questions -->
                           <div ng-if="!q.QuestionOptional">
                             <p> {{q.SurveyQuestionLabel}}</p>
+                            
+
                             <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
+                                <md-radio-group layout="row" ng-model="answerID[$index]" class="md-accent" ng-change = "getAnswerID(q.SurveyQuestionId,q.SurveySectionId, $index)">
+                                  <md-radio-button ng-repeat="answers in q.Answers" ng-value="answers.SurveyAnswerId" >
+                                    {{answers.SurveyAnswerLabel}} {{answers.SelectedAnswer}}
+                                    <br/>
+                                  </md-radio-button>
+                                </md-radio-group>
+                              </div>
+
+                            
+
+                            <!-- <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
 
                               <md-radio-group layout="row" ng-model="answerID.id" class="md-primary" ng-change="selectedAnswerChange(q.SurveyQuestionId,q.SurveySectionId)">
                                 <md-radio-button ng-repeat="answers in q.Answers" ng-value="answers.SurveyAnswerId">
@@ -64,24 +77,17 @@
                               </md-radio-group>
 
 
-                            </div>
+                            </div> -->
 
 
                             <div ng-if="q.SurveyControlTypeName == 'TEXT'">
                               <!-- Code for Textbox goes here-->
-                              <li>
-                                <ul>
-                                  <li>
-                                    <ul ng-repeat="answers in q.Answers">
-                                      <p>Selected Value: <span>{{ SurveyResponseAnswerText }}</span> </p>
-                                      <md-input-container class="md-block">
-                                        <label> {{answers.SurveyAnswerLabel}}</label>
-                                        <textarea ng-model="answers.SurveyResponseAnswerText"></textarea>
-                                      </md-input-container>
-                                    </ul>
-                                  </li>
-                                </ul>
-                              </li>
+                              <li><ul><li><ul ng-repeat="answers in q.Answers">
+                               <md-input-container class="md-block">
+                                  <label> {{answers.SurveyAnswerLabel}}</label>
+                                  <textarea ng-model="answer.text" name="q.SurveyQuestionId"></textarea>
+                                </md-input-container>
+                              </ul></li></ul></li>
                             </div>
 
 
@@ -100,34 +106,40 @@
 
 
                             <div ng-if="q.SurveyControlTypeName == 'CHECKBOX'">
-                              <!-- Code for checkbox goes here-->
-                              <li>
-                                <ul>
-                                  <li>
-                                    <ul ng-repeat="answers in q.Answers">
-
-                                    </ul>
-                                  </li>
-                                </ul>
-                              </li>
-                            </div>
-                          </div>
-
+                              <!-- Code for checkbox goes here-->   
+                                <div layout="row" layout-wrap layout-padding flex>
+                                  <div flex="50" ng-repeat="answers in q.Answers">
+                                    <md-checkbox >
+                                      {{answers.SurveyAnswerLabel}}
+                                    </md-checkbox>
+                                  </div>
+                                  </div>
+                              </div>
+                              </div>
 
                         </ul>
                       </li>
                     </ul>
-
+                    
+                    
                     <div layout="row" layout-align="end end">
-                      <md-button class="md-raised md-primary">Review Answers</md-button>
+                      <div ng-if = "$index != 0">
+                        <md-button class="md-raised md-primary" ng-click="goToPrevious()">Previous Page</md-button>
+                      </div>
+                      <div ng-if = "getLen()-1 != $index">
+                        <md-button class="md-raised md-primary" ng-click="goToNext()">Next Page</md-button>
+                      </div>
+                      <div ng-if = "getLen()-1 == $index">
+                        <md-button class="md-raised md-primary" ng-click="goToReview()">Review Answers</md-button>
+                      </div>
                     </div>
 
                    
-
-                  </li>
-                </ul>
-                </md-content>
+               </md-content>
+               </div>
               </div>
+              </li>
+              </ul>
 
 
 

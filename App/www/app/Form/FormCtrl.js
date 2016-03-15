@@ -13,35 +13,87 @@
 
     $scope.questionnaireid;
     $scope.sectionid; 
-    //$scope.showForm = false;
-    $scope.answerID = {id : ''};
+    $scope.section_index = 0;
+
+    /*$scope.answerID = [{id : '',
+                    text: ''}]; */
+    $scope.answerID = [];
     
-        console.log("answer id:", $scope.answerID);
     //$scope.sectionID = {id : ''};
     
-
-
+    //Kayla's code starts here
+    //This method saves the questionnaireid of the questionnaire the user click on
+    //and  
     $scope.goToForm = function(qid)
     {
         $scope.showForm = !$scope.showForm;
         $scope.questionnaireid = qid;
         console.log("Questionnaire id ", $scope.questionnaireid);
         //console.log("Form",$scope.showForm);
-    }
-    console.log($scope.questionnaireid);
+    };
 
-    $scope.selectedAnswerChange = function(data,val) {
+    //gets the number of sections (needed for knowing which buttons to show)
+    $scope.getLen = function () 
+    {
+        return $scope.QuestionnaireList[0].Questionnaire[0].Sections.length;
+    };
+
+    //will go to next section of questions
+    $scope.goToNext = function() 
+    {
+        $scope.section_index += 1;
+    };
+
+    //will go to previous section of questions
+    $scope.goToPrevious = function() 
+    {
+        $scope.section_index -= 1;
+    };
+
+    //will go to review page
+    $scope.goToReview = function() 
+    {
+        console.log("go to review for:" , $scope.questionnaireid);
+    };
+
+    console.log($scope.questionnaireid); 
+
+    //gets the answer id of the chosen radio button. answer id is stored in array 
+    //and method (with the answer id array at a certain index in the params) is called
+    //to manipulate the json to say that that answer has been selected 
+    $scope.getAnswerID = function(data,val, index)
+    {
+            $scope.answer_index = index;
+            $scope.questionid = data;
+            $scope.sectionid =  val; 
+            console.log($scope.questionid);
+            console.log($scope.answer_index); 
+            $scope.answerID.push();
+            console.log("answerID", $scope.answerID);
+            $scope.selectedAnswer($scope.answerID[$scope.answer_index]);
+       
+    };
+
+   //$scope.selectedAnswerChange = function(data,val) {
     
-    $scope.questionid = data;
+    /*$scope.questionid = data;
     $scope.sectionid =  val;    
     //console.log($scope);
-    console.log($scope.questionid);
-        
-   
+    console.log($scope.questionid); */
+    
+    //goes through the questionnaire and finds  the section and question id that matches 
+    //the section and question id of the answer that was chosen. Then we find the asnwerid 
+    //that matches the answerid that sent in the params and set the "SelectedAnswer" as true
+   $scope.selectedAnswer = function(ans) {
+
+    $scope.tempAnswer = ans;
+
      $scope.section_length = $scope.QuestionnaireList[0].Questionnaire[0].Sections.length;
      $scope.question_length = 0;
      $scope.answers_length = 0;
      
+     console.log("section id", $scope.sectionid);
+     console.log("question id", $scope.questionid);
      
      console.log("How many sections",$scope.section_length);
 
@@ -54,9 +106,9 @@
             console.log("Which section Im on", $scope.QuestionnaireList[0].Questionnaire[0].Sections[i].SectionNumber);
             for(var x = 0; x < $scope.question_length; x++)
             {
-                console.log("In Question for");
+                //console.log("In Question for");
                 $scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].SurveyQuestionId;
-                console.log($scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].SurveyQuestionId);
+                //console.log($scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].SurveyQuestionId);
                 $scope.answers_length = $scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers.length;
                 //console.log($scope.answers_length);
                 if($scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].SurveyQuestionId == $scope.questionid)
@@ -64,54 +116,38 @@
                     console.log("Which question Im on",$scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].QuestionNumber);
                     for(var y = 0; y < $scope.answers_length; y++)
                     {
-                        console.log("In Answer for");
+                       // console.log("In Answer for");
                         console.log($scope.answers_length);
                         $scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers[y].SurveyAnswerId;
 
-                        if($scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers[y].SurveyAnswerId == $scope.answerID.id)
+                        if($scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers[y].SurveyAnswerId == $scope.tempAnswer)
                         {
-                            console.log("Which question Im on",$scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers[y].SurveyAnswerLabel);
+                            console.log("Which answer Im on:",$scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers[y].SurveyAnswerLabel);
                             console.log("Answers select:", $scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers[y].SelectedAnswer);
                             $scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers[y].SelectedAnswer = true;
                             console.log("Answers select:", $scope.QuestionnaireList[0].Questionnaire[0].Sections[i].Questions[x].Answers[y].SelectedAnswer);
                         } 
-                        console.log("Out Answer in");
+                        //console.log("Out Answer in");
                     
                     }
 
                 }
                 
-                    console.log("Out Question if");
+                    //console.log("Out Question if");
                 }
         }
-        console.log("Out Section if");
+        //console.log("Out Section if");
 
       }
 
      
-    }
- 
+    };
+    //Kayla's code ends here
+
 }]);
- /*angular.module('App')
-  .controller('FormCtrl',['$scope', '$http', function($scope, $http) {
-    
-    $http({method: 'GET', url: 'test.json'}).success(function(data) {
-        $scope.QuestionnaireList = [];
-        angular.forEach(data.QuestionnaireList, function(value, key) {
-            $scope.QuestionnaireList.push(value);
+ 
 
-        });
-      });
 
-    $scope.showForm = false;
-    
-    $scope.selectedAnswerChange = function($scope) {
-     //$scope.trigger = val;
-     $scope.test = QuestionnaireList[0].Questionnaire[0].Sections[0].Questions[0].Answers[0].SelectedAnswer;
-     console.log("HERE");
-     //want to change the selectedAnswer to true and have it correlate to the answerID
-        }
-  }]); */
 
 
  /* var myForm = angular.module('App', []);

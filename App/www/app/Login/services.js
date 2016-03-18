@@ -29,7 +29,7 @@ angular.module('App')
 
     // Set the token as header for your requests!
     //change this when you test with postman
-    $http.defaults.headers.common.Authorization = authToken;
+    $http.defaults.headers.common['Auth-Token'] = authToken;
   }
 
   function destroyUserCredentials() {
@@ -41,7 +41,7 @@ angular.module('App')
 //need to inject rootScope/or constant to get access to it 
   var login = function(user, LOGIN_ENDPOINT) {
     return $q(function(resolve, reject) {
-      $http.post(API_BASEURI.url,user,{
+      $http.post(API_BASEURI.url + 'login',user,{
     headers: {'ApiKey' : 'C83BBF42-DA17-4F58-9AA0-68F417419313' }}).then(function(result) {
         if (result.data) {
             storeUserCredentials(result.data.JsonWebToken);

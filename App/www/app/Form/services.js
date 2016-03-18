@@ -1,35 +1,18 @@
 angular.module('App')
 
-.service('FormService', function($q, $http, API_BASEURI, QUESTIONNAIRE_LIST, QUESTIONNAIRE_SECTION) {
+.service('FormService', function($q, $http, AuthService, API_BASEURI) {
 
-  //test functions are used for getting json objects that are hard coded here and are not dependent on API calls
+//makes GET call to Aprima API and returns list of Patient's Questionnaires
+var getQuestionnaireList = function()
+{
+  //call to AuthService to get stored patient ID
+  patientId = AuthService.patientID();
+  //endpoint defined here for Get Assigned Questionnaires By Patient Id
+  var endpoint = "patients/" + patientId + "/questionnaires-assigned";
+  return $http.get(API_BASEURI.url + endpoint, {headers: {'ApiKey' : 'C83BBF42-DA17-4F58-9AA0-68F417419313', 'Accept' : 'application/json' }});
+}
 
-  //call this in place of getQuestionnaireList() for getting a json object with list of questionnaires
-  var getTestQuestionnaireList = function(patientId) {
-      return QUESTIONNAIRE_LIST;
-  };
-
-
-//call this function in place of getQuestionnaire() to get ONE section of a questionnaire back
-  var getTestQuestionnaire = function(patientId, relSurveyPatientId) {
-    return QUESTIONNAIRE_SECTION;
-  };
-
-  var getQuestionnaireList = function(patientId) {
-      return $q(function(resolve, reject) {
-        //endpoint defined here for Get Assigned Questionnaires By Patient Id
-      	var endpoint = "patient/v1/patients/" + patientId + "/questionnaires-assigned/";
-        $http.get(API_BASEURI.url + endpoint).then(function(result) {
-          if (result.data.success) {
-            //need to return full json, so is it just resolve(result.data) ??
-            resolve(result.data);
-          } else {
-            reject(result.data.msg);
-          }
-        });
-      });
-    };
-  
+  //TODO: get functioning
   var getQuestionnaire = function(patientId, relSurveyPatientId) {
     return $q(function(resolve, reject) {
       //endpoint defined for Get Patient Questionnaire
@@ -44,7 +27,7 @@ angular.module('App')
       });
     });
   };
-  
+  //TODO: get functioning
   var submitQuestionnaire = function(questionnaire) {
     return $q(function(resolve, reject) {
       //endpoint defined here for Put Patient Questionnaire
@@ -59,4 +42,10 @@ angular.module('App')
       });
     });
   };
-}
+
+return {
+    getQuestionnaireList: getQuestionnaireList,
+    getQuestionnaire: getQuestionnaire,
+    submitQuestionnaire: submitQuestionnaire
+  };
+})

@@ -19,27 +19,32 @@
     <ion-content class="has-header">
 
       <div ng-controller="FormCtrl as form">
+      <!-- Amy added this button to test her API calls (adds Questionnaires to the list) -->
+      <button class="button" ng-click="getQuestionnaires()">
+        Test API
+      </button>
         <md-content layout-padding="" ng-hide="showForm">
           <ul>
-            <ul ng-repeat="question in QuestionnaireList">
-              <li ng-repeat="quest in question.Questionnaire">
+            <!-- <ul ng-repeat="question in QuestionnaireList"> -->
+              <li ng-repeat="quest in QuestionnaireList">
                 <md-list>
                   <md-list-item class="secondary-button-padding">
-                    <p>{{quest.SurveyName}}</p>
-                    <md-button class="md-warn md-raised md-hue-2" ng-if="!question.Completed" ng-click="goToForm(quest.SurveyId)">Incomplete</md-button>
-                    <md-button class="md-primary md-hue-1 " ng-if="question.Completed"> Completed Form</md-button>
+                    <p>{{quest.QuestionnaireName}}</p>
+                    <md-button class="md-warn md-raised md-hue-2" ng-if="!quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)">Incomplete</md-button>
+                    <md-button class="md-primary md-hue-1 " ng-if="quest.IsComplete"> Completed Form</md-button>
                   </md-list-item>
                 </md-list>
               </li>
             </ul>
-          </ul>
+          <!-- </ul> -->
         </md-content>
 
-        <ul ng-repeat="question in QuestionnaireList">
-          <li ng-repeat="quest in question.Questionnaire">
+        <md-content ng-hide="!showForm"> <!-- Amy added this so that it toggles with the other md-content -->
+        <!-- <ul ng-repeat="question in QuestionnaireList"> -->
+          <li ng-repeat="quest in QuestionnaireList">
           <ul>
-            <li ng-repeat="sects in quest.Sections">
-            <div ng-show="showForm && quest.SurveyId == questionnaireid && section_index == $index">
+            <li ng-repeat="sects in testQuestionnaire.Sections"> <!-- <li ng-repeat="sects in quest.Sections"> -->
+            <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireid && section_index == $index">
             <div layout="row" flex>
              <md-content layout-fill >
                 
@@ -146,7 +151,8 @@
               
 
           </li>
-        </ul>
+        <!-- </ul> -->
+        </md-content>
 
 
       </div>

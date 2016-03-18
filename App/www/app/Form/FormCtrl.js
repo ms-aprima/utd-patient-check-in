@@ -1,15 +1,22 @@
  angular.module('App')
  
-.controller('FormCtrl', ['$scope','$http', function($scope, $http) {
+.controller('FormCtrl', function($scope, FormService, FormService, $http) {
+    console.log('formctrl');
 
-  $http({method: 'GET', url: 'test.json'}).success(function(data) {
+  $http({method: 'GET', url: 'testList.json'}).success(function(data) { //Amy changed this to testList.json for correct formatting
         $scope.QuestionnaireList = [];
-        angular.forEach(data.QuestionnaireList, function(value, key) {
+        angular.forEach(data, function(value, key) {
             $scope.QuestionnaireList.push(value);
             //$scope.test = $scope.QuestionnaireList[0].Questionnaire[0].Sections[0].Questions[0].Answers[0].SelectedAnswer;
             //console.log($scope.test);
         });
       });
+
+  //Amy code for getting Questionnaire with one section
+  $http({method: 'GET', url: 'testQuestOne.json'}).success(function(data) { 
+    $scope.testQuestionnaire = data.Questionnaire;
+
+  });
 
     $scope.questionnaireid;
     $scope.sectionid; 
@@ -21,6 +28,20 @@
     
     //$scope.sectionID = {id : ''};
     
+    //Amy's test code for services (this will need to be moved to run at startup)
+    //TODO: this is running twice...why?
+    //TODO: move to run at startup
+    $scope.getQuestionnaires = function()
+    {
+        // console.log('FormCtrl: questionnaires');
+        FormService.getQuestionnaireList().then(function(result) {
+            // console.log(result.data);
+            angular.forEach(result.data, function(value, key) {
+                $scope.QuestionnaireList.push(value); //for now this pushes onto the already populated list
+            });
+        });
+    }
+
     //Kayla's code starts here
     //This method saves the questionnaireid of the questionnaire the user click on
     //and  
@@ -35,7 +56,11 @@
     //gets the number of sections (needed for knowing which buttons to show)
     $scope.getLen = function () 
     {
-        return $scope.QuestionnaireList[0].Questionnaire[0].Sections.length;
+        //Amy edit for new data format
+        return $scope.testQuestionnaire.Sections.length;
+
+        //Kayla's code that I've commented out for now.
+        //return $scope.QuestionnaireList[0].Questionnaire[0].Sections.length;
     };
 
     //will go to next section of questions
@@ -144,7 +169,7 @@
     };
     //Kayla's code ends here
 
-}]);
+});
  
 
 

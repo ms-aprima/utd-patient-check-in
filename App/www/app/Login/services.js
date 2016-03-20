@@ -73,6 +73,7 @@ angular.module('App')
     responseError: function (response) {
       $rootScope.$broadcast({
         400: AUTH_EVENTS.notAuthenticated,
+        401: AUTH_EVENTS.notAuthenticated,
       }[response.status], response);
       return $q.reject(response);
     }

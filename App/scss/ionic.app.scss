@@ -13,11 +13,187 @@ $energized:                       #ffc900 !default;
 $assertive:                       #ef473a !default;
 $royal:                           #886aea !default;
 $dark:                            #444 !default;
-*/
+
 
 // The path for our ionicons font files, relative to the built CSS in www/css
 $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 // Include all of Ionic
-@import "www/lib/ionic/scss/ionic";
+@import "www/lib/ionic/scss/ionic";*/
+
+
+$base: #28BECC;
+$text: #555;
+$invalid: #E91E63;
+$width: 100%;
+$cubic: cubic-bezier(.64,.09,.08,1);
+
+/*Popup's classes
+.popup-head
+.popup-title 
+.popup-body
+.popup-buttons 
+*/
+
+-webkit-appearance: none;
+
+html, body {
+-webkit-appearance: none;
+  background: url(../img/blurredsunset1.jpg)  center center fixed; 
+  overflow-x: hidden;
+}
+
+html, body, form, span, h1,popup,popup-head,popup-body,popup-button {
+
+-webkit-appearance: none;
+    box-sizing: border-box;
+}
+
+.popup {
+	margin-left: 30% !important ;
+}
+.popup-head {
+  height: 120px !important;
+  background: red  !important;
+}
+.popup-title {
+  color: #fff !important;
+    width: $width + 60px !important;
+}
+
+.popup-body{
+  background: blue !important;
+  color:#fff !important;
+  font-size:24px !important;
+  width: $width + 60px !important;
+}
+
+.popup-buttons {
+  height: 120px !important;
+   width: $width + 60px !important;
+}
+
+
+h1 {
+  width: 100%;
+  background: $base;
+  text-align: center;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 5px 5px 0 rgba(0,0,0,0.05);
+  border-radius: 3px 3px 0 0;
+}
+
+form {
+  font-family: 'roboto', sans-serif;
+  width: $width + 60px;
+  margin: 100px auto 0;
+  box-shadow: 2px 2px 5px 1px rgba(0,0,0,0.2);
+  padding: 0 0 40px;
+  border-radius: 3px;
+  color: $text;
+  background: url(../img/form.jpg)  center center fixed; 
+}
+
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  font: inherit;
+  transition: transform 0.3s ease-in-out,
+    font-size 0.3s ease-in-out,
+    visibility 0.3s ease-in-out;
+}
+
+
+input,
+textarea {
+  font: inherit;
+  font-size: 0.8em;
+  margin: 28px 25px 10px;
+  width: $width;
+  display: block;
+  border: none;
+  padding: 20px 0 10px;
+  border-bottom: solid 1px $base;
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%, $base 4%);
+  background-position: -$width 0;
+  background-size: $width 100%;
+  background-repeat: no-repeat;
+  transition: background 0.3s $cubic;
+  resize: none;
+  overflow: hidden; 
+  &:focus::-webkit-input-placeholder {
+    color: $base;
+  }  
+  &:focus, 
+  &:valid {
+    box-shadow: none;
+    outline: none;
+    background-position: 0 0;
+    &::-webkit-input-placeholder {
+      font-size: 0.8em;
+      transform: translateY(-20px);
+      visibility: visible !important;
+      opacity: 1;
+    }
+  }  
+}
+
+.flex {
+  display: flex;
+  align-items: stretch;
+  textarea {
+    line-height: 120%;
+  }
+}
+
+button {
+  font-family: 'roboto', sans-serif;
+  transition: transform 0.2s $cubic,
+     box-shadow 0.2s $cubic;
+  border: none;
+  background: $base;
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 6px;
+  width: $width;
+  color: white;
+  margin: 30px 0 0 25px;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.2);
+  &:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 5px 6px 0 rgba(0,0,0,0.2);
+  }
+}
+
+
+a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50px;
+  background: $base;
+  display: inline-block;
+  margin: 50px calc(50% - 21px);
+  white-space: nowrap;
+  padding: 13px;
+  box-sizing: border-box;
+  color: white;
+  transition: all 0.2s $cubic;
+  font-family: Roboto, sans-serif;
+  text-decoration: none;
+  box-shadow: 0 5px 6px 0 rgba(0,0,0,0.2);
+  i {
+    margin-right: 20px;
+    transition: margin-right 0.2s $cubic;
+  }
+  &:hover {
+    width: 134px;
+    transform: translateX(-50px);
+    i {
+      margin-right: 10px;
+    }
+  }
+}
+
+
 

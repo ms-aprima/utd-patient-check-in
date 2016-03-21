@@ -25,7 +25,7 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 $base: #28BECC;
 $text: #555;
 $invalid: #E91E63;
-$width: 400px;
+$width: 100%;
 $cubic: cubic-bezier(.64,.09,.08,1);
 
 /*Popup's classes
@@ -35,57 +35,43 @@ $cubic: cubic-bezier(.64,.09,.08,1);
 .popup-buttons 
 */
 
-
+-webkit-appearance: none;
 
 html, body {
+-webkit-appearance: none;
   background: url(../img/blurredsunset1.jpg)  center center fixed; 
   overflow-x: hidden;
 }
 
-html, body, form, span, h1 {
+html, body, form, span, h1,popup,popup-head,popup-body,popup-button {
+
+-webkit-appearance: none;
     box-sizing: border-box;
 }
 
-
-
 .popup {
-     width: $width + 60px; !important
+	margin-left: 30% !important ;
 }
-.
-
-popup-head {
+.popup-head {
   height: 120px !important;
   background: red  !important;
-  width: $width + 60px;
 }
 .popup-title {
   color: #fff !important;
-    width: $width + 60px;
+    width: $width + 60px !important;
 }
 
 .popup-body{
   background: blue !important;
   color:#fff !important;
   font-size:24px !important;
-    width: 60%; !important
+  width: $width + 60px !important;
 }
 
 .popup-buttons {
   height: 120px !important;
-    width: $width + 60px;
+   width: $width + 60px !important;
 }
-
-md-toast.md-error-toast-theme .md-toast-content {
-    background-color: #28BECC;
-  color: white;
-     
-}
-
-md-toast {
-  left: calc(50vw - 150px);
-}
-
-
 
 
 h1 {
@@ -109,6 +95,7 @@ form {
   background: url(../img/form.jpg)  center center fixed; 
 }
 
+
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
   font: inherit;
@@ -116,6 +103,7 @@ textarea::-webkit-input-placeholder {
     font-size 0.3s ease-in-out,
     visibility 0.3s ease-in-out;
 }
+
 
 input,
 textarea {
@@ -151,8 +139,6 @@ textarea {
   }  
 }
 
-
-
 .flex {
   display: flex;
   align-items: stretch;
@@ -180,18 +166,6 @@ button {
   }
 }
 
-/*a {
-  display: inline-block;
-  width: 100%;
-  margin-top: 50px;
-  text-align: center;
-  font-family: 'roboto', sans-serif;
-  text-decoration: none;
-  color: $base;
-  i {
-    margin-right: 5px;
-  }
-}*/
 
 a {
   width: 42px;

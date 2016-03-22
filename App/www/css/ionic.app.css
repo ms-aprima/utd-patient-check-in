@@ -28,12 +28,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 */
 
 
-md-toast.md-error-toast-theme .md-toast-content {
-  background-color: #28BECC;
-  color: white; }
-
-md-toast {
-  left: calc(50vw - 150px); }
 
 html, body {
   background: url(../img/blurredsunset1.jpg) center center fixed;
@@ -41,7 +35,7 @@ html, body {
 
 
 .popup {
-  margin-left: 690px !important;
+  margin-left: 30% !important;
   width: 300px !important;
 
   background-color: #28BECC !important;
@@ -91,7 +85,8 @@ html, body {
 
 
 html, body, form, span, h1 {
-  box-sizing: border-box; }
+  box-sizing: border-box; 
+}
 
 h1 {
   width: 100%;

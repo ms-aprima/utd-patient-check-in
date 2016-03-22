@@ -43,34 +43,32 @@ html, body {
   overflow-x: hidden;
 }
 
-html, body, form, span, h1,popup,popup-head,popup-body,popup-button {
+html, body, form, span, h1 {
 
 -webkit-appearance: none;
     box-sizing: border-box;
 }
 
-.popup {
-	margin-left: 30% !important ;
+popup {
+margin-left: 50% !important;
 }
-.popup-head {
+
+popup-head {
   height: 120px !important;
   background: red  !important;
 }
 .popup-title {
   color: #fff !important;
-    width: $width + 60px !important;
 }
 
-.popup-body{
+popup-body{
   background: blue !important;
   color:#fff !important;
   font-size:24px !important;
-  width: $width + 60px !important;
 }
 
-.popup-buttons {
+popup-buttons {
   height: 120px !important;
-   width: $width + 60px !important;
 }
 
 
@@ -103,7 +101,9 @@ textarea::-webkit-input-placeholder {
     font-size 0.3s ease-in-out,
     visibility 0.3s ease-in-out;
 }
-
+row responsive-md{
+  
+}
 
 input,
 textarea {

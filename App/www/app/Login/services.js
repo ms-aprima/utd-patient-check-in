@@ -82,4 +82,7 @@ angular.module('App')
 
 .config(function ($httpProvider) {
   $httpProvider.interceptors.push('AuthInterceptor');
-});
+})
+.config(function( $mdGestureProvider ) {
+          $mdGestureProvider.skipClickHijack();
+      });

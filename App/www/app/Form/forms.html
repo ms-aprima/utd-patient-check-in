@@ -20,18 +20,15 @@
 
       <div ng-controller="FormCtrl as form">
       <!-- Amy added this button to test her API calls (adds Questionnaires to the list) -->
-      <button class="button" ng-click="getQuestionnaires()">
-        Test API
-      </button>
-        <md-content layout-padding="" ng-hide="showForm">
+        <md-content layout-padding="" ng-hide="showForm" class = "formstyle">
           <ul>
             <!-- <ul ng-repeat="question in QuestionnaireList"> -->
               <li ng-repeat="quest in QuestionnaireList">
                 <md-list>
                   <md-list-item class="secondary-button-padding">
                     <p>{{quest.QuestionnaireName}}</p>
-                    <md-button class="md-warn md-raised md-hue-2" ng-if="!quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)">Incomplete</md-button>
-                    <md-button class="md-primary md-hue-1 " ng-if="quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)"> Completed Form</md-button>
+                    <md-button class="incomplete-button" ng-if="!quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)">Incomplete</md-button>
+                    <md-button class="complete-button" ng-if="quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)"> Completed Form</md-button>
                   </md-list-item>
                 </md-list>
               </li>
@@ -41,19 +38,19 @@
 
 
 
-        <md-content ng-hide="!showForm"> <!-- Amy added this so that it toggles with the other md-content -->
+        <md-content ng-hide="!showForm" class = "questionnaire-border"> <!-- Amy added this so that it toggles with the other md-content -->
         <!-- <ul ng-repeat="question in QuestionnaireList"> -->
-        <button ng-click="showForm=false">X</button>
+        <button ng-click="showForm=false" class = "close-button">X</button>
           <li ng-repeat="quest in QuestionnaireList">
           <ul>
             <li ng-repeat="sects in questionnaire.Questionnaire.Sections"> <!-- <li ng-repeat="sects in quest.Sections"> -->
               {{currentSectionId=sects.SurveySectionId;""}}
             <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireId && sectionIndex == $index">
             <div layout="row" flex>
-             <md-content layout-fill >
+             <md-content layout-fill class = "questionnaire-layout">
                 
                 
-                    <md-subheader class="md-accent">{{sects.SurveySectionName}}</md-subheader>
+                    <md-subheader class = "questionnaire-header">{{sects.SurveySectionName}}</md-subheader>
                     <ul>
                       <li>
                         <ul ng-repeat="q in sects.Questions">
@@ -64,6 +61,7 @@
                             
                             <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
                                 <md-radio-group 
+                                  ng-required="true"
                                   layout="row" 
                                   ng-model="answersMap[q.SurveyQuestionId]" 
                                   class="md-accent">
@@ -120,13 +118,13 @@
                     
                     <div layout="row" layout-align="end end">
                       <div ng-if = "$index != 0">
-                        <md-button class="md-raised md-primary" ng-click="goToPrevious()">Previous Page</md-button>
+                        <md-button class="nav-button" ng-click="goToPrevious()">Previous Page</md-button>
                       </div>
                       <div ng-if = "getLen()-1 != $index">
-                        <md-button class="md-raised md-primary" ng-click="goToNext()">Next Page</md-button>
+                        <md-button class="nav-button" ng-click="goToNext()">Next Page</md-button>
                       </div>
                       <div ng-if = "getLen()-1 == $index">
-                        <md-button class="md-raised md-primary" ng-click="goToReview()">Review Answers</md-button>
+                        <md-button class="review-button" ng-click="goToReview()">Review Answers</md-button>
                       </div>
                     </div>
 

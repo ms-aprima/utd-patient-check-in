@@ -27,20 +27,6 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .popup-buttons 
 */
 
-ul
-{
-list-style-type: none;
-margin: 0; 
-padding: 0;
-}
-
-li
-{
-list-style-type: none;
-margin: 0; 
-padding: 0;
-}
-
 
 html, body {
   background: url(../img/blurredsunset1.jpg) center center fixed;
@@ -202,3 +188,149 @@ a {
     transform: translateX(-50px); }
     a:hover i {
       margin-right: 10px; }
+
+
+ul
+{
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+li
+{
+list-style-type: none;
+margin: 5px 5px 5px;
+padding: 0;
+}
+
+
+.formstyle
+{
+  font-family: 'roboto', sans-serif;
+  color: #555;
+  font: inherit;
+  font-size: 1em;
+  margin: 28px 25px 10px;
+  width: 715px;
+  display: block;
+  border: none;
+  padding: 20px 0 10px;
+  background: #C0C0C0;
+  background-position: -400px 0;
+  background-size: 400px 100%;
+  background-repeat: no-repeat;
+  transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  resize: none;
+  overflow: hidden;
+
+}
+
+.incomplete-button
+{
+  background-color: #DC143C;
+  font-family: 'roboto', sans-serif;
+  color: white;
+  overflow: hidden;
+  width: 200px;
+  font-size: 1em;
+}
+
+.complete-button
+{
+  background-color: #28BECC;
+  font-family: 'roboto', sans-serif;
+  color: white;
+  overflow: hidden;
+  width: 200px;
+  font-size: 1em;
+}
+
+.close-button
+{
+  background-color: #28BECC;
+  font-family: 'roboto', sans-serif;
+  color: white;
+  width: 100px; 
+  font-size: 1em;
+  margin: 0px 600px 10px;
+}
+
+.questionnaire-border
+{
+  font-family: 'roboto', sans-serif;
+  color: #555;
+  font: inherit;
+  font-size: 0.8em;
+  margin: 5px 25px 10px;
+  width: 715px;
+  display: block;
+  border: none;
+  background: rgba(255, 255, 255, 0);
+  background-position: -400px 0;
+  background-size: 400px 100%;
+  background-repeat: no-repeat;
+  transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  resize: none;
+  overflow: hidden;
+}
+.questionnaire-layout
+{
+  
+  font-family: 'roboto', sans-serif;
+  color: #555;
+  font: inherit;
+  font-size: 1em;
+  margin-top: .5px;
+  margin-bottom: .5px;
+  margin-right: .5px;
+  margin-left: .5px;
+  border: 2px solid #28BECC;
+  width: 715px;
+  display: block;
+  background: #C0C0C0;
+  background-position: -400px 0;
+  background-size: 400px 100%;
+  background-repeat: no-repeat;
+  transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  resize: none;
+  overflow-x: scroll;
+  overflow-y: scroll;
+  
+}
+.questionnaire-header
+{
+  font-family: 'roboto', sans-serif;
+  color: #555;
+  font: inherit;
+  font-size: 2em;
+  width: 715px;
+  display: block;
+  border: none;
+  background: #C0C0C0;
+  background-position: -400px 0;
+  background-size: 400px 100%;
+  background-repeat: no-repeat;
+  transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+  resize: none;
+  overflow: hidden;
+}
+
+.review-button
+{
+  background-color: #28BECC;
+  font-family: 'roboto', sans-serif;
+  color: white;
+  overflow: hidden;
+  border: 2px solid #28BECC;
+  width: 200px;
+  font-size: 1em;
+}
+
+.nav-button
+{
+  background: #C0C0C0;
+  border: 2px solid #28BECC;
+  width: 200px;
+  font-size: 1em;
+}

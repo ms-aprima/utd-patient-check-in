@@ -52,8 +52,15 @@
     $scope.goToReview = function() 
     {
         submitSection();
-        submitForm();
+        //submitForm();
+        reviewForm();
     };
+
+    var reviewForm = function() {
+        $state.go('inside.confirmation');
+        console.log(angular.toJson($state.get()));
+       //console.log(angular.toJson($state.get());
+    }
 
     var submitSection = function() {
         angular.forEach($scope.questionnaire.Questionnaire.Sections, function(section, _){

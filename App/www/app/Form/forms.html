@@ -31,7 +31,7 @@
                   <md-list-item class="secondary-button-padding">
                     <p>{{quest.QuestionnaireName}}</p>
                     <md-button class="md-warn md-raised md-hue-2" ng-if="!quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)">Incomplete</md-button>
-                    <md-button class="md-primary md-hue-1 " ng-if="quest.IsComplete"> Completed Form</md-button>
+                    <md-button class="md-primary md-hue-1 " ng-if="quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)"> Completed Form</md-button>
                   </md-list-item>
                 </md-list>
               </li>
@@ -39,12 +39,16 @@
           <!-- </ul> -->
         </md-content>
 
+
+
         <md-content ng-hide="!showForm"> <!-- Amy added this so that it toggles with the other md-content -->
         <!-- <ul ng-repeat="question in QuestionnaireList"> -->
+        <button ng-click="showForm=false">X</button>
           <li ng-repeat="quest in QuestionnaireList">
           <ul>
-            <li ng-repeat="sects in testQuestionnaire.Sections"> <!-- <li ng-repeat="sects in quest.Sections"> -->
-            <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireid && section_index == $index">
+            <li ng-repeat="sects in questionnaire.Questionnaire.Sections"> <!-- <li ng-repeat="sects in quest.Sections"> -->
+              {{currentSectionId=sects.SurveySectionId;""}}
+            <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireId && sectionIndex == $index">
             <div layout="row" flex>
              <md-content layout-fill >
                 
@@ -58,32 +62,19 @@
                           <div ng-if="!q.QuestionOptional">
                             <p> {{q.SurveyQuestionLabel}}</p>
                             
-
                             <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
-                                <md-radio-group layout="row" ng-model="answerID[$index]" class="md-accent" ng-change = "getAnswerID(q.SurveyQuestionId,q.SurveySectionId, $index)">
-                                  <md-radio-button ng-repeat="answers in q.Answers" ng-value="answers.SurveyAnswerId" >
-                                    {{answers.SurveyAnswerLabel}} {{answers.SelectedAnswer}}
+                                <md-radio-group 
+                                  layout="row" 
+                                  ng-model="answersMap[q.SurveyQuestionId]" 
+                                  class="md-accent">
+                                    <md-radio-button 
+                                      ng-repeat="answer in q.Answers" 
+                                      ng-value="answer.SurveyAnswerId">
+                                      {{answer.SurveyAnswerLabel}}
                                     <br/>
                                   </md-radio-button>
                                 </md-radio-group>
                               </div>
-
-                            
-
-                            <!-- <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
-
-                              <md-radio-group layout="row" ng-model="answerID.id" class="md-primary" ng-change="selectedAnswerChange(q.SurveyQuestionId,q.SurveySectionId)">
-                                <md-radio-button ng-repeat="answers in q.Answers" ng-value="answers.SurveyAnswerId">
-                                  {{answers.SurveyAnswerLabel}}
-                                  <br/>
-
-                                </md-radio-button>
-
-                              </md-radio-group>
-
-
-                            </div> -->
-
 
                             <div ng-if="q.SurveyControlTypeName == 'TEXT'">
                               <!-- Code for Textbox goes here-->
@@ -145,11 +136,6 @@
               </div>
               </li>
               </ul>
-
-
-
-              
-
           </li>
         <!-- </ul> -->
         </md-content>

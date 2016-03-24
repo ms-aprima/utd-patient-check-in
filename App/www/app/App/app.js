@@ -2,9 +2,6 @@ angular.module('App', ['ionic','ngMaterial'])
 
 .config(function($stateProvider, $urlRouterProvider,$mdThemingProvider) {
 
-  $mdThemingProvider.theme('default')
-    .dark();
-
 
   $stateProvider
   .state('outside', {
@@ -20,19 +17,18 @@ angular.module('App', ['ionic','ngMaterial'])
   .state('inside', {
     url: '/inside',
     abstract: true,
-    templateUrl: 'app/Form/forms.html'
+    templateUrl: ''
   })
   .state('inside.form', {
     url: '/form',
     templateUrl: 'app/Form/forms.html',
-  })
-  .state('inside.confirmation', {
-    url: '/confirm',
-    templateUrl: 'app/Confirmation/confirmation.html',
+    //delcare controller
+    controller: 'FormCtrl'
   })
   .state('inside.review', {
-    url: '/form/review',
+    url: '/review',
     templateUrl: 'app/Review/review.html',
+    //controller here
   })
 
   $urlRouterProvider.otherwise('/outside/login');

@@ -215,7 +215,7 @@ padding: 0;
 
 .formstyle
 {
-  font-family: 'roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #555;
   font: inherit;
   font-size: 1em;
@@ -224,7 +224,7 @@ padding: 0;
   display: block;
   border: none;
   padding: 20px 0 10px;
-  background: #C0C0C0;
+  background: #FCFEFF;
   background-position: -400px 0;
   background-size: 400px 100%;
   background-repeat: no-repeat;
@@ -237,7 +237,7 @@ padding: 0;
 .incomplete-button
 {
   background-color: #DC143C;
-  font-family: 'roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: white;
   overflow: hidden;
   width: 200px;
@@ -246,8 +246,8 @@ padding: 0;
 
 .complete-button
 {
-  background-color: #28BECC;
-  font-family: 'roboto', sans-serif;
+  background-color: #29BECC;
+  font-family: 'Open Sans', sans-serif;
   color: white;
   overflow: hidden;
   width: 200px;
@@ -256,8 +256,8 @@ padding: 0;
 
 .close-button
 {
-  background-color: #28BECC;
-  font-family: 'roboto', sans-serif;
+  background-color: #29BECC;
+  font-family: 'Open Sans', sans-serif;
   color: white;
   width: 100px; 
   font-size: 1em;
@@ -266,7 +266,7 @@ padding: 0;
 
 .questionnaire-border
 {
-  font-family: 'roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #555;
   font: inherit;
   font-size: 0.8em;
@@ -285,7 +285,7 @@ padding: 0;
 .questionnaire-layout
 {
   
-  font-family: 'roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #555;
   font: inherit;
   font-size: 1em;
@@ -293,29 +293,30 @@ padding: 0;
   margin-bottom: .5px;
   margin-right: .5px;
   margin-left: .5px;
-  border: 2px solid #28BECC;
+  border: none;
   width: 715px;
   display: block;
-  background: #C0C0C0;
+  background: #FCFEFF;
   background-position: -400px 0;
   background-size: 400px 100%;
   background-repeat: no-repeat;
   transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   resize: none;
-  overflow-x: scroll;
+  overflow: hidden;
+  height: 500px;
   overflow-y: scroll;
   
 }
 .questionnaire-header
 {
-  font-family: 'roboto', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   color: #555;
   font: inherit;
   font-size: 2em;
   width: 715px;
   display: block;
   border: none;
-  background: #C0C0C0;
+  background: #FCFEFF;
   background-position: -400px 0;
   background-size: 400px 100%;
   background-repeat: no-repeat;
@@ -326,19 +327,25 @@ padding: 0;
 
 .review-button
 {
-  background-color: #28BECC;
-  font-family: 'roboto', sans-serif;
+  background-color: #29BECC;
+  font-family: 'Open Sans', sans-serif;
   color: white;
   overflow: hidden;
-  border: 2px solid #28BECC;
+  border: 2px solid #29BECC;
   width: 200px;
   font-size: 1em;
 }
 
 .nav-button
 {
-  background: #C0C0C0;
-  border: 2px solid #28BECC;
+  background: #FCFEFF;
+  border: 2px solid #29BECC;
   width: 200px;
   font-size: 1em;
 }
+
+#container
+{
+  height: 800px;
+}
+

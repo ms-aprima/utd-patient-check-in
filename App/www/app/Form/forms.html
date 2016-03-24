@@ -16,10 +16,11 @@
       </button>
     </div>
 
-    <ion-content class="has-header">
+    <ion-content class="has-header" scroll="false">
 
       <div ng-controller="FormCtrl as form">
       <!-- Amy added this button to test her API calls (adds Questionnaires to the list) -->
+      <div id= "container">
         <md-content layout-padding="" ng-hide="showForm" class = "formstyle">
           <ul>
             <!-- <ul ng-repeat="question in QuestionnaireList"> -->
@@ -38,7 +39,7 @@
 
 
 
-        <md-content ng-hide="!showForm" class = "questionnaire-border"> <!-- Amy added this so that it toggles with the other md-content -->
+        <md-content ng-hide="!showForm" class = "questionnaire-border" > <!-- Amy added this so that it toggles with the other md-content -->
         <!-- <ul ng-repeat="question in QuestionnaireList"> -->
         <button ng-click="showForm=false" class = "close-button">X</button>
           <li ng-repeat="quest in QuestionnaireList">
@@ -129,7 +130,6 @@
                     </div>
 
                    
-               </md-content>
                </div>
               </div>
               </li>
@@ -137,7 +137,8 @@
           </li>
         <!-- </ul> -->
         </md-content>
-
+        </md-content>
+        </div>
 
       </div>
     </ion-content>

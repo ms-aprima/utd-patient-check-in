@@ -3,6 +3,7 @@ angular.module('App')
 .service('FormService', function($q, $http, AuthService, API_BASEURI) {
 var patientID = '';
 var rsPatientID = '';
+var questionnaire;
 
 //makes GET call to Aprima API and returns list of Patient's Questionnaires
 var getQuestionnaireList = function()
@@ -14,7 +15,7 @@ var getQuestionnaireList = function()
   return $http.get(API_BASEURI.url + endpoint, {headers: {'ApiKey' : 'C83BBF42-DA17-4F58-9AA0-68F417419313', 'Accept' : 'application/json' }});
 }
 
-  //TODO: get functioning
+  //call to API to get specific Questionnaire for a patient
 var getQuestionnaire = function(relSurveyPatientId) {
   //set relSurveyPatientId
   rsPatientID = relSurveyPatientId;
@@ -24,17 +25,21 @@ var getQuestionnaire = function(relSurveyPatientId) {
 };
   
 //TODO: get functioning
-var submitQuestionnaire = function(questionnaire) {
+var saveQuestionnaire = function(q) {
+  questionnaire = q;
+
+  //move this to ReviewServices
   //endpoint defined here for Put Patient Questionnaire
-	var endpoint = "patients/" + patientID + "/questionnaire/" + rsPatientID;
-  return $http.put(API_BASEURI.url + endpoint, questionnaire, {headers: {'ApiKey' : 'C83BBF42-DA17-4F58-9AA0-68F417419313', 'Accept' : 'application/json' }});
+	// var endpoint = "patients/" + patientID + "/questionnaire/" + rsPatientID;
+ //  return $http.put(API_BASEURI.url + endpoint, questionnaire, {headers: {'ApiKey' : 'C83BBF42-DA17-4F58-9AA0-68F417419313', 'Accept' : 'application/json' }});
 };
 
 return {
     getQuestionnaireList: getQuestionnaireList,
     getQuestionnaire: getQuestionnaire,
-    submitQuestionnaire: submitQuestionnaire,
+    saveQuestionnaire: saveQuestionnaire,
     patientID: function() { return patientID; },
-    rsPatientID: function() { return rsPatientID; }
+    rsPatientID: function() { return rsPatientID; },
+    questionnaire: function() {return questionnaire}
   };
 })

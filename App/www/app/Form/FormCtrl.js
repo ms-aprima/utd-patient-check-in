@@ -1,6 +1,6 @@
  angular.module('App')
  
-.controller('FormCtrl', function($scope, FormService, FormService, $http, $state) {
+.controller('FormCtrl', function($scope, FormService, $http, $state) {
     $scope.QuestionnaireList = [];
     FormService.getQuestionnaireList().then(function(result) {
         angular.forEach(result.data, function(value, key) {
@@ -52,14 +52,14 @@
     $scope.goToReview = function() 
     {
         submitSection();
-        //submitForm();
         reviewForm();
     };
 
     var reviewForm = function() {
-        $state.go('inside.confirmation');
-        console.log(angular.toJson($state.get()));
-       //console.log(angular.toJson($state.get());
+        //pass $scope.questionnaire to the FormService, then go to review page
+        FormService.saveQuestionnaire($scope.questionnaire);
+        $state.go('inside.review');
+        
     }
 
     var submitSection = function() {
@@ -81,9 +81,10 @@
         });
     };
 
-    var submitForm = function() {
-        FormService.submitQuestionnaire($scope.questionnaire).then(function(result) {
-            // TODO(@char): Direct to review page
-        });
-    };
+    // //This function will just give the FormService the questionnaire to save
+    // var submitForm = function() {
+    //     FormService.submitQuestionnaire($scope.questionnaire).then(function(result) {
+    //         // TODO(@char): Direct to review page
+    //     });
+    // };
 });

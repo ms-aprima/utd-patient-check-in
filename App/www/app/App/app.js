@@ -22,13 +22,13 @@ angular.module('App', ['ionic','ngMaterial'])
   .state('inside.form', {
     url: '/form',
     templateUrl: 'app/Form/forms.html',
-    //delcare controller
+    //declare controller
     controller: 'FormCtrl'
   })
   .state('inside.review', {
     url: '/review',
     templateUrl: 'app/Review/review.html',
-    //controller here
+    controller: 'ReviewCtrl'
   })
 
   $urlRouterProvider.otherwise('/outside/login');

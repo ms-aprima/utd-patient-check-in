@@ -2,7 +2,7 @@ angular.module('App')
  
 .controller('ReviewCtrl', function($scope, FormService, ReviewService, $http, $state) {
 	$scope.questionnaire = FormService.questionnaire();
-	console.log(questionnaire);
+	console.log($scope.questionnaire);
 
 	$scope.submit = function() {
 		console.log("submit in reviewctrl");

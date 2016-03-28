@@ -12,7 +12,7 @@ var submitQuestionnaire = function(questionnaire) {
   rsPatientID = FormService.rsPatientID();
 
   //endpoint defined here for Put Patient Questionnaire
-	var endpoint = "patients/" + patientId + "/questionnaire/" + rsPatientId;
+	var endpoint = "patients/" + patientId + "/questionnaire/" + rsPatientID;
   return $http.put(API_BASEURI.url + endpoint, questionnaire, {headers: {'ApiKey' : 'C83BBF42-DA17-4F58-9AA0-68F417419313', 'Accept' : 'application/json' }});
 };
 

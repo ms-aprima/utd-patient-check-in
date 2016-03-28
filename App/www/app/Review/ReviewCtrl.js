@@ -12,6 +12,7 @@ angular.module('App')
 	var submitForm = function() {
 		ReviewService.submitQuestionnaire($scope.questionnaire).then(function(result) {
 		    // TODO: reroute to form list
+		    $state.go('inside.form');
 		});
 	};
 

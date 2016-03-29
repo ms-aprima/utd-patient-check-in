@@ -1,6 +1,18 @@
 <form>
-  <h1>Please review</h1>
-  <button ng-click="submit()">Submit</button>
+  <h1>Please review</h1><div class= "test"> 
+   <div ng-controller="ReviewCtrl">
+   <p>{{question}}</p>
+  
+        <!-- <ul ng-repeat="question in QuestionnaireList"> -->
+          <li ng-repeat="section in sectionsArr">
+          	<md-list>
+                  <md-list-item class="secondary-button-padding">
+                    <p>{{section}}</p></md-list>
+  
+        </li>
+    </div></div>
+                
+
 </form>
 
 

@@ -345,7 +345,9 @@ padding: 0;
   width: 200px;
   font-size: 1em;
 }
-
+.test{
+  color:black;
+}
 .signout
 {
   background-color: #29BECC;

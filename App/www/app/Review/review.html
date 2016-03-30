@@ -1,13 +1,23 @@
 <form>
   <h1>Please review</h1><div class= "test"> 
    <div ng-controller="ReviewCtrl">
-   <p>{{question}}</p>
+
   
         <!-- <ul ng-repeat="question in QuestionnaireList"> -->
-          <li ng-repeat="section in sectionsArr">
+          <li ng-repeat="section in sections">
           	<md-list>
                   <md-list-item class="secondary-button-padding">
                     <p>{{section}}</p></md-list>
+
+                  <li ng-repeat="question in questions">
+          			<md-list>
+                  <md-list-item class="secondary-button-padding">
+                    <p>{{question}}</p></md-list>
+
+                        <li ng-repeat="answer in answers track by question.QuestionNumber">
+          			<md-list>
+                  <md-list-item class="secondary-button-padding">
+                    <p>ANSWERS HERE<p>{{answer}}</p></md-list>
   
         </li>
     </div></div>

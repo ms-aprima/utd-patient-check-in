@@ -28,10 +28,16 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 */
 
 
+
 html, body {
   background: url(../img/blurredsunset1.jpg) center center fixed;
   overflow-x: hidden; }
 
+.md-fab{
+
+  position:static;
+  margin: 20% 12% 60% 0% !important;
+}
 
 .popup {
   margin-left: 30% !important;
@@ -157,7 +163,7 @@ textarea {
   .flex textarea {
     line-height: 120%; }
 
-button {
+.login {
   font-family: 'Montserrat', sans-serif;
   font-weight: 400;
   transition: transform 0.2s cubic-bezier(0.64, 0.09, 0.08, 1), box-shadow 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
@@ -373,5 +379,26 @@ padding: 0;
   line-height: 37.5px;
   font-size: 3em;
   margin-bottom: -63px;
+
+}
+
+.button-rounded {
+  background-color: #29BECC;;
+  display: block !important;
+  width: 50px !important;
+  height: 50px !important;
+  line-height: 30px !important;
+  border: 2px solid white !important;
+  border-radius: 50% !important;
+  color: white !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  font-size: 10px !important;
+  font-weight: bold !important;
+  position:static !important; 
+  margin: 450px 0 0 600px !important;
+  padding: 10px !important;
+}
+
 
 }

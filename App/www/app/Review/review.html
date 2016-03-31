@@ -2,35 +2,43 @@
   <h1>Please review</h1><div class= "test"> 
    <div ng-controller="ReviewCtrl">
 
-  
-        <!-- <ul ng-repeat="question in QuestionnaireList"> -->
+
+
           <li ng-repeat="section in questionnaire.Questionnaire.Sections">
-          	<md-list>
+            <md-list>
               <md-list-item class="secondary-button-padding">
                 <p>{{section.SurveySectionName}}</p>
                 </md-list-item>
               </md-list>
 
+
+
+      <md-content class="md-padding" layout-xs="row" layout="row">
+    <div flex-xs flex-gt-xs="100" layout="column">
+      <md-card>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-subhead">Questions</span>
               <ul ng-repeat="question in section.Questions">
-          			<md-list>
+                <md-list>
                   <md-list-item class="secondary-button-padding">
                     <p>{{question.SurveyQuestionLabel}}</p>
                     <p>{{question.SelectedAnswerText}}</p>
                     </md-list-item>
                 </md-list>
-
-                  <!-- <li ng-repeat="answer in question.Answers track by question.QuestionNumber">
-              			<md-list>
-                      <md-list-item class="secondary-button-padding">
-                        <p>ANSWERS HERE {{answer}}</p>
-                        </md-list-item>
-                      </md-list>
-                  </li> -->
               </ul>
-        </li>
-    </div></div>
-                
+            </li>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-actions layout="row" layout-align="end center">
+        </md-card-actions>
+      </md-card>
+</div>
 
+   
+       
+  </div>
 </form>
 
-
+ <button class="button button-rounded fab" >
+</button>

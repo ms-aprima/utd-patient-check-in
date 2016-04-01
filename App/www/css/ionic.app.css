@@ -179,30 +179,6 @@ textarea {
     transform: translateY(-2px);
     box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
 
-a {
-  width: 42px;
-  height: 42px;
-  border-radius: 50px;
-  background: #29BECC;
-  display: inline-block;
-  margin: 50px calc(50% - 21px);
-  white-space: nowrap;
-  padding: 13px;
-  box-sizing: border-box;
-  color: white;
-  transition: all 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
-  font-family: Roboto, sans-serif;
-  text-decoration: none;
-  box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
-  a i {
-    margin-right: 20px;
-    transition: margin-right 0.2s cubic-bezier(0.64, 0.09, 0.08, 1); }
-  a:hover {
-    width: 134px;
-    transform: translateX(-50px); }
-    a:hover i {
-      margin-right: 10px; }
-
 
 ul
 {
@@ -383,6 +359,7 @@ padding: 0;
 }
 
 .button-rounded {
+  position:inherit !important;
   background-color: #29BECC;;
   display: block !important;
   width: 50px !important;
@@ -395,10 +372,25 @@ padding: 0;
   text-decoration: none !important;
   font-size: 10px !important;
   font-weight: bold !important;
-  position:static !important; 
+
   margin: 450px 0 0 600px !important;
   padding: 10px !important;
 }
 
+.md-subhead{
+  text-align: center;
+}
+.card-1 {
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)!important;
+}
+.questions {
+text-align: center !important;
 
 }
+.answers{
+
+}
+
+

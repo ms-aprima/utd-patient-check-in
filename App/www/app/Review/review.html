@@ -1,25 +1,22 @@
 
-  <form>
-  <h1>Please review</h1>
+
+  <div class="reviewHeader">Please review</div>
 
   <div ng-controller="ReviewCtrl">
  </div>
-
+  <div class= "review">
  <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">
-             <span class="md-subhead"><h2>{{section.SurveySectionName}}</h2></span>
+             <span class="md-subhead"><h2>{{section.SurveySectionName}}</h2>  <md-button class="md-raised">Edit</md-button></span>
              <div class="questions" ng-repeat="question in section.Questions">
               <span>{{question.SurveyQuestionLabel}}</span><br>
               <span>{{question.SelectedAnswerText}}</span>
             </div>
  </md-card>
 
-   
-</form>
 
- <button class="button button-rounded fab" >
+ <button class="button button-rounded fab" ><i class="material-icons">done_all</i>
 </button>
-
-
+</div>
 
 <!-- 
   <form>

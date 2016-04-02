@@ -30,8 +30,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 
 
 html, body {
-  background: url(../img/blurredsunset1.jpg) center center fixed;
-  overflow-x: hidden; }
+  background: url(../img/blurredoffice.jpg) center center fixed;
+  overflow-x: hidden;
+  overflow-y: hidden; }
 
 .md-fab{
 
@@ -372,18 +373,25 @@ padding: 0;
   text-decoration: none !important;
   font-size: 10px !important;
   font-weight: bold !important;
-
-  margin: 450px 0 0 600px !important;
+  position: static !important;
+  margin: 400px 0 0 600px !important;
   padding: 10px !important;
 }
 
 .md-subhead{
   text-align: center;
 }
+
 .card-1 {
+  background-color: #29BECC;
   font-family: 'Open Sans', sans-serif;
-  color: #555;
-       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)!important;
+  color: #FCFEFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.2s ease-in-out;
+  padding-bottom: 20px;
+}
+.card-1:hover {
+    box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 .questions {
 text-align: center !important;
@@ -392,5 +400,31 @@ text-align: center !important;
 .answers{
 
 }
+
+.review {
+  font-family: 'Open Sans', sans-serif;
+  font-weight:200 !important;
+  width: 460px;
+  margin: 100px auto 0 !important;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
+  color: #FCFEFF;
+  background: #FCFEFF;
+  overflow-x: hidden; 
+  height: 850px !important;
+  padding-bottom: 20px;
+  overflow-y: scroll !important ;
+  /*background: url(../img/form.jpg) center center fixed; */
+}
+.reviewHeader {
+ font-family: 'Open Sans', sans-serif;
+  font-weight:200 !important;
+  width: 460px;
+  margin: 100px auto 0 !important;
+  color: #FCFEFF;
+  font-size: 3em;
+  text-align: center;
+  background: #29BECC;
+}
+
 
 

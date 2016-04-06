@@ -196,13 +196,12 @@ margin: 5px 5px 5px;
 padding: 0;
 }
 
-
 .formstyle
 {
   font-family: 'Open Sans', sans-serif;
   color: #555;
   font: inherit;
-  font-size: 1em;
+  font-size: 1.25em;
   margin: 60px 25px 10px;
   width: 715px;
   display: block;
@@ -272,25 +271,20 @@ padding: 0;
   font-family: 'Open Sans', sans-serif;
   color: #555;
   font: inherit;
-  font-size: 1em;
+  font-size: 1.5em;
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: .5px;
   margin-left: .5px;
   border: none;
-  width: 715px;
-  display: block;
   background: #FCFEFF;
-  background-position: -400px 0;
-  background-size: 400px 100%;
   background-repeat: no-repeat;
-  transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   resize: none;
-  overflow: hidden;
-  height: 500px;
-  overflow-y: scroll;
+  height: 800px;
+  overflow: auto;
+  display: inline-block;
+  width: 715px;
   word-wrap: break-word;
-  
 }
 .questionnaire-header
 {
@@ -442,5 +436,6 @@ text-align: center !important;
   padding-right:5% !important;
   padding-left: 5% !important;
 }
+
 
 

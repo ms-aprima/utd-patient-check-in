@@ -8,7 +8,7 @@
 <body>
 
   <ion-view>
-
+  
     <div class="bar bar-header bar-positive" ng-controller="InsideCtrl">
       <h1 class="form-title">Patient Forms</h1>
       <button class="signout" ng-click="logout()">
@@ -17,10 +17,8 @@
     </div>
 
     <ion-content class="has-header" scroll="false">
-
       <div ng-controller="FormCtrl as form">
       <!-- Amy added this button to test her API calls (adds Questionnaires to the list) -->
-      <div id= "container">
         <md-content layout-padding="" ng-hide="showForm" class = "formstyle">
           <ul>
             <!-- <ul ng-repeat="question in QuestionnaireList"> -->
@@ -48,8 +46,7 @@
               {{currentSectionId=sects.SurveySectionId;""}}
             <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireId && sectionIndex == $index">
             <div layout="row" flex>
-             <md-content layout-fill class = "questionnaire-layout">
-                
+             <md-content layout-padding class = "questionnaire-layout">
                 
                     <md-subheader class = "questionnaire-header">{{sects.SurveySectionName}}</md-subheader>
                     <ul>
@@ -110,6 +107,23 @@
                                   </div>
                                   </div>
                               </div>
+
+                              <div ng-if="q.SurveyControlTypeName == 'NUMERIC'">
+                                  <md-radio-group 
+                                  ng-required="true"
+                                  layout="row" 
+                                  ng-model="answersMap[q.SurveyQuestionId]" 
+                                  class="md-accent">
+                                    <md-radio-button 
+                                      ng-repeat="answer in q.Answers" 
+                                      ng-value="answer.SurveyAnswerId"
+                                      ng-style="{'display':'inline'}">
+                                      {{answer.SurveyAnswerLabel}}
+                                    <br/>
+                                  </md-radio-button>
+                                </md-radio-group>
+                              </div>
+                              
                               </div>
 
                         </ul>
@@ -129,18 +143,19 @@
                       </div>
                     </div>
 
-                   
+                   </md-content>
                </div>
               </div>
               </li>
               </ul>
           </li>
         <!-- </ul> -->
-        </md-content>
-        </md-content>
-        </div>
-
+        
+        
+      </md-content>
       </div>
+      
+
     </ion-content>
   </ion-view>
 

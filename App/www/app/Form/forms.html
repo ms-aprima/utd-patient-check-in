@@ -61,12 +61,19 @@
                                 <md-radio-group 
                                   ng-required="true"
                                   layout="row" 
-                                  ng-model="answersMap[q.SurveyQuestionId]" 
+                                  ng-model="q.SelectedAnswerId" 
                                   class="md-accent">
                                     <md-radio-button 
                                       ng-repeat="answer in q.Answers" 
                                       ng-value="answer.SurveyAnswerId">
                                       {{answer.SurveyAnswerLabel}}
+                                      <div ng-if="q.SelectedAnswerId == answer.SurveyAnswerId">
+                                        {{answer.SelectedAnswer = true;""}}
+                                        {{q.SelectedAnswerText = answer.SurveyAnswerLabel;""}}
+                                      </div>
+                                      <div ng-if="q.SelectedAnswerId != answer.SurveyAnswerId">
+                                        {{answer.SelectedAnswer = false;""}}
+                                      </div>
                                     <br/>
                                   </md-radio-button>
                                 </md-radio-group>
@@ -77,7 +84,11 @@
                               <li><ul><li><ul ng-repeat="answers in q.Answers">
                                <md-input-container class="md-block">
                                   <label> {{answers.SurveyAnswerLabel}}</label>
-                                  <textarea ng-model="answer.text" name="q.SurveyQuestionId"></textarea>
+                                  <textarea ng-model="answers.SurveyResponseAnswerText" name="q.SurveyQuestionId"></textarea>
+                                  <div ng-if="answers.SurveyResponseAnswerText.length > 0">
+                                    {{q.SelectedAnswerText = answers.SurveyResponseAnswerText;""}}
+                                    {{answers.SelectedAnswer = true;""}}
+                                  </div>
                                 </md-input-container>
                               </ul></li></ul></li>
                             </div>
@@ -98,10 +109,10 @@
 
 
                             <div ng-if="q.SurveyControlTypeName == 'CHECKBOX'">
-                              <!-- Code for checkbox goes here-->   
+                              <!-- Code for checkbox goes here-->
                                 <div layout="row" layout-wrap layout-padding flex>
                                   <div flex="50" ng-repeat="answers in q.Answers">
-                                    <md-checkbox >
+                                    <md-checkbox ng-model="answers.SelectedAnswer">
                                       {{answers.SurveyAnswerLabel}}
                                     </md-checkbox>
                                   </div>
@@ -112,13 +123,20 @@
                                   <md-radio-group 
                                   ng-required="true"
                                   layout="row" 
-                                  ng-model="answersMap[q.SurveyQuestionId]" 
+                                  ng-model="q.SelectedAnswerId" 
                                   class="md-accent">
                                     <md-radio-button 
                                       ng-repeat="answer in q.Answers" 
                                       ng-value="answer.SurveyAnswerId"
                                       ng-style="{'display':'inline'}">
                                       {{answer.SurveyAnswerLabel}}
+                                      <div ng-if="q.SelectedAnswerId == answer.SurveyAnswerId">
+                                        {{answer.SelectedAnswer = true;""}}
+                                        {{q.SelectedAnswerText = answer.SurveyAnswerLabel;""}}
+                                      </div>
+                                      <div ng-if="q.SelectedAnswerId != answer.SurveyAnswerId">
+                                        {{answer.SelectedAnswer = false;""}}
+                                      </div>
                                     <br/>
                                   </md-radio-button>
                                 </md-radio-group>

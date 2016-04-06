@@ -23,10 +23,26 @@
       <md-button class="md-raised" ng-click="saveEdits(section)">Save</md-button>
       <div class="questions" ng-repeat="question in section.Questions">
         <span>{{question.SurveyQuestionLabel}}</span><br>
-        <div class="answers" ng-repeat="answer in question.Answers">
-        <!-- TODO: apply all answertype stuff from form.html -->
-          <span>{{answer.SurveyAnswerLabel}}</span>
+        <div class="answers">
+      <div ng-if="q.SurveyControlTypeName == 'CHECKBOX'">
+        <md-radio-group 
+           ng-required="true"
+            layout="row" 
+            class="md-accent">
+        <md-radio-button ng-repeat="answer in question.Answers"
+                            ng-value="answer.SurveyAnswerId">
+                          {{answer.SurveyAnswerLabel}}
+                                <br/>
+            </md-radio-button>
+          </md-radio-group>
         </div>
+         <div ng-if="q.SurveyControlTypeName == 'TEXT'">
+          <md-input-container class="md-block"><div ng-repeat="answer in question.Answers">
+            <label> {{answers.SurveyAnswerLabel}}</label>
+                                  <textarea ng-model="answer.text" name="q.SurveyQuestionId"></textarea>
+                                </md-input-container>
+
+      </div>
      </div>
     </div>
    </div>
@@ -37,24 +53,18 @@
 </button>
 </div>
 
-<!-- 
-  <form>
-  <h1>Please review</h1>
-
-  <div ng-controller="ReviewCtrl">
- </div>
-
- <md-card ng-repeat="section in questionnaire.Questionnaire.Sections">
-             <md-card title-text>{{section.SurveySectionName}}</md-card-title-text>
-             <md-card title-text ng-repeat="question in section.Questions">
-              <span class="md-subhead">{{question.SurveyQuestionLabel}}</span>
-              <span class="md-subhead">{{question.SelectedAnswerText}}</span>
-      </md-card-title-text>
-      </md-card>
-
-   
-</form>
-
- <button class="button button-rounded fab" >
-</button>
--->
+<!--
+<div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
+                                <md-radio-group 
+                                  ng-required="true"
+                                  layout="row" 
+                                  ng-model="answersMap[q.SurveyQuestionId]" 
+                                  class="md-accent">
+                                    <md-radio-button 
+                                      ng-repeat="answer in q.Answers" 
+                                      ng-value="answer.SurveyAnswerId">
+                                      {{answer.SurveyAnswerLabel}}
+                                    <br/>
+                                  </md-radio-button>
+                                </md-radio-group>
+                              </div>

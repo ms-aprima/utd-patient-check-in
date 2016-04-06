@@ -44,15 +44,15 @@ angular.module('App')
 
 	$scope.submit = function() {
 		console.log("submit in reviewctrl");
-		//submitForm();
+		submitForm();
 	}
 
 	var submitForm = function() {
-		ReviewService.submitQuestionnaire($scope.questionnaire).then(function(result) {
+		// ReviewService.submitQuestionnaire($scope.questionnaire).then(function(result) {
 		    // TODO: reroute to form list
 		    console.log("submitted");
-		   // $state.go('inside.form');
-		});
+		    $state.go('inside.form');
+		// });
 	};
 
 });

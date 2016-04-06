@@ -52,6 +52,11 @@
         reviewForm();
     };
 
+    $scope.clear = function() {
+        $scope.showForm = false;
+        $scope.questionnaire = null; 
+    };
+
     var reviewForm = function() {
         //pass $scope.questionnaire to the FormService, then go to review page
         FormService.saveQuestionnaire($scope.questionnaire);

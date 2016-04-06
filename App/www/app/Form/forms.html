@@ -39,7 +39,7 @@
 
         <md-content ng-hide="!showForm" class = "questionnaire-border" > <!-- Amy added this so that it toggles with the other md-content -->
         <!-- <ul ng-repeat="question in QuestionnaireList"> -->
-        <button ng-click="showForm=false" class = "close-button">X</button>
+        <button ng-click="clear()" class = "close-button">X</button>
           <li ng-repeat="quest in QuestionnaireList">
           <ul>
             <li ng-repeat="sects in questionnaire.Questionnaire.Sections"> <!-- <li ng-repeat="sects in quest.Sections"> -->

@@ -1,10 +1,14 @@
 
 
   <div class="reviewHeader">Please review</div>
+ 
+ <button class="button button-rounded fab" ><i class="material-icons">done_all</i>
+</button>
+
 
   <div ng-controller="ReviewCtrl">
  </div>
-  <div class= "review">
+
  <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">
  <!-- Amy added ng-click to trigger $scope.expand to determine which card to expand -->
   <span class="md-subhead" ng-click="expand(section)"><h2>{{section.SurveySectionName}}</h2></span>
@@ -23,48 +27,24 @@
       <md-button class="md-raised" ng-click="saveEdits(section)">Save</md-button>
       <div class="questions" ng-repeat="question in section.Questions">
         <span>{{question.SurveyQuestionLabel}}</span><br>
-        <div class="answers">
-      <div ng-if="q.SurveyControlTypeName == 'CHECKBOX'">
-        <md-radio-group 
-           ng-required="true"
-            layout="row" 
-            class="md-accent">
-        <md-radio-button ng-repeat="answer in question.Answers"
-                            ng-value="answer.SurveyAnswerId">
-                          {{answer.SurveyAnswerLabel}}
-                                <br/>
-            </md-radio-button>
-          </md-radio-group>
-        </div>
-         <div ng-if="q.SurveyControlTypeName == 'TEXT'">
-          <md-input-container class="md-block"><div ng-repeat="answer in question.Answers">
-            <label> {{answers.SurveyAnswerLabel}}</label>
-                                  <textarea ng-model="answer.text" name="q.SurveyQuestionId"></textarea>
-                                </md-input-container>
-
+        <div class="buttons">
+       <md-radio-group 
+          ng-required="true"
+          layout="row" 
+          ng-model="answersMap[q.SurveyQuestionId]">
+            <md-radio-button 
+              ng-repeat="answer in question.Answers" 
+              ng-value="answer.SurveyAnswerId">
+              {{answer.SurveyAnswerLabel}}
+            <br/>
+          </md-radio-button>
+        </md-radio-group>
       </div>
      </div>
     </div>
+
+
    </div>
   </md-card>
- </div>
 
- <button class="button button-rounded fab" ><i class="material-icons">done_all</i>
-</button>
-</div>
 
-<!--
-<div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
-                                <md-radio-group 
-                                  ng-required="true"
-                                  layout="row" 
-                                  ng-model="answersMap[q.SurveyQuestionId]" 
-                                  class="md-accent">
-                                    <md-radio-button 
-                                      ng-repeat="answer in q.Answers" 
-                                      ng-value="answer.SurveyAnswerId">
-                                      {{answer.SurveyAnswerLabel}}
-                                    <br/>
-                                  </md-radio-button>
-                                </md-radio-group>
-                              </div>

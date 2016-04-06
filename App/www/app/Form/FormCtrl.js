@@ -37,21 +37,18 @@
     //will go to next section of questions
     $scope.goToNext = function() 
     {
-        submitSection();
         $scope.sectionIndex += 1;
     };
 
     //will go to previous section of questions
     $scope.goToPrevious = function() 
     {
-        submitSection();
         $scope.sectionIndex -= 1;
     };
 
     //will go to review page
     $scope.goToReview = function() 
     {
-        submitSection();
         reviewForm();
     };
 
@@ -61,30 +58,4 @@
         $state.go('inside.review');
         
     }
-
-    var submitSection = function() {
-        angular.forEach($scope.questionnaire.Questionnaire.Sections, function(section, _){
-            if (section.SurveycurrentSectionId == $scope.currentSectionId) {
-                angular.forEach(section.Questions, function(question, _) {
-                    var answerID = $scope.answersMap[question.SurveyQuestionId];
-                    question.SelectedAnswerId = answerID;
-                    angular.forEach(question.Answers, function(answer, _) {
-                        if (answer.SurveyAnswerId == answerID) {
-                            question.SelectedAnswerText = answer.SurveyAnswerLabel;
-                            answer.SelectedAnswer = true;
-                        } else {
-                            answer.SelectedAnswer = false;
-                        }
-                    });
-                });
-            }
-        });
-    };
-
-    // //This function will just give the FormService the questionnaire to save
-    // var submitForm = function() {
-    //     FormService.submitQuestionnaire($scope.questionnaire).then(function(result) {
-    //         // TODO(@char): Direct to review page
-    //     });
-    // };
 });

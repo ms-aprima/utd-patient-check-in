@@ -1,5 +1,6 @@
 
-
+  <div class= "wrap">
+ 
   <div class="reviewHeader">Please review</div>
   <div ng-controller="ReviewCtrl">
  </div>
@@ -8,12 +9,12 @@
 </button>
 
 
-  
 
  <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">
  <!-- Amy added ng-click to trigger $scope.expand to determine which card to expand -->
   <span class="md-subhead" ng-click="expand(section)"><h2>{{section.SurveySectionName}}</h2></span>
    <!-- Amy added this div to determine if each section should be expanded or not -->
+
    <div ng-show="isClicked(section)">
     <!-- Amy added this div to hide the selected answers in a section if viewHidden = true -->
     <div ng-hide="section.viewHidden">
@@ -24,15 +25,16 @@
      </div>
     </div>
     <!-- Amy added this div to show all answer options (in edit mode) if edit = true -->
+ 
     <div ng-show="section.edit">
+      <md-button class="md-raised md-warn">Cancel</md-button>
       <md-button class="md-raised" ng-click="saveEdits(section)">Save</md-button>
       <div class="questions" ng-repeat="question in section.Questions">
         <span>{{question.SurveyQuestionLabel}}</span><br>
         <div class="buttons">
        <md-radio-group 
           ng-required="true"
-          layout="row" 
-          ng-model="answersMap[q.SurveyQuestionId]">
+          layout="row"> 
             <md-radio-button 
               ng-repeat="answer in question.Answers" 
               ng-value="answer.SurveyAnswerId">
@@ -43,9 +45,14 @@
       </div>
      </div>
     </div>
+  </div>
+
 
 
    </div>
   </md-card>
+</div>
+
+
 
 

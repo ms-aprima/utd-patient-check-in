@@ -357,7 +357,7 @@ padding: 0;
 }
 
 .button-rounded {
-  position:inherit !important;
+  font-size:43px !important;
   background-color: #29BECC;;
   display: block !important;
   width: 50px !important;
@@ -370,12 +370,28 @@ padding: 0;
   text-decoration: none !important;
   font-size: 10px !important;
   font-weight: bold !important;
-  position: static !important;
+  padding: 0px !important;
  
+}
+
+button.button.button-rounded.fab {
+    position: absolute !important;
+    top: 7% !important;
+    left: 70% !important;
+    margin: 0% !important;
+    z-index: 200 !important;
 }
 
 .md-subhead{
   text-align: center;
+}
+
+.material-icons{
+  font-size:43px !important;
+}
+
+.cardSection{
+  margin-top:9% !important;
 }
 
 .card-1 {
@@ -391,23 +407,53 @@ padding: 0;
   margin-top: 5% !important;
   position: relative;
   width:95% !important;
+  height: 40% !important;
 }
 
-/*
-.card-1:hover {
-   
+.animate-show {
+  line-height: 20px;
+  opacity: 1;
+  padding: 10px;
+  border: 1px solid black;
 
-}*/
+height: 80% !important;
+overflow-y: scroll !important ;
+overflow-x: hidden !important ;
+}
 
-.card-1:hover .card-1:not(:hover) {
- 
- pointer-events:none;
+.animate-show.ng-hide-add, .animate-show.ng-hide-remove {
+  /*transition: all linear 0.2s;*/
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22) !important;
+  transition: all 0.2s ease-in-out;
+}
 
-} 
+.animate-show.ng-hide {
+  line-height: 0;
+  padding: 0 10px;
+}
 
+.check-element {
+  padding: 10px;
+  border: 1px solid black;
+  
+height: 80% !important;
+overflow-y: scroll !important ;
+overflow-x: hidden !important ;
+}
 
 .questions {
 text-align: center !important;
+height: 80% !important;
+overflow-y: scroll !important ;
+overflow-x: hidden !important ;
+
+
+}
+
+.questionSection{
+ box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22) !important;
+  transition: all 0.2s ease-in-out;
+
 
 }
 .buttons{
@@ -418,16 +464,15 @@ text-align: center !important;
 .review {
   font-family: 'Open Sans', sans-serif;
   font-weight:200 !important;
-  
   margin: 0 auto !important; 
   width: 75% !important;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.2);
   color: #FCFEFF;
   background: #FCFEFF;
   overflow-x: hidden; 
-  height: 850px !important;
-  overflow-y: scroll !important ;
   position: relative;
+   height: 850px !important;
+  overflow-y: scroll !important ;
   /*background: url(../img/form.jpg) center center fixed; */
 }
 .reviewHeader {

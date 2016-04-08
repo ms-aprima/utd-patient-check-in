@@ -14,6 +14,12 @@ angular.module('App')
 		section.expand = !section.expand;
 	}
 
+	$scope.hide = function(section)
+	{
+		selectedSection = section;
+		section.expand = false;
+	}
+
 	//this is used for determining whether or not to show more than just the header
 	$scope.isClicked = function(s)
 	{

@@ -5,28 +5,28 @@
   <div ng-controller="ReviewCtrl">
  </div>
  
- <button class="button button-rounded fab" ng-click="submit()"><i class="material-icons">done_all</i>
+ <button class="button button-rounded fab" ng-click="submit()"><i class="material-icons">arrow_back</i>
 </button>
 
 
-
+<div class="cardSection">
  <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">
  <!-- Amy added ng-click to trigger $scope.expand to determine which card to expand -->
-  <span class="md-subhead" ng-click="expand(section)"><h2>{{section.SurveySectionName}}</h2></span>
+  <div class= "questionSection"> <span class="md-subhead" ng-click="expand(section)"><h2>{{section.SurveySectionName}}</h2></span></div>
    <!-- Amy added this div to determine if each section should be expanded or not -->
-
-   <div ng-show="isClicked(section)">
+   <div ng-show="isClicked(section)"class="check-element animate-show">
     <!-- Amy added this div to hide the selected answers in a section if viewHidden = true -->
     <div ng-hide="section.viewHidden">
      <md-button class="md-raised" ng-click="edit(section)">Edit</md-button>
+    
      <div class="questions" ng-repeat="question in section.Questions">
       <span>{{question.SurveyQuestionLabel}}</span><br>
       <span>{{question.SelectedAnswerText}}</span>
      </div>
-    </div>
+   </div>
+
     <!-- Amy added this div to show all answer options (in edit mode) if edit = true -->
- 
-    <div ng-show="section.edit">
+    <div ng-show="section.edit" class="check-element animate-show" ng-animate="'fade'">
       <md-button class="md-raised md-warn">Cancel</md-button>
       <md-button class="md-raised" ng-click="saveEdits(section)">Save</md-button>
       <div class="questions" ng-repeat="question in section.Questions">

@@ -1,9 +1,29 @@
 <div class="row responsive-md">
-  <div class="col"><form>
-  <h1>Please Login</h1>
-  <input placeholder="Name" ng-model="user.UserName" type="text" value="" required>
-  <input placeholder="Password" ng-model="user.Password" type="text" value="" required> 
-  <button class="login" ng-click="login()">Login</button>
-</form></div>
+  <div class="col">
+  	<form name="loginForm" ng-submit="login()" novalidate>
+  		<h1>Please Login</h1>
+  		 <div ng-class="{ 'has-error' : loginForm.name.$invalid && !loginForm.name.$pristine }">
+		  <input 	name="name"
+		  			ng-class="{ 'has-error' : loginForm.name.$invalid && !loginForm.name.$pristine }" 
+		  			placeholder="Username" 
+		  			ng-model="user.UserName" 
+		  			type="text" 
+		  			value="" required>
+		  <p ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="help-block">Your username is required.</p>
+         </div>
 
-
+         <div ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
+		  <input 	name="password" 
+		  		 	ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }" 
+		  		 	placeholder="Password" 
+		  		 	ng-model="user.Password" 
+		  		 	type="password" 
+		  		 	value="" required>
+		  <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">
+		  	Please enter a password.
+		  </p>
+		 </div>
+		  <button class="login" ng-disabled="loginForm.$invalid" ng-click="login()">Login</button>
+	</form>
+  </div>
+</div>

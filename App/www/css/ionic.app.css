@@ -27,6 +27,9 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 .popup-buttons 
 */
 
+p {
+  padding-left:3em;
+}
 
 
 html, body {
@@ -35,6 +38,10 @@ html, body {
   overflow-x: hidden;
   overflow-y: hidden; 
 
+}
+
+.has-error{
+  color:#DC143C;
 }
 
 .md-fab{
@@ -182,7 +189,10 @@ textarea {
   button:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
-
+.has-error{
+  border-bottom-color:#DC143C;
+  background: transparent;
+}
 
 ul
 {

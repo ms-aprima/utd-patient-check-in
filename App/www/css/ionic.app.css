@@ -28,9 +28,22 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 */
 
 p {
-  padding-left:3em;
+  
 }
 
+.completion-label{
+  padding-right: 1em;
+  white-space: nowrap;
+}
+
+.q-title{
+  font-size: 1.2em;
+  padding-left:.3em;
+}
+
+.warning-message{
+  padding-left:3em;
+}
 
 html, body {
   background: url(../img/blurredhospital.jpg) center center fixed;
@@ -208,7 +221,11 @@ margin: 5px 5px 5px;
 padding: 0;
 }
 
-.formstyle
+.nth-color:nth-child(odd){
+  background-color: #E9E9E9;
+}
+
+/*.formstyle
 {
   font-family: 'Open Sans', sans-serif;
   color: #555;
@@ -225,9 +242,9 @@ padding: 0;
   background-repeat: no-repeat;
   transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   resize: none;
-  overflow: hidden;
-
-}
+  overflow: auto !important;
+  height: 800px;
+}*/
 
 .incomplete-button
 {
@@ -293,6 +310,27 @@ padding: 0;
   background-repeat: no-repeat;
   resize: none;
   height: 800px;
+  overflow: auto;
+  display: inline-block;
+  width: 715px;
+  word-wrap: break-word;
+}
+.questionnaire-list-layout
+{
+  
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  font: inherit;
+  font-size: 1.5em;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: .5px;
+  margin-left: .5px;
+  border: none;
+  background: #FCFEFF;
+  background-repeat: no-repeat;
+  resize: none;
+  max-height: 850px;
   overflow: auto;
   display: inline-block;
   width: 715px;

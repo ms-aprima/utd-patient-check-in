@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>FORMS</title>
+  <title>Forms</title>
 </head>
 
 <body>
@@ -18,166 +18,132 @@
 
     <ion-content class="has-header" scroll="false">
       <div ng-controller="FormCtrl as form">
-      <!-- Amy added this button to test her API calls (adds Questionnaires to the list) -->
-        <md-content layout-padding="" ng-hide="showForm" class = "formstyle">
-          <ul>
-            <!-- <ul ng-repeat="question in QuestionnaireList"> -->
-              <li ng-repeat="quest in QuestionnaireList">
+        <md-content layout-padding="" ng-hide="showForm" class = "questionnaire-border">
+          <md-content layout-padding class = "questionnaire-list-layout">
+            <ul>
+              <li ng-repeat="quest in QuestionnaireList" class="nth-color">
                 <md-list>
                   <md-list-item class="secondary-button-padding">
-                    <p>{{quest.QuestionnaireName}}</p>
+                    <p class="q-title">{{quest.QuestionnaireName}}</p>
                     <md-button class="incomplete-button" ng-if="!quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)">Incomplete</md-button>
                     <md-button class="complete-button" ng-if="quest.IsComplete" ng-click="goToForm(quest.RelSurveyPatientId)"> Completed Form</md-button>
+                  </md-list-item>
+                  <md-list-item>
+                    <p class="completion-label">% Complete:</p>
+                    <md-progress-linear class="" md-mode="determinate" value="{{quest.PercentComplete}}"></md-progress-linear>
                   </md-list-item>
                 </md-list>
               </li>
             </ul>
-          <!-- </ul> -->
+          </md-content>
         </md-content>
 
-
-
-        <md-content ng-hide="!showForm" class = "questionnaire-border" > <!-- Amy added this so that it toggles with the other md-content -->
-        <!-- <ul ng-repeat="question in QuestionnaireList"> -->
-        <button ng-click="clear()" class = "close-button">X</button>
+        <md-content ng-hide="!showForm" class = "questionnaire-border" >
+          <button ng-click="clear()" class = "close-button">X</button>
           <li ng-repeat="quest in QuestionnaireList">
-          <ul>
-            <li ng-repeat="sects in questionnaire.Questionnaire.Sections"> <!-- <li ng-repeat="sects in quest.Sections"> -->
+            <ul><li ng-repeat="sects in questionnaire.Questionnaire.Sections">
               {{currentSectionId=sects.SurveySectionId;""}}
-            <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireId && sectionIndex == $index">
-            <div layout="row" flex>
-             <md-content layout-padding class = "questionnaire-layout">
-                
+              <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireId && sectionIndex == $index">
+                <div layout="row" flex>
+                  <md-content layout-padding class = "questionnaire-layout">
                     <md-subheader class = "questionnaire-header">{{sects.SurveySectionName}}</md-subheader>
-                    <ul>
-                      <li>
-                        <ul ng-repeat="q in sects.Questions">
-                          <p></p>
-                          <!-- extra space between questions -->
-                          <div ng-if="!q.QuestionOptional">
-                            <p> {{q.SurveyQuestionLabel}}</p>
-                            
-                            <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
-                                <md-radio-group 
-                                  ng-required="true"
-                                  layout="row" 
-                                  ng-model="q.SelectedAnswerId" 
-                                  class="md-accent">
-                                    <md-radio-button 
-                                      ng-repeat="answer in q.Answers" 
-                                      ng-value="answer.SurveyAnswerId">
-                                      {{answer.SurveyAnswerLabel}}
-                                      <div ng-if="q.SelectedAnswerId == answer.SurveyAnswerId">
-                                        {{answer.SelectedAnswer = true;""}}
-                                        {{q.SelectedAnswerText = answer.SurveyAnswerLabel;""}}
-                                      </div>
-                                      <div ng-if="q.SelectedAnswerId != answer.SurveyAnswerId">
-                                        {{answer.SelectedAnswer = false;""}}
-                                      </div>
+                        <ul><li>
+                          <ul ng-repeat="q in sects.Questions">
+                            <p></p>
+                            <!-- extra space between questions -->
+                            <div ng-if="!q.QuestionOptional">
+                              <p> {{q.SurveyQuestionLabel}}</p>
+                              
+                              <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
+                                <md-radio-group ng-required="true" layout="row" ng-model="q.SelectedAnswerId" class="md-accent">
+                                  <md-radio-button ng-repeat="answer in q.Answers" ng-value="answer.SurveyAnswerId">
+                                    {{answer.SurveyAnswerLabel}}
+                                    <div ng-if="q.SelectedAnswerId == answer.SurveyAnswerId">
+                                      {{answer.SelectedAnswer = true;""}}
+                                      {{q.SelectedAnswerText = answer.SurveyAnswerLabel;""}}
+                                    </div>
+                                    <div ng-if="q.SelectedAnswerId != answer.SurveyAnswerId">
+                                      {{answer.SelectedAnswer = false;""}}
+                                    </div>
                                     <br/>
                                   </md-radio-button>
                                 </md-radio-group>
                               </div>
 
-                            <div ng-if="q.SurveyControlTypeName == 'TEXT'">
-                              <!-- Code for Textbox goes here-->
-                              <li><ul><li><ul ng-repeat="answers in q.Answers">
-                               <md-input-container class="md-block">
-                                  <label> {{answers.SurveyAnswerLabel}}</label>
-                                  <textarea ng-model="answers.SurveyResponseAnswerText" name="q.SurveyQuestionId"></textarea>
-                                  <div ng-if="answers.SurveyResponseAnswerText.length > 0">
-                                    {{q.SelectedAnswerText = answers.SurveyResponseAnswerText;""}}
-                                    {{answers.SelectedAnswer = true;""}}
-                                  </div>
-                                </md-input-container>
-                              </ul></li></ul></li>
-                            </div>
+                              <div ng-if="q.SurveyControlTypeName == 'TEXT'">
+                                <!-- Code for Textbox goes here-->
+                                <li><ul><li><ul ng-repeat="answers in q.Answers">
+                                 <md-input-container class="md-block">
+                                    <label> {{answers.SurveyAnswerLabel}}</label>
+                                    <textarea ng-model="answers.SurveyResponseAnswerText" name="q.SurveyQuestionId"></textarea>
+                                    <div ng-if="answers.SurveyResponseAnswerText.length > 0">
+                                      {{q.SelectedAnswerText = answers.SurveyResponseAnswerText;""}}
+                                      {{answers.SelectedAnswer = true;""}}
+                                    </div>
+                                  </md-input-container>
+                                </ul></li></ul></li>
+                              </div>
 
+                              <div ng-if="q.SurveyControlTypeName == 'TIMEFRAME'">
+                                <!-- Code for timeframe goes here-->
+                                <li><ul><li>
+                                  <ul ng-repeat="answers in q.Answers">
+                                  </ul>
+                                </li></ul></li>
+                              </div>
 
-                            <div ng-if="q.SurveyControlTypeName == 'TIMEFRAME'">
-                              <!-- Code for timeframe goes here-->
-                              <li>
-                                <ul>
-                                  <li>
-                                    <ul ng-repeat="answers in q.Answers">
-
-                                    </ul>
-                                  </li>
-                                </ul>
-                              </li>
-                            </div>
-
-
-                            <div ng-if="q.SurveyControlTypeName == 'CHECKBOX'">
-                              <!-- Code for checkbox goes here-->
+                              <div ng-if="q.SurveyControlTypeName == 'CHECKBOX'">
+                                <!-- Code for checkbox goes here-->
                                 <div layout="row" layout-wrap layout-padding flex>
                                   <div flex="50" ng-repeat="answers in q.Answers">
                                     <md-checkbox ng-model="answers.SelectedAnswer">
                                       {{answers.SurveyAnswerLabel}}
                                     </md-checkbox>
                                   </div>
-                                  </div>
+                                </div>
                               </div>
 
                               <div ng-if="q.SurveyControlTypeName == 'NUMERIC'">
-                                  <md-radio-group 
-                                  ng-required="true"
-                                  layout="row" 
-                                  ng-model="q.SelectedAnswerId" 
-                                  class="md-accent">
-                                    <md-radio-button 
-                                      ng-repeat="answer in q.Answers" 
-                                      ng-value="answer.SurveyAnswerId"
-                                      ng-style="{'display':'inline'}">
-                                      {{answer.SurveyAnswerLabel}}
-                                      <div ng-if="q.SelectedAnswerId == answer.SurveyAnswerId">
-                                        {{answer.SelectedAnswer = true;""}}
-                                        {{q.SelectedAnswerText = answer.SurveyAnswerLabel;""}}
-                                      </div>
-                                      <div ng-if="q.SelectedAnswerId != answer.SurveyAnswerId">
-                                        {{answer.SelectedAnswer = false;""}}
-                                      </div>
+                                <md-radio-group  ng-required="true" layout="row" ng-model="q.SelectedAnswerId" class="md-accent">
+                                  <md-radio-button  ng-repeat="answer in q.Answers" 
+                                                    ng-value="answer.SurveyAnswerId" 
+                                                    ng-style="{'display':'inline'}">
+                                    {{answer.SurveyAnswerLabel}}
+                                    <div ng-if="q.SelectedAnswerId == answer.SurveyAnswerId">
+                                      {{answer.SelectedAnswer = true;""}}
+                                      {{q.SelectedAnswerText = answer.SurveyAnswerLabel;""}}
+                                    </div>
+                                    <div ng-if="q.SelectedAnswerId != answer.SurveyAnswerId">
+                                      {{answer.SelectedAnswer = false;""}}
+                                    </div>
                                     <br/>
                                   </md-radio-button>
                                 </md-radio-group>
                               </div>
-                              
-                              </div>
-
-                        </ul>
-                      </li>
-                    </ul>
-                    
-                    
-                    <div layout="row" layout-align="end end">
-                      <div ng-if = "$index != 0">
-                        <md-button class="nav-button" ng-click="goToPrevious()">Previous Page</md-button>
-                      </div>
-                      <div ng-if = "getLen()-1 != $index">
-                        <md-button class="nav-button" ng-click="goToNext()">Next Page</md-button>
-                      </div>
-                      <div ng-if = "getLen()-1 == $index">
-                        <md-button class="review-button" ng-click="goToReview()">Review Answers</md-button>
-                      </div>
-                    </div>
-
-                   </md-content>
-               </div>
+                            </div>
+                          </ul>
+                        </li></ul>
+                        
+                        <div layout="row" layout-align="end end">
+                          <div ng-if = "$index != 0">
+                            <md-button class="nav-button" ng-click="goToPrevious()">Previous Page</md-button>
+                          </div>
+                          <div ng-if = "getLen()-1 != $index">
+                            <md-button class="nav-button" ng-click="goToNext()">Next Page</md-button>
+                          </div>
+                          <div ng-if = "getLen()-1 == $index">
+                            <md-button class="review-button" ng-click="goToReview()">Review Answers</md-button>
+                          </div>
+                        </div>
+                  </md-content>
+                </div>
               </div>
-              </li>
-              </ul>
+            </li></ul>
           </li>
-        <!-- </ul> -->
-        
-        
-      </md-content>
+        </md-content>
       </div>
-      
-
     </ion-content>
   </ion-view>
-
-
 </body>
 
 </html>

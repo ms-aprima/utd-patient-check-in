@@ -2,7 +2,6 @@ angular.module('App', ['ionic','ngMaterial'])
 
 .config(function($stateProvider, $urlRouterProvider,$mdThemingProvider) {
 
-
   $stateProvider
   .state('outside', {
     url: '/outside',
@@ -32,6 +31,14 @@ angular.module('App', ['ionic','ngMaterial'])
   })
 
   $urlRouterProvider.otherwise('/outside/login');
+
+  $mdThemingProvider.theme('default')
+    .primaryPalette('cyan', {
+      'default': '400', // by default use shade 400 from the pink palette for primary intentions
+      'hue-1': '900', // use shade 100 for the <code>md-hue-1</code> class
+      'hue-2': '700', // use shade 600 for the <code>md-hue-2</code> class
+      'hue-3': 'A100' // use shade A100 for the <code>md-hue-3</code> class
+    })
 })
 
 .run(function ($rootScope, $state, AuthService, AUTH_EVENTS) {

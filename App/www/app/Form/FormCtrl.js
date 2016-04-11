@@ -13,6 +13,7 @@
     $scope.sectionIndex = 0;
     $scope.questionnaire;
     $scope.answersMap = {};
+    $scope.qLoaded = false;
 
     //Kayla's code starts here
     //This method saves the questionnaireId of the questionnaire the user click on
@@ -27,6 +28,7 @@
     var getQuestionnaire = function(qid) {
         FormService.getQuestionnaire(qid).then(function(result) {
                 $scope.questionnaire = result.data;
+                $scope.qLoaded = true;
         });
     };
 
@@ -53,6 +55,7 @@
     };
 
     $scope.clear = function() {
+        $scope.qLoaded = false;
         $scope.showForm = false;
         $scope.questionnaire = null; 
     };

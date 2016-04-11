@@ -260,7 +260,7 @@ padding: 0;
 
 .incomplete-button
 {
-  background-color: #DC143C;
+  background-color: #ee3900;
   font-family: 'Open Sans', sans-serif;
   color: white;
   overflow: hidden;
@@ -322,7 +322,8 @@ padding: 0;
   background-repeat: no-repeat;
   resize: none;
   height: 800px;
-  overflow: auto;
+  overflow-x:hidden;
+  overflow-y: auto;
   display: inline-block;
   width: 715px;
   word-wrap: break-word;
@@ -364,6 +365,8 @@ padding: 0;
   transition: background 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
   resize: none;
   overflow: hidden;
+  margin-left: 0px !important;
+  padding-top: 0px !important;
 }
 
 .review-button

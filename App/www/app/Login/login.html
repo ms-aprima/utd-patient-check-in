@@ -9,7 +9,7 @@
 		  			ng-model="user.UserName" 
 		  			type="text" 
 		  			value="" required>
-		  <p ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="help-block">Your username is required.</p>
+		  <p ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="help-block warning-message">Your username is required.</p>
          </div>
 
          <div ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">

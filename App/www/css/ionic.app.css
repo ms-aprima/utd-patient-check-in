@@ -53,6 +53,18 @@ html, body {
 
 }
 
+.position-bottom-right{
+  position: fixed;
+  right:    5.1%;
+  bottom:   .7em;
+  background-color: white;
+  width: 90.2%;
+}
+
+.radio-height{
+  height: 1em;
+}
+
 .has-error{
   color:#DC143C;
 }

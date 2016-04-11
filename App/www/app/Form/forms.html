@@ -30,7 +30,7 @@
                   </md-list-item>
                   <md-list-item>
                     <p class="completion-label">% Complete:</p>
-                    <md-progress-linear class="" md-mode="determinate" value="{{quest.PercentComplete}}"></md-progress-linear>
+                    <md-progress-linear class="md-primary md-hue-1" md-mode="determinate" value="{{quest.PercentComplete}}"></md-progress-linear>
                   </md-list-item>
                 </md-list>
               </li>
@@ -39,23 +39,24 @@
         </md-content>
 
         <md-content ng-hide="!showForm" class = "questionnaire-border" >
-          <button ng-click="clear()" class = "close-button">X</button>
+          <md-progress-circular class="md-primary md-hue-2" ng-hide="qLoaded" md-mode="indeterminate" md-diameter="715">Loading...</md-progress-circular>
+          <button ng-show="qLoaded" ng-click="clear()" class = "close-button">X</button>
           <li ng-repeat="quest in QuestionnaireList">
             <ul><li ng-repeat="sects in questionnaire.Questionnaire.Sections">
               {{currentSectionId=sects.SurveySectionId;""}}
               <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireId && sectionIndex == $index">
                 <div layout="row" flex>
                   <md-content layout-padding class = "questionnaire-layout">
-                    <md-subheader class = "questionnaire-header">{{sects.SurveySectionName}}</md-subheader>
+                    <md-subheader class="questionnaire-header">{{sects.SurveySectionName}}</md-subheader>
                         <ul><li>
                           <ul ng-repeat="q in sects.Questions">
                             <p></p>
                             <!-- extra space between questions -->
                             <div ng-if="!q.QuestionOptional">
-                              <p> {{q.SurveyQuestionLabel}}</p>
+                              <p><b> {{q.SurveyQuestionLabel}}</b></p>
                               
                               <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
-                                <md-radio-group ng-required="true" layout="row" ng-model="q.SelectedAnswerId" class="md-accent">
+                                <md-radio-group ng-required="true" layout="row" layout-align="start center" ng-model="q.SelectedAnswerId" class="md-accent" layout-wrap>
                                   <md-radio-button ng-repeat="answer in q.Answers" ng-value="answer.SurveyAnswerId">
                                     {{answer.SurveyAnswerLabel}}
                                     <div ng-if="q.SelectedAnswerId == answer.SurveyAnswerId">
@@ -123,8 +124,7 @@
                             </div>
                           </ul>
                         </li></ul>
-                        
-                        <div layout="row" layout-align="end end">
+                        <div class="position-bottom-right" layout="row" layout-align="end end">
                           <div ng-if = "$index != 0">
                             <md-button class="nav-button" ng-click="goToPrevious()">Previous Page</md-button>
                           </div>

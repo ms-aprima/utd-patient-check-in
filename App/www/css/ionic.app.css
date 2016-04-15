@@ -61,12 +61,16 @@ html, body {
   position: fixed;
   right:    5.1%;
   bottom:   .7em;
-  background-color: white;
+  background-color: #FCFEFF;
   width: 90.2%;
 }
 
 .radio-height{
   height: 1em;
+}
+
+.message-error{
+  margin: 28px;
 }
 
 .has-error{
@@ -325,7 +329,7 @@ padding: 0;
   background: #FCFEFF;
   background-repeat: no-repeat;
   resize: none;
-  height: 800px;
+  height: 750px;
   overflow-x:hidden;
   overflow-y: auto;
   display: inline-block;
@@ -507,8 +511,8 @@ overflow-x: hidden !important ;
 }
 
 .questions {
-text-align: center !important;
-height: 50% !important;
+text-align: left !important;
+min-height: 23% !important;
 overflow-y: hidden !important ;
 overflow-x: hidden !important ;
 padding-left: 4% !important;

@@ -36,6 +36,10 @@ p {
   white-space: nowrap;
 }
 
+.progress-bar-format{
+  margin-left:6em;
+}
+
 .q-title{
   font-size: 1.2em;
   padding-left:.3em;
@@ -497,14 +501,14 @@ overflow-x: hidden !important ;
 .check-element {
   padding: 10px;
   border: 1px solid black;
-  height: 30% !important;
+  height: 400px !important;
   overflow-y: scroll !important ;
   overflow-x: hidden !important ;
 }
 
 .questions {
 text-align: center !important;
-height: 30% !important;
+height: 50% !important;
 overflow-y: hidden !important ;
 overflow-x: hidden !important ;
 padding-left: 4% !important;

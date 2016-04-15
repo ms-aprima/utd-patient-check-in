@@ -11,8 +11,8 @@
 <div class="cardSection">
  <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">
  <!-- Amy added ng-click to trigger $scope.expand to determine which card to expand -->
-  <div class= "questionSection"> <span class="md-subhead" ng-click="expand(section)"><h2>{{section.SurveySectionName}}</h2></span></div>
-   <!-- Amy added this div to determine if each section should be expanded or not class="check-element animate-show"-->
+  <div class= "questionSection"> <span class="md-subhead" ng-click="expand(section)" class="check-element animate-show"><h2>{{section.SurveySectionName}}</h2></span></div>
+   <!-- Amy added this div to determine if each section should be expanded or not -->
    <div ng-show="isClicked(section)">
     <!-- Amy added this div to hide the selected answers in a section if viewHidden = true -->
     <div ng-hide="section.viewHidden">

@@ -523,9 +523,17 @@ padding-left: 4% !important;
   transition: all 0.2s ease-in-out;
   overflow-y: scroll !important ;
 overflow-x: hidden !important ;
-
-
 }
+
+.review-question-label{
+  font-weight: bold;
+  font-size: large;
+}
+
+.review-answer{
+  margin-left: 1em;
+}
+
 .buttons{
   margin: auto !important;
 }

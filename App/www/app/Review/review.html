@@ -7,6 +7,7 @@
  
  <button class="button button-rounded fab" ng-click="submit()"><i class="material-icons">arrow_back</i>
 </button>
+ <button class="submit">Submit</button>
 
 
 <div class="cardSection">
@@ -19,7 +20,7 @@
     <div ng-hide="section.viewHidden">
      <md-button class="md-raised" ng-click="edit(section)">Edit</md-button>
     
-     <div class="questions" ng-repeat="question in section.Questions">
+     <div ng-if="question.SurveyControlTypeName != 'TIMEFRAME'" class="questions" ng-repeat="question in section.Questions">
       <span>{{question.SurveyQuestionLabel}}</span><br>
       <span>{{question.SelectedAnswerText}}</span>
      </div>
@@ -29,9 +30,84 @@
     <div ng-show="section.edit" class="check-element animate-show" ng-animate="'fade'">
       <md-button class="md-raised md-warn">Cancel</md-button>
       <md-button class="md-raised" ng-click="saveEdits(section)">Save</md-button>
+
+
       <div class="questions" ng-repeat="question in section.Questions">
-        <span>{{question.SurveyQuestionLabel}}</span><br>
-        <div class="buttons">
+        
+<p></p>
+          <!-- extra space between questions -->
+          <div ng-if="!question.QuestionOptional">
+            <p><b> {{question.SurveyQuestionLabel}}</b></p>
+            
+            <div ng-if="question.SurveyControlTypeName == 'RADIOBUTTON'">
+              <md-radio-group ng-required="true" layout="row" layout-align="start center" ng-model="question.SelectedAnswerId" class="md-accent" layout-wrap>
+                <md-radio-button ng-repeat="answer in question.Answers" ng-value="answer.SurveyAnswerId">
+                  {{answer.SurveyAnswerLabel}}
+                  <div ng-if="question.SelectedAnswerId == answer.SurveyAnswerId">
+                    {{answer.SelectedAnswer = true;""}}
+                    {{question.SelectedAnswerText = answer.SurveyAnswerLabel;""}}
+                  </div>
+                  <div ng-if="question.SelectedAnswerId != answer.SurveyAnswerId">
+                    {{answer.SelectedAnswer = false;""}}
+                  </div>
+                  <br/>
+                </md-radio-button>
+              </md-radio-group>
+            </div>
+
+            <div ng-if="question.SurveyControlTypeName == 'TEXT'">
+              <!-- Code for Textbox goes here-->
+              <li><ul><li><ul ng-repeat="answers in question.Answers">
+               <md-input-container class="md-block">
+                  <label> {{answers.SurveyAnswerLabel}}</label>
+                  <textarea ng-model="answers.SurveyResponseAnswerText" name="question.SurveyQuestionId"></textarea>
+                  <div ng-if="answers.SurveyResponseAnswerText.length > 0">
+                    {{question.SelectedAnswerText = answers.SurveyResponseAnswerText;""}}
+                    {{answers.SelectedAnswer = true;""}}
+                  </div>
+                </md-input-container>
+              </ul></li></ul></li>
+            </div>
+
+            <div ng-if="question.SurveyControlTypeName == 'TIMEFRAME'">
+              <!-- Code for timeframe goes here-->
+              <li><ul><li>
+                <ul ng-repeat="answers in question.Answers">
+                </ul>
+              </li></ul></li>
+            </div>
+
+            <div  ng-if="question.SurveyControlTypeName == 'CHECKBOX'">
+              <!-- Code for checkbox goes here-->
+              <div layout="row" layout-wrap layout-padding class="checkbox">
+                <div ng-repeat="answers in question.Answers" >
+                  <md-checkbox ng-model="answers.SelectedAnswer">
+                    {{answers.SurveyAnswerLabel}}
+                  </md-checkbox>
+                </div>
+              </div>
+            </div>
+
+            <div ng-if="question.SurveyControlTypeName == 'NUMERIC'">
+              <md-radio-group  ng-required="true" layout="row" ng-model="question.SelectedAnswerId" class="md-accent">
+                <md-radio-button  ng-repeat="answer in question.Answers" 
+                                  ng-value="answer.SurveyAnswerId" 
+                                  ng-style="{'display':'inline'}">
+                  {{answer.SurveyAnswerLabel}}
+                  <div ng-if="question.SelectedAnswerId == answer.SurveyAnswerId">
+                    {{answer.SelectedAnswer = true;""}}
+                    {{question.SelectedAnswerText = answer.SurveyAnswerLabel;""}}
+                  </div>
+                  <div ng-if="question.SelectedAnswerId != answer.SurveyAnswerId">
+                    {{answer.SelectedAnswer = false;""}}
+                  </div>
+                  <br/>
+                </md-radio-button>
+              </md-radio-group>
+            </div>
+
+
+     <!--   <div class="buttons">
        <md-radio-group 
           ng-required="true"
           layout="row"> 
@@ -42,8 +118,12 @@
             <br/>
           </md-radio-button>
         </md-radio-group>
-      </div>
+      </div> -->
      </div>
+
+
+
+
     </div>
   </div>
 

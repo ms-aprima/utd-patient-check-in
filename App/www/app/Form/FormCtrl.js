@@ -58,6 +58,7 @@
         $scope.qLoaded = false;
         $scope.showForm = false;
         $scope.questionnaire = null; 
+        $scope.sectionIndex = 0;
     };
 
     var reviewForm = function() {

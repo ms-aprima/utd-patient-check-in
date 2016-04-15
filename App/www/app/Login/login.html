@@ -2,14 +2,17 @@
 	<div class="col">
 		<form name="loginForm" ng-submit="login()" novalidate>
 			<h1>Please Login</h1>
-  			<div ng-class="{ 'md-warn' : loginForm.name.$invalid && !loginForm.name.$pristine }">
+  			<div ng-class="{ 'has-error' : loginForm.name.$invalid && !loginForm.name.$pristine }">
 				<input 	name="name"
 		  				ng-class="{ 'has-error' : loginForm.name.$invalid && !loginForm.name.$pristine }" 
 		  				placeholder="Username" 
 		  				ng-model="user.UserName" 
 		  				type="text" 
 		  				value="" required>
-				<p ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" class="help-block warning-message">Your username is required.</p>
+				<p 	ng-show="loginForm.name.$invalid && !loginForm.name.$pristine" 
+					class="message-error">
+					Your username is required.
+				</p>
 			</div>
 
 			<div ng-class="{ 'has-error' : loginForm.password.$invalid && !loginForm.password.$pristine }">
@@ -19,7 +22,7 @@
 		  		 		ng-model="user.Password" 
 		  		 		type="password" 
 		  		 		value="" required>
-				<p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">
+				<p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="message-error">
 					Please enter a password.
 				</p>
 			</div>

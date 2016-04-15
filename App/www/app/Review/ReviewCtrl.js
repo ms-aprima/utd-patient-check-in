@@ -1,11 +1,13 @@
 angular.module('App')
  
-.controller('ReviewCtrl', function($scope, FormService, ReviewService, $http, $state) {
+.controller('ReviewCtrl', function($scope, FormService, ReviewService, $http, $state, $mdToast) {
 	$scope.sections = [];
 	$scope.questions = [];
 	$scope.answers = [];
 	$scope.questionnaire = FormService.questionnaire();
 	var selectedSection = '';
+	$scope.saving = false;
+	$scope.saved = false;
 
 	//when header is clicked, call this function to store the section that is stored, and then toggle expand bool value
 	$scope.expand = function(section)
@@ -48,17 +50,23 @@ angular.module('App')
 		section.viewHidden = false;
 	}
 
+	$scope.backToList = function()
+	{
+		$state.go('inside.form');
+	}
+
 	$scope.submit = function() {
-		console.log("submit in reviewctrl");
 		submitForm();
 	}
 
 	var submitForm = function() {
-		// ReviewService.submitQuestionnaire($scope.questionnaire).then(function(result) {
+		$scope.saving = true;
+		 ReviewService.submitQuestionnaire($scope.questionnaire).then(function(result) {
 		    // TODO: reroute to form list
-		    console.log("submitted");
+		    $scope.saving = false;
+		    $mdToast.show($mdToast.simple().textContent('Thank you! Your Questionnaire was submitted.'));
 		    $state.go('inside.form');
-		// });
+		 });
 	};
 
 });

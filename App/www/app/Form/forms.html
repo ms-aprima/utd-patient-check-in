@@ -47,6 +47,7 @@
             <ul><li ng-repeat="sects in questionnaire.Questionnaire.Sections">
               {{currentSectionId=sects.SurveySectionId;""}}
               <div ng-show="showForm && quest.RelSurveyPatientId == questionnaireId && sectionIndex == $index">
+
                 <div layout="row" flex>
                   <md-content layout-padding class = "questionnaire-layout">
                     <md-subheader class="questionnaire-header">{{sects.SurveySectionName}}</md-subheader>
@@ -54,7 +55,8 @@
                           <ul ng-repeat="q in sects.Questions">
                             <p></p>
                             <!-- extra space between questions -->
-                            <div ng-if="!q.QuestionOptional">
+                            <div ng-if="!q.QuestionOptional && q.SurveyControlTypeName != 'TIMEFRAME'">
+
                               <p><b> {{q.SurveyQuestionLabel}}</b></p>
                               
                               <div ng-if="q.SurveyControlTypeName == 'RADIOBUTTON'">
@@ -87,13 +89,13 @@
                                 </ul></li></ul></li>
                               </div>
 
+                              <!-- Timeframe code would go here
                               <div ng-if="q.SurveyControlTypeName == 'TIMEFRAME'">
-                                <!-- Code for timeframe goes here-->
                                 <li><ul><li>
                                   <ul ng-repeat="answers in q.Answers">
                                   </ul>
                                 </li></ul></li>
-                              </div>
+                              </div> -->
 
                               <div ng-if="q.SurveyControlTypeName == 'CHECKBOX'">
                                 <!-- Code for checkbox goes here-->

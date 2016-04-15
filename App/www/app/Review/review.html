@@ -1,5 +1,3 @@
-
-  <div class= "wrap">
  
   <div class="reviewHeader">Please review</div>
   <div ng-controller="ReviewCtrl">
@@ -14,8 +12,8 @@
  <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">
  <!-- Amy added ng-click to trigger $scope.expand to determine which card to expand -->
   <div class= "questionSection"> <span class="md-subhead" ng-click="expand(section)"><h2>{{section.SurveySectionName}}</h2></span></div>
-   <!-- Amy added this div to determine if each section should be expanded or not -->
-   <div ng-show="isClicked(section)"class="check-element animate-show">
+   <!-- Amy added this div to determine if each section should be expanded or not class="check-element animate-show"-->
+   <div ng-show="isClicked(section)">
     <!-- Amy added this div to hide the selected answers in a section if viewHidden = true -->
     <div ng-hide="section.viewHidden">
      <md-button class="md-raised" ng-click="edit(section)">Edit</md-button>
@@ -26,7 +24,7 @@
      </div>
    </div>
 
-    <!-- Amy added this div to show all answer options (in edit mode) if edit = true -->
+    <!-- Amy added this div to show all answer options (in edit mode) if edit = true  ng-animate="'fade' -->
     <div ng-show="section.edit" class="check-element animate-show" ng-animate="'fade'">
       <md-button class="md-raised md-warn">Cancel</md-button>
       <md-button class="md-raised" ng-click="saveEdits(section)">Save</md-button>
@@ -106,29 +104,9 @@
               </md-radio-group>
             </div>
 
-
-     <!--   <div class="buttons">
-       <md-radio-group 
-          ng-required="true"
-          layout="row"> 
-            <md-radio-button 
-              ng-repeat="answer in question.Answers" 
-              ng-value="answer.SurveyAnswerId">
-              {{answer.SurveyAnswerLabel}}
-            <br/>
-          </md-radio-button>
-        </md-radio-group>
-      </div> -->
      </div>
-
-
-
-
     </div>
   </div>
-
-
-
    </div>
   </md-card>
 </div>

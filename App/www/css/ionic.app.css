@@ -57,12 +57,31 @@ html, body {
 
 }
 
+.no-scroll{
+  overflow: hidden !important;
+}
+
+.answer-questions-text{
+  font-size: small;
+  position: fixed;
+  bottom: 3%;
+  left: 6%;
+}
+
+.question-text{
+  width: 10em;
+}
+
+.answer-required{
+  color: red;
+}
+
 .position-bottom-right{
   position: fixed;
   right:    5.1%;
   bottom:   .7em;
   background-color: #FCFEFF;
-  width: 90.2%;
+  width: 90.3%;
 }
 
 .radio-height{
@@ -329,11 +348,11 @@ padding: 0;
   background: #FCFEFF;
   background-repeat: no-repeat;
   resize: none;
-  height: 750px;
-  overflow-x:hidden;
-  overflow-y: auto;
+  height: 690px;
+  overflow-x:hidden !important;
+  overflow-y: auto !important;
   display: inline-block;
-  width: 715px;
+  width: 680px;
   word-wrap: break-word;
 }
 .questionnaire-list-layout

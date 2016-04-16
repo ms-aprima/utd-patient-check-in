@@ -86,13 +86,13 @@
                             <div ng-if="q.SurveyControlTypeName == 'TEXT'">
                               <div>
                                 <span class="question-text"><b> {{q.SurveyQuestionLabel}}</b></span>
-                                <span ng-show="questionnaireForm['t_' + $index].$invalid" class="answer-required">*</span>
+                                <span ng-show="questionnaireForm[q.SurveyQuestionId].$invalid" class="answer-required">*</span>
                               </div>
                               <!-- Code for Textbox goes here-->
                               <li><ul><li><ul ng-repeat="answers in q.Answers">
                                <md-input-container class="md-block">
                                   <label> {{answers.SurveyAnswerLabel}}</label>
-                                  <textarea name="t_{{$index}}" ng-model="answers.SurveyResponseAnswerText" name="q.SurveyQuestionId" required></textarea>
+                                  <textarea ng-model="answers.SurveyResponseAnswerText" name="{{q.SurveyQuestionId}}" required></textarea>
                                   <div ng-if="answers.SurveyResponseAnswerText.length > 0">
                                     {{q.SelectedAnswerText = answers.SurveyResponseAnswerText;""}}
                                     {{answers.SelectedAnswer = true;""}}

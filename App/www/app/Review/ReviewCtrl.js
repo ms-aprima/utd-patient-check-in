@@ -7,7 +7,6 @@ angular.module('App')
 	$scope.questionnaire = FormService.questionnaire();
 	var selectedSection = '';
 	$scope.saving = false;
-	$scope.saved = false;
 	var oldQuestionnaire = '';
 
 	//when header is clicked, call this function to store the section that is stored, and then toggle expand bool value
@@ -74,7 +73,6 @@ angular.module('App')
 		$scope.saving = true;
 		 ReviewService.submitQuestionnaire($scope.questionnaire).then(function(result) {
 		    // TODO: reroute to form list
-		    $scope.saving = false;
 		    $mdToast.show($mdToast.simple().textContent('Thank you! Your Questionnaire was submitted.'));
 		    $state.go('inside.form');
 		 });

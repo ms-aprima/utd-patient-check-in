@@ -36,7 +36,7 @@
 
     <!-- Amy added this div to show all answer options (in edit mode) if edit = true  ng-animate="'fade' -->
     <div ng-show="section.edit" class="check-element animate-show" ng-animate="'fade'">
-      <md-button class="md-raised md-warn">Cancel</md-button>
+      <md-button class="md-raised md-warn" ng-click="cancelEdit(section)">Cancel</md-button>
       <md-button class="md-raised" ng-click="saveEdits(section)">Save</md-button>
 
       <div class="questions" ng-repeat="question in section.Questions">

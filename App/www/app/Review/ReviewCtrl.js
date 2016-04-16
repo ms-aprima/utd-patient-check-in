@@ -8,6 +8,7 @@ angular.module('App')
 	var selectedSection = '';
 	$scope.saving = false;
 	$scope.saved = false;
+	var oldQuestionnaire = '';
 
 	//when header is clicked, call this function to store the section that is stored, and then toggle expand bool value
 	$scope.expand = function(section)
@@ -39,6 +40,8 @@ angular.module('App')
 
 	$scope.edit = function(section)
 	{
+		//save initial value of questionnaire in case edits are canceled
+		oldQuestionnaire = JSON.parse(JSON.stringify($scope.questionnaire));
 		section.viewHidden = true;
 		section.edit = true;
 		//need to hide section.show and show section.edit
@@ -46,6 +49,14 @@ angular.module('App')
 
 	$scope.saveEdits = function(section)
 	{
+		oldQuestionnaire = '';
+		section.edit = false;
+		section.viewHidden = false;
+	}
+
+	$scope.cancelEdit = function(section)
+	{
+		$scope.questionnaire = oldQuestionnaire;
 		section.edit = false;
 		section.viewHidden = false;
 	}

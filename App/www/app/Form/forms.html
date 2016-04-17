@@ -148,6 +148,7 @@
                           </div>
                         </ul>
                       </li></ul>
+                    </form>
                     <div class="position-bottom-right" layout="row" layout-align="end end">
                       <span ng-show="questionnaireForm.$invalid" class="answer-required answer-questions-text">Please answer all questions marked with *</span>
                       <div ng-if = "$index != 0">
@@ -159,7 +160,6 @@
                       <div ng-if = "getLen()-1 == $index">
                         <md-button class="review-button" ng-click="goToReview()" ng-disabled="questionnaireForm.$invalid">Review Answers</md-button>
                       </div>
-                    </form>
                     </div>
                   </md-content>
                 </div>

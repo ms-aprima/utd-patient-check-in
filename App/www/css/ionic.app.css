@@ -321,7 +321,7 @@ padding: 0;
   color: #555;
   font: inherit;
   font-size: 0.8em;
-  margin: 50px 25px 10px;
+  margin: 30px 25px 10px;
   width: 715px;
   display: block;
   border: none;
@@ -373,7 +373,7 @@ padding: 0;
   max-height: 850px;
   overflow: auto;
   display: inline-block;
-  width: 715px;
+  width: 680px;
   word-wrap: break-word;
 }
 .questionnaire-header

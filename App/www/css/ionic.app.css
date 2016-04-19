@@ -608,7 +608,9 @@ overflow-x: hidden !important ;
 }
   
  
-
+.outer{
+  height:90%;
+  overflow-y:scroll !important;
 }
 
 .section.edit{

@@ -6,7 +6,7 @@ angular.module('App')
     $state.go('outside.login');
     var alertPopup = $ionicPopup.alert({
       title: 'Login Failed!',
-      template: 'Sorry, incorrect credentials.Try again'
+      template: 'Sorry, incorrect credentials.Try again.'
     });
   });
 });

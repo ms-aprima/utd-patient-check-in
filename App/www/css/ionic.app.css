@@ -32,7 +32,6 @@ p {
 }
 
 .completion-label{
-  padding-right: 1em;
   white-space: nowrap;
 }
 
@@ -93,7 +92,7 @@ html, body {
 }
 
 .has-error{
-  color:#DC143C;
+  color:#ee3900;
 }
 
 .md-fab{
@@ -242,7 +241,7 @@ textarea {
     transform: translateY(-2px);
     box-shadow: 0 5px 6px 0 rgba(0, 0, 0, 0.2); }
 .has-error{
-  border-bottom-color:#DC143C;
+  border-bottom-color:#ee3900;
   background: transparent;
 }
 

@@ -79,7 +79,7 @@ html, body {
 .position-bottom-right{
   position: fixed;
   right:    5.1%;
-  bottom:   .7em;
+  bottom:   1em;
   background-color: #FCFEFF;
   width: 90.3%;
 }

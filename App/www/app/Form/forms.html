@@ -26,8 +26,8 @@
                 <div ng-click="goToForm(quest.RelSurveyPatientId)">
                   <md-list-item class="secondary-button-padding" >
                     <p class="q-title">{{quest.QuestionnaireName}}</p>
-                    <md-button class="incomplete-button" ng-if="!quest.IsComplete" >Incomplete</md-button>
-                    <md-button class="complete-button" ng-if="quest.IsComplete" > Completed Form</md-button>
+                    <md-button class="incomplete-button" ng-if="quest.PercentComplete != 100" >Incomplete</md-button>
+                    <md-button class="complete-button" ng-if="quest.PercentComplete == 100" > Pending</md-button>
                   </md-list-item>
                   <md-list-item >
                     <p class="completion-label">% Complete:</p>

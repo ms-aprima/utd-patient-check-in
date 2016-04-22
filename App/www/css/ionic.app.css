@@ -306,12 +306,14 @@ padding: 0;
 
 .close-button
 {
-  background-color: #29BECC;
+  background-color: #ee3900;
   font-family: 'Open Sans', sans-serif;
   color: white;
+  height: 36px;
   width: 100px; 
-  font-size: 1em;
-  margin: 20px 605px 0px;
+  font-size: 1.5em;
+  border: none;
+  margin: 20px 605px -20px;
 }
 
 .questionnaire-border

@@ -73,7 +73,7 @@ angular.module('App')
 		$scope.saving = true;
 		 ReviewService.submitQuestionnaire($scope.questionnaire).then(function(result) {
 		    // TODO: reroute to form list
-		    $mdToast.show($mdToast.simple().textContent('Thank you! Your Questionnaire was submitted.'));
+		    $mdToast.show($mdToast.simple().textContent('Thank you! Your Questionnaire was submitted.').theme('success-toast'));
 		    $state.go('inside.form');
 		 });
 	};

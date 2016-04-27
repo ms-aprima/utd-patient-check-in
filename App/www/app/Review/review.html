@@ -13,13 +13,10 @@
         arrow_back
       </i>
     </button>
-    <button class="submit" ng-click="submit()">
-      Submit
-    </button>
-      <button class="submit2" ng-click="submit()">
-      <i class="material-icons">check</i>
-    </button>
 
+     <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="submit()">Submit
+    <i class="material-icons right">send</i>
+  </button>
 
     <div class="cardSection">
      <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">
@@ -128,5 +125,10 @@
   </div>
 
 
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 

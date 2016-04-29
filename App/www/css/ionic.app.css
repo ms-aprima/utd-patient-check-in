@@ -72,7 +72,7 @@ html, body {
 }
 
 .answer-required{
-  color: red;
+  color: #cc3729 !important;
 }
 
 .position-bottom-right{
@@ -286,7 +286,7 @@ padding: 0;
 
 .md-button.incomplete-button
 {
-  background-color: #ee3900 !important;;
+  background-color: #cc3729 !important;
   font-family: 'Open Sans', sans-serif;
   color: white;
   overflow: hidden;
@@ -306,7 +306,7 @@ padding: 0;
 
 .close-button
 {
-  background-color: #ee3900;
+  background-color: #cc3729 !important;
   font-family: 'Open Sans', sans-serif;
   color: white;
   height: 36px;
@@ -628,6 +628,10 @@ body > ui-view > ui-view > div.outer > button.btn.waves-effect.waves-light.waves
   padding-left: 5% !important;
 }
 
+.md-button.md-raised.md-warn.cancel-button
+{
+  background-color: #cc3729 !important;
+}
 
 md-toast.md-success-toast-theme .md-toast-content {
     background-color: green;

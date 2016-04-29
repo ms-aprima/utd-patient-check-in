@@ -1,5 +1,6 @@
 
-<div class="reviewHeader">Please review</div>
+
+  <div class="form-title1">Please review</div>
   <div ng-controller="ReviewCtrl">
   </div>
 
@@ -21,7 +22,7 @@
     <div class="cardSection">
      <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">
      <!-- Amy added ng-click to trigger $scope.expand to determine which card to expand -->
-      <div class= "questionSection"> <span class="md-subhead" ng-click="expand(section)" class="check-element animate-show"><h2>{{section.SurveySectionName}}</h2></span></div>
+      <div class= "questionSection"> <span class="md-subhead" ng-click="expand(section)" class="check-element animate-show"><h2 class="heading">{{section.SurveySectionName}}</h2></span></div>
        <!-- Amy added this div to determine if each section should be expanded or not -->
        <div ng-show="isClicked(section)">
         <!-- Amy added this div to hide the selected answers in a section if viewHidden = true -->
@@ -123,6 +124,7 @@
       </md-card>
     </div>
   </div>
+
 
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">

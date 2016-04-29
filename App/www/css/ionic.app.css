@@ -444,6 +444,7 @@ padding: 0;
   line-height: 37.5px;
   font-size: 3em;
   margin-bottom: -63px;
+  margin-top: 32.160px !important
 
 }
 
@@ -467,8 +468,8 @@ padding: 0;
 
 button.button.button-rounded.fab {
     position: absolute !important;
-    top: 7% !important;
-    left: 5% !important;
+    top: 5% !important;
+    left: 12% !important;
     margin: 0% !important;
     z-index: 200 !important;
     background-color: red;
@@ -587,14 +588,17 @@ overflow-x: hidden !important ;
   background: #29BECC;
 }
 
+.heading {
 
+  font-size:1.56rem !important; 
+}
  
 body > ui-view > ui-view > div.outer > button.btn.waves-effect.waves-light
 {
   position:absolute  !important;
-left: 70% !important;
+left: 75% !important;
 z-index: 200 !important;
-top: 8% !important;
+top: 6% !important;
 background-color:green;
   }
 
@@ -611,4 +615,20 @@ background-color:green;
 
 md-toast.md-success-toast-theme .md-toast-content {
     background-color: green;
+}
+
+.form-title1
+{
+  text-align: center !important;
+  background-color: #29BECC;
+  font-family: 'Open Sans', sans-serif;
+  color: white;
+  overflow: hidden;
+  height: 90px;
+  line-height: 37.5px;
+  font-size: 3em;
+  margin-bottom: -63px;
+  margin-top: 32.160px !important;
+  padding:20px !important;
+
 }

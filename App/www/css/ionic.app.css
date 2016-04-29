@@ -605,6 +605,7 @@ background-color:green;
 .outer{
   height:90%;
   overflow-y:scroll !important;
+  margin-top: 7% !important;
 }
 
 .section.edit{
@@ -630,5 +631,7 @@ md-toast.md-success-toast-theme .md-toast-content {
   margin-bottom: -63px;
   margin-top: 32.160px !important;
   padding:20px !important;
+  position:static !important;
+  z-index: 200 !important;
 
 }

@@ -3,10 +3,15 @@ angular.module('App')
 .service('ReviewService', function($q, $http, FormService, API_BASEURI) {
 var patientID = '';
 var rsPatientID = '';
+var local = FormService.local();
 
 
 //makes PUT call to Aprima API to submit a completed Questionnaire
 var submitQuestionnaire = function(questionnaire) {
+	if(local)
+	{
+		return $http({method: 'GET', url: 'test.json'});
+	}
   //call to FormService to get stored patient ID and relSurveyPatientID
   patientId = FormService.patientID();
   rsPatientID = FormService.rsPatientID();

@@ -5,8 +5,15 @@ angular.module('App')
     Username: '',
     Password: ''
   };
+  $scope.useLocal = false;
 
   $scope.login = function() {
+    if ($scope.useLocal)
+    {
+      AuthService.useLocal();
+     $state.go('inside.form');
+    }
+    else{
     AuthService.login($scope.user).then(function(msg) {
      // $state.go('inside');
      //this is where the state is re routed to non existent form
@@ -18,6 +25,7 @@ angular.module('App')
         template: errMsg
       });
     });
+  }
   };
 })
 

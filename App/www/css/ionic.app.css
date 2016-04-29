@@ -56,6 +56,10 @@ html, body {
 
 }
 
+.switch-align{
+  margin-left: 20% !important;
+}
+
 .no-scroll{
   overflow: hidden !important;
 }

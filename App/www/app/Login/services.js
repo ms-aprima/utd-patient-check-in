@@ -5,6 +5,7 @@ angular.module('App')
   var isAuthenticated = false;
   var authToken;
   var patientID = '';
+  var useLocalData = false;
 
   function loadUserCredentials() {
     var token = window.localStorage.getItem(LOCAL_TOKEN_KEY);
@@ -54,6 +55,11 @@ angular.module('App')
     });
   };
 
+  var useLocal = function() {
+    useLocalData = true;
+    isAuthenticated = true;
+  };
+
   var logout = function() {
     destroyUserCredentials();
   };
@@ -62,9 +68,11 @@ angular.module('App')
 
   return {
     login: login,
+    useLocal: useLocal,
     logout: logout,
     isAuthenticated: function() {return isAuthenticated;},
-    patientID: function() { return patientID; }
+    patientID: function() { return patientID; },
+    useLocalData: function() { return useLocalData; }
   };
 })
 

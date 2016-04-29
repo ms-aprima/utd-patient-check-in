@@ -450,7 +450,7 @@ padding: 0;
 
 .button-rounded {
   font-size:43px !important;
-  background-color: #29BECC;;
+  background-color: #cc3729;
   display: block !important;
   width: 50px !important;
   height: 50px !important;
@@ -469,10 +469,10 @@ padding: 0;
 button.button.button-rounded.fab {
     position: absolute !important;
     top: 5% !important;
-    left: 12% !important;
+    left: 5% !important;
     margin: 0% !important;
     z-index: 200 !important;
-    background-color: red;
+    background-color: #cc3729;
 }
 
 
@@ -596,11 +596,26 @@ overflow-x: hidden !important ;
 body > ui-view > ui-view > div.outer > button.btn.waves-effect.waves-light
 {
   position:absolute  !important;
-left: 75% !important;
-z-index: 200 !important;
-top: 6% !important;
-background-color:green;
-  }
+  left: 78% !important;
+  z-index: 200 !important;
+  top: 5.5% !important;
+  background-color:#29cc89;
+  padding-right: 0px !important;
+  font-size: larger;
+}
+
+body > ui-view > ui-view > div.outer > button.btn.waves-effect.waves-light.waves-back-button
+{
+  position:absolute  !important;
+  z-index: 200 !important;
+  top: 5.5% !important;
+  left: 3% !important;
+  background-color:#cc3729;
+  padding-left: 0px !important;
+  padding-right: 28px !important;
+  font-size: larger;
+  text-align: center;
+}
 
 .outer{
   height:90%;

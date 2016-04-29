@@ -9,15 +9,15 @@
     </div>
    
     <div class="outer" ng-hide="saving" >
-    <button class="button button-rounded fab" ng-click="backToList()">
-      <i class="material-icons">
-        arrow_back
-      </i>
+    <button class="btn waves-effect waves-light waves-back-button" ng-click="backToList()">
+      <i class="material-icons left">arrow_back</i>
+      Back
     </button>
 
-     <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="submit()">Submit
-    <i class="material-icons right">arrow_forward</i>
-  </button>
+     <button class="btn waves-effect waves-light" type="submit" name="action" ng-click="submit()">
+      Submit
+      <i class="material-icons right">arrow_forward</i>
+    </button>
 
     <div class="cardSection">
      <md-card ng-repeat="section in questionnaire.Questionnaire.Sections" class="card-1">

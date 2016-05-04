@@ -53,7 +53,7 @@
               
               <div ng-if="question.SurveyControlTypeName == 'RADIOBUTTON'">
                 <md-radio-group ng-required="true" layout="row" layout-align="start center" ng-model="question.SelectedAnswerId" class="md-accent" layout-wrap>
-                  <md-radio-button ng-repeat="answer in question.Answers" ng-value="answer.SurveyAnswerId">
+                  <md-radio-button class="md-primary"  ng-repeat="answer in question.Answers" ng-value="answer.SurveyAnswerId">
                     {{answer.SurveyAnswerLabel}}
                     <div ng-if="question.SelectedAnswerId == answer.SurveyAnswerId">
                       {{answer.SelectedAnswer = true;""}}
@@ -93,7 +93,7 @@
                 <!-- Code for checkbox goes here-->
                 <div layout="row" layout-wrap layout-padding class="checkbox">
                   <div ng-repeat="answers in question.Answers" >
-                    <md-checkbox ng-model="answers.SelectedAnswer">
+                    <md-checkbox class="md-primary"  ng-model="answers.SelectedAnswer">
                       {{answers.SurveyAnswerLabel}}
                     </md-checkbox>
                   </div>
@@ -102,7 +102,8 @@
 
               <div ng-if="question.SurveyControlTypeName == 'NUMERIC'">
                 <md-radio-group  ng-required="true" layout="row" ng-model="question.SelectedAnswerId" class="md-accent">
-                  <md-radio-button  ng-repeat="answer in question.Answers" 
+                  <md-radio-button  class="md-primary" 
+                                    ng-repeat="answer in question.Answers" 
                                     ng-value="answer.SurveyAnswerId" 
                                     ng-style="{'display':'inline'}">
                     {{answer.SurveyAnswerLabel}}

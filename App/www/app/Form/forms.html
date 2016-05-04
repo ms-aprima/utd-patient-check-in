@@ -69,7 +69,7 @@
                                 <span ng-show="questionnaireForm['q_' + $index].$invalid" class="answer-required">*</span>
                               </div>
                               <md-radio-group name="q_{{$index}}" ng-required="true" layout="row" layout-align="start center" ng-model="q.SelectedAnswerId" class="md-accent" layout-wrap>
-                                <md-radio-button ng-repeat="answer in q.Answers" ng-value="answer.SurveyAnswerId">
+                                <md-radio-button class="md-primary" ng-repeat="answer in q.Answers" ng-value="answer.SurveyAnswerId">
                                   {{answer.SurveyAnswerLabel}}
                                   <div ng-if="q.SelectedAnswerId == answer.SurveyAnswerId">
                                     {{answer.SelectedAnswer = true;""}}
@@ -117,7 +117,7 @@
                               <!-- Code for checkbox goes here-->
                               <div layout="row" layout-wrap layout-padding flex>
                                 <div flex="50" ng-repeat="answers in q.Answers">
-                                  <md-checkbox name="c_{{$index}}" ng-model="answers.SelectedAnswer">
+                                  <md-checkbox class="md-primary" name="c_{{$index}}" ng-model="answers.SelectedAnswer">
                                     {{answers.SurveyAnswerLabel}}
                                   </md-checkbox>
                                 </div>
@@ -130,7 +130,8 @@
                                 <span ng-show="questionnaireForm['n_' + $index].$invalid" class="answer-required">*</span>
                               </div>
                               <md-radio-group name="n_{{$index}}" ng-required="true" layout="row" ng-model="q.SelectedAnswerId" class="md-accent">
-                                <md-radio-button  ng-repeat="answer in q.Answers" 
+                                <md-radio-button  class="md-primary" 
+                                                  ng-repeat="answer in q.Answers" 
                                                   ng-value="answer.SurveyAnswerId" 
                                                   ng-style="{'display':'inline'}">
                                   {{answer.SurveyAnswerLabel}}

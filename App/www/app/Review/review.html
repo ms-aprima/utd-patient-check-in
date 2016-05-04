@@ -29,8 +29,8 @@
         <div ng-hide="section.viewHidden">
          <md-button class="md-raised" ng-click="edit(section)">Edit</md-button>
         
-         <div ng-if="question.SurveyControlTypeName != 'TIMEFRAME'" class="questions" ng-repeat="question in section.Questions">
-          <span class="review-question-label">{{question.SurveyQuestionLabel}}</span><br>
+         <div ng-if="question.SurveyControlTypeName != 'TIMEFRAME'" class="questions" ng-repeat="question in section.Questions"><div ng-if="!question.QuestionOptional">
+          <span class="review-question-label">{{question.SurveyQuestionLabel}}</span><br></div>
           <span ng-if="question.SurveyControlTypeName != 'CHECKBOX'"class="review-answer">{{question.SelectedAnswerText}}</span>
           <div ng-if="question.SurveyControlTypeName == 'CHECKBOX'" ng-repeat="answer in question.Answers">
             <div ng-if="answer.SelectedAnswer">
